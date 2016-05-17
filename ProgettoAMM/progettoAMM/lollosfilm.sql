@@ -1,0 +1,57 @@
+
+--
+-- Struttura della tabella `clienti`
+--
+
+CREATE TABLE IF NOT EXISTS `clienti` (
+  `username` varchar(128) DEFAULT NULL,
+  `password` varchar(128) DEFAULT NULL,
+  `nome` varchar(128) DEFAULT NULL,
+  `cognome` varchar(128) DEFAULT NULL,
+  `email` varchar(128) DEFAULT NULL,
+  `numero_civico` int(11) DEFAULT NULL,
+  `citta` varchar(128) DEFAULT NULL,
+  `provincia` varchar(128) DEFAULT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  
+  `matricola` int(11) DEFAULT NULL,
+  `cap` varchar(5) DEFAULT NULL,
+  `via` varchar(128) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`),
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;   --CAPIRE COSA SIGNIFICHI --
+
+--
+-- Dump dei dati per la tabella `clienti`
+--
+
+
+INSERT INTO `client` (`username`, `password`, `nome`, `cognome`, `email`, `numCivico`, `citta`, `id`, `cap`, `via`) VALUES
+('cliente', 'password', 'Lorenzo', 'Melis', 'lorenzo.melis@unica.it', 9, 'Cagliari', 'Cagliari', 1, '09124', 'via di cagliari');
+
+
+
+
+--
+-- Struttura della tabella `venditore`
+--
+
+CREATE TABLE IF NOT EXISTS `venditore` (
+  `username` varchar(128) DEFAULT NULL,
+  `password` varchar(128) DEFAULT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  
+  UNIQUE KEY `id` (`id`),
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;   --CAPIRE COSA SIGNIFICHI --
+
+--
+-- Dump dei dati per la tabella `venditore`
+--
+
+
+INSERT INTO `venditore` (`username`, `password`, `id`) VALUES
+('seller', 'password', 1);
+
+
+
+--
+-- Struttura tabella Oggetti
+-- (id, nome, prezzo, descrizione, immagine, quantità,)
+--

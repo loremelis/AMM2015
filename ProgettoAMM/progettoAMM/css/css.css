@@ -1,0 +1,390 @@
+body{
+    background-color: #FFF5EE;
+    font-family: Verdana;
+}
+
+ #page{
+     position: relative;
+     display:block;
+     margin-bottom: 20px;
+     margin-top: 40px;
+     margin-right: auto;
+     margin-left: auto;
+     width: 1024px;
+     overflow: hidden;
+}
+
+header { 
+         padding: 10px;
+         height: 50px;     
+         position: relative;
+         padding-left: 20px;
+         padding-right: 20px;
+         border: 1px solid white;
+         border-radius: 25px;
+         background-color: #333333;
+         margin: 0px;
+}
+
+.content{
+     position: relative;
+     width: 950px;
+     height: 650px;
+     margin-left: auto;
+     margin-right: auto;
+     box-shadow:0 0 30px black;
+     background-color: #FFFAFA;
+}
+
+/* Stile dei vari testi */
+h1, h2, h3, h4{
+    font-family: Verdana;
+}
+
+/* usato solo per il titolo del sito */
+h1{ 
+        font-size: 50px;
+        line-height: 50px;
+        padding-left: 10px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        color: #ffffff;
+        display: block;
+        float: left;
+ }
+ /*usato per i titoli da scrivere in grassetto */
+ h2{
+     font-weight: bold;
+     font-size: 15px;
+ }
+ /* titoli in corsivo */
+ h3{
+     font-style: italic;
+     font-size: 13px;
+ }
+ /*titoli normali*/
+ h4{
+     font-size: 15px
+ }
+        
+nav {
+    font-weight: bold;
+    font-size: 17px;
+    position: relative;
+    float: right;
+    display: inline-block;
+    background-position: bottom left;
+}
+
+/* stile del footer */
+footer{
+         padding: 10px;
+         min-height: 20px;
+         position: relative;
+         padding-left: 20px;
+         padding-right: 20px;
+         border: 1px solid white;
+         border-radius: 25px;
+         background-color: #333333;
+         color: white;
+         text-align: right;
+ }
+ 
+ .validator{
+     position: static;
+     width: 950px;
+     height: 30px;
+     margin-top: 0px;
+     margin-left: auto;
+     margin-right: auto;
+     background-color: #FFFAFA;
+     box-shadow:0 10px 30px black;  
+}
+
+/* Validazioni */
+.validator a {
+    color: black;
+    text-decoration: none;
+}
+
+.xhtml{
+    margin-left: 41%;
+}
+
+.validator a:visited{
+    color: black;
+    text-decoration: none;
+}
+
+.validator a:hover {
+    text-decoration: underline;
+}
+ 
+/* gestione link ed input */
+ a:link{
+     color: white;
+     text-decoration: none;
+ }
+ 
+ a:visited{
+     color: white;
+     text-decoration: none;
+ }
+     
+ a:hover {
+     text-decoration: underline;
+ }
+ 
+  /* gestione pagina home */
+ #griglia{
+     padding: 0;
+     margin-top:40px;
+ }
+ 
+ #griglia li {
+     border: 2px solid black;
+     display: inline-block;
+     width: 30%;
+     height: 250px;
+     margin: 10px;
+     overflow: hidden;
+ }
+ 
+ #film_tab{
+     max-width: 850px;
+     margin: 0 auto;
+     padding: 20px;
+     text-align: center;
+     
+ }
+ 
+ a.ody{
+     margin-left: -290px;
+     margin-top: 150px;
+ }
+ 
+ a.sw{
+     margin-left: -300px;
+ }
+ 
+ a.lord{
+     margin: -1200px;
+ }
+ 
+ /* Gestione della pagina Info */
+  #info{
+     margin-top: 70px;
+     font-family: Verdana;
+     font-size: 20px;
+     font-style: italic;
+     padding: 50px;
+ }
+ 
+ #tastoHome a:link, a:visited{
+     margin-top: 30px;
+     padding: 15px 30px;
+     text-align: center;
+     text-decoration: none;
+     background-color: #333333;
+     border-radius: 10px;
+     font-size: 30px;
+ }
+ 
+ #tastoHome a:hover{
+     background-color: black;
+ }
+ 
+ #login_info{
+     margin-top: 250px;
+ }
+ 
+ .validator_info{
+     text-align: right;
+     margin-top: 250px;
+ }
+
+ /* Gestire gli input della pagina login*/
+ #entrare {
+     padding: 50px;
+     padding-top: 120px;
+     height: 90%;
+     width: 90%;
+}
+
+#entrare *{
+    float: left;
+    clear: both;
+ }
+ 
+ #entrare h2 {
+     width: 100%;
+     text-align: center;
+     font-size: 30px;
+ }
+ 
+ #entrare label{
+     text-align: center;
+     margin-left: 45%;
+     width: 10%;
+     font-weight: bold;
+ }
+ 
+ #entrare input {
+     margin-left: 20%;
+     width: 60%
+ }
+
+/* Gestire gli input della pagina venditore*/
+#inserzione {
+    width: 90%;
+    padding: 20px;
+}
+
+#inserzione label, input, textarea,select {
+    float: left;
+    margin: 10px 0;
+}
+
+#inserzione h2{
+    font-size: 35px;
+}
+
+ #inserzione label {
+     display: block;
+     line-height: 30px;
+     width: 300px;
+     clear: both;
+     font-weight: bold;
+ }
+ 
+ #inserzione input, textarea{
+     width: 500px;
+     height: 30px;
+ }
+
+#inserzione input[type=submit] {
+    clear: both;
+    width: 200px;
+ }
+
+ #inserzione textarea {
+     height: auto;
+     overflow: visible;
+}
+
+/* Gestire i contenuti della pagina Cliente */
+#tab_client caption {
+    font-size: 40px;
+}
+ 
+table{
+    border-spacing: 5px;
+    width: 90%;
+    height: auto;
+    margin-left: 5%;
+    margin-top: 7%;
+    height: auto;
+    position: absolute;
+}
+
+tr {
+    height: 50px;
+    overflow: hidden;
+}
+
+.pari{
+    background-color: #FFD700;  
+}
+
+.dispari{
+    background-color: #DAA520;
+}
+
+#nome_loc {
+    font-size: 20px;
+    font-family: Arial-black;
+}
+
+#carrello a{
+    width: 200px;
+    height: 40px;
+    float: right;
+    text-align: center;
+    font-size: 30px;
+    background-color: #333333;
+    border-radius: 50%;
+    margin-top:20px;
+}
+
+#carrello a:link, a:active, a:visited{
+    text-decoration: none;
+}
+
+#carrello a:hover{
+    background-color: black;
+}
+
+/* gestione pagina Anagrafica */
+#anagrafica{
+    padding-top: 1%;
+    padding-left: 5%;
+}
+
+#anagrafica label, input, textarea,select {
+    float: left;
+    margin: 10px 0;
+}
+
+#anagrafica h2{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+ #anagrafica label{
+     display: block;
+     line-height: 30px;
+     width: 300px;
+     clear: both;
+     font-weight: bold;
+ }
+ 
+#anagrafica input{
+     width: 500px;
+     height: 30px;
+ }
+ 
+ #anagrafica input[type=submit] {
+    clear: both;
+    width: 200px;
+    margin-left:50%;
+ }
+
+/* Gestione pagina Carrello */
+#contenuto_carrelllo{
+    padding:5%;
+}
+
+#contenuto_carrelllo h2{
+    font-size: 35px;
+}
+
+#table_carrello{
+    border:2px solid black;
+    width: 80%;
+    margin-left: 0px;
+}
+
+#table_carrello caption{
+    font-size: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+
+   
+   
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
