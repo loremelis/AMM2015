@@ -1,23 +1,41 @@
 <?php
-//Probabilmente non mi serve questa classe
 
-class UserSeller{
-    
-    
-    
-    
-    private $username; //non so se è necessario//
-    
-    private $password;
+//classe che mi serve per definire il ruolo di Cliente o venditore
 
-    private $id;
+class User {
+    
+    //Costanti che definiscono il ruolo di Venditore e Studente
+    
+    const Docente = 1;
+   
+    const Studente = 2;
+
     
     private $ruolo;
-    /**
-     * Costruttore
-     */
+    
+    private $id;
+    
+    private $password;
+    
+    private $username;
+    
     public function __construct() {
         
+    }
+    
+    public function getRuolo() {
+        return $this->ruolo;
+    }
+   
+    public function setRuolo($ruolo) {
+        switch ($ruolo) {
+            case self::Docente:
+            case self::Studente:
+                $this->ruolo = $ruolo;
+                return true;
+            default:
+                return false;
+        }
     }
     
     public function getID(){
@@ -52,6 +70,7 @@ class UserSeller{
         return true;    //restituisce true se la password è giusta //
     }
 }
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

@@ -1,5 +1,7 @@
 <?php
 
+// Aggiungere ruolo a questa classe e alla classe Seller 
+
 class UserClient{
     
     private $ID;
@@ -23,6 +25,8 @@ class UserClient{
     private $cap;
     
     private $email;
+    
+    private $ruolo;
 
     /**
      * Costruttore
@@ -138,6 +142,9 @@ class UserClient{
         $this->password=$password;
         return true;    //restituisce true se la password è giusta //
     }
+    
+    
+    
 }
 
 

@@ -5,24 +5,28 @@
 
 class Settings {
     
-    private static $appPath;
-    const debug = false;
     
-    public static $user = "lmelis";
-    public static $password = "simpson92";
-    public static $host = "localhost";
-    public static $db = "amm16_lorenzoMelis";  // Da controllare //
-            
+    // variabili di accesso per il database
+    public static $db_host = 'localhost';
+    public static $db_user = 'melisLorenzo';
+    public static $db_password = 'sogliola2040';
+    public static $db_name='amm_meliLorenzo';
+    
+    private static $appPath;
+          
     public static function getApplicationPath(){
         
         if(!isset(self::$appPath)){
             switch ($_SERVER['HTTP_HOST']) {    // prende l'indirizzo http dell'host //
                 case 'localhost':
-                    self::$appPath = 'http://'. $_SERVER['HTTP_HOST'] . '/Lollosfilm/';  //Da controllare//
+                
+                    self::$appPath = 'http://'. $_SERVER['HTTP_HOST'] . '/AMM2015/ProgettoAMM/progettoAMM/';
                     break;
+                
                 case 'spano.sc.unica.it':
                     // configurazione pubblica //
-                    self::$appPath = 'http://' . $_SERVER['HTTP_HOST'] . '/AMM2015/loremelis/progettoAMM';
+                    self::$appPath = 'http://' . $_SERVER['HTTP_HOST'] . '/amm2015/melisLorenzo/progettoAMM';
+                    //DA CONTROLLARE progettoAMM
                     break;
                 default :
                     self::$appPath= '';

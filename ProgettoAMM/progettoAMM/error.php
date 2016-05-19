@@ -16,14 +16,7 @@ include_once 'Settings.php';
             ?>
         </p>
         <?php if (isset($login)) { ?>
-            <p>Puoi autenticarti alla pagina di <a href="login">login</a></p>
+            <p>Puoi autenticarti alla pagina di <a href="login">login</a></p>   //da verificae se porta a quella pagina
         <?php } ?>
     </body>
 </html>
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-

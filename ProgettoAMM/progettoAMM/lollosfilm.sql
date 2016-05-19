@@ -17,14 +17,14 @@ CREATE TABLE IF NOT EXISTS `clienti` (
   `cap` varchar(5) DEFAULT NULL,
   `via` varchar(128) DEFAULT NULL,
   UNIQUE KEY `id` (`id`),
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;   --CAPIRE COSA SIGNIFICHI --
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;   --incrementa l'id per i nuovi clienti--
 
 --
 -- Dump dei dati per la tabella `clienti`
 --
 
 
-INSERT INTO `client` (`username`, `password`, `nome`, `cognome`, `email`, `numCivico`, `citta`, `id`, `cap`, `via`) VALUES
+INSERT INTO `clienti` (`username`, `password`, `nome`, `cognome`, `email`, `numCivico`, `citta`, `id`, `cap`, `via`) VALUES
 ('cliente', 'password', 'Lorenzo', 'Melis', 'lorenzo.melis@unica.it', 9, 'Cagliari', 'Cagliari', 1, '09124', 'via di cagliari');
 
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `venditore` (
   `password` varchar(128) DEFAULT NULL,
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  
   UNIQUE KEY `id` (`id`),
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;   --CAPIRE COSA SIGNIFICHI --
+) ;
 
 --
 -- Dump dei dati per la tabella `venditore`
