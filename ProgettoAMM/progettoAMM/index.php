@@ -2,6 +2,9 @@
 /* questa sarà la pagina per gestire l'autenticazioni e le autorizzazioni di tutte le pagine
 Sara la nostra pagina FrontControll cioè il punto unico di accesso all'applicazione */
 
+//error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
 
 //include dei controller//
 include_once 'controller/BaseController.php';
