@@ -1,7 +1,5 @@
 <?php
 
-use BaseController;
-
 include_once 'BaseController.php';
 
 /**

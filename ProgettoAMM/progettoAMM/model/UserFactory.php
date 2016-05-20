@@ -2,7 +2,7 @@
 <?php
 
 //Classe per la creazione di utenti Clienti e Venditori//
-include_once basename(__DIR__) . '/../Db.php';
+include_once 'Db.php';
 include_once 'UserClient.php';
 include_once 'UserSeller.php';
 
