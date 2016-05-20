@@ -1,7 +1,7 @@
 <!-- file di connessione al database -->
     
     <?php
-    include_once '../Settings.php';
+    include_once 'Settings.php';
     
     class Db {
    
