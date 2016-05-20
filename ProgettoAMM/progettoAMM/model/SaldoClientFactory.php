@@ -1,5 +1,8 @@
 <?php
 
+
+// Classe per calcolare il saldo totale del Cliente
+
 class SaldoClientFactory{
     
 }

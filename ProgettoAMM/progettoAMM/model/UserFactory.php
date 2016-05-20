@@ -1,4 +1,3 @@
-
 <?php
 
 //Classe per la creazione di utenti Clienti e Venditori//

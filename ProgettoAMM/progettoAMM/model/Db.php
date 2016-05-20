@@ -1,7 +1,7 @@
 <!-- file di connessione al database -->
     
-    <?php
-    include_once 'Settings.php';
+ <?php
+    include_once 'progetto/AMM/Settings.php';
     
     class Db {
    
@@ -33,12 +33,4 @@
         }
     }
 }
-
-
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+?>

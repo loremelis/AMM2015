@@ -2,11 +2,11 @@
 
 //CONTROLLER che gestisce gli utenti non loggati
 
-include_once basename(__DIR__) . '/../view/ViewDescriptor.php';
-include_once basename(__DIR__) . '/../model/UserFactory.php';
-include_once basename(__DIR__) . '/../model/User.php';
-include_once basename(__DIR__) . '/../model/UserClient.php';
-include_once basename(__DIR__) . '/../model/UserSeller.php';   
+include_once 'view/ViewDescriptor.php';
+include_once 'model/UserFactory.php';
+include_once 'model/User.php';
+include_once 'model/UserClient.php';
+include_once 'model/UserSeller.php';   
 
  /* Controller che gestisce gli utenti non autenticati, 
  * fornendo le funzionalita' comuni anche agli altri controller

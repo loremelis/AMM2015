@@ -3,9 +3,6 @@
 
 class UserSeller{
     
-    
-    
-    
     private $username; //non so se è necessario//
     
     private $password;
@@ -52,9 +49,4 @@ class UserSeller{
         return true;    //restituisce true se la password è giusta //
     }
 }
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+?>
