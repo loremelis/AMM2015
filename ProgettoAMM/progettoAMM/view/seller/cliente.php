@@ -2,60 +2,23 @@
         
         <!-- Qua ci sarà tutto il codice per gestire gli ordini -->
         
-        <table id="tab_client">
+        <table>
             <caption>Catalogo delle locandine</caption>
-            <tr class="dispari">
-                <td id="nome_loc" >Fight Club</td>
-                <td ><a href="img/fightclub.jpg">Immagine</a></td>
-                <td>Descrizione</td>
-                <td>Quantità</td>
-                <td>prezzo</td>
-                <td><a href="cliente.php">Link</a></td>
-            </tr>
-            <tr class="pari">
-                <td id="nome_loc">The Lord of the Rings</td>
-                <td><a href="img/lotr.jpg">Immagine</a></td>
-                <td>Descrizione</td>
-                <td>Quantità</td>
-                <td>prezzo</td>
-                <td>
-                    <a href="cliente.php">Link</a></td>
-            </tr>
-            <tr class="dispari">
-                <td id="nome_loc">Star Wars</td>
-                <td><a href="img/jason-palmer-epvi-montage-low-res-watermarked.jpg.jpg">Immagine</a></td>
-                <td>Descrizione</td>
-                <td>Quantità</td>
-                <td>prezzo</td>
-                <td>
-                    <a href="cliente.php">Link</a></td>
-            </tr>
-            <tr class="pari">
-                <td id="nome_loc">Godfather</td>
-                <td><a href="img/godfather.jpg.jpg">Immagine</a></td>
-                <td>Descrizione</td>
-                <td>Quantità</td>
-                <td>prezzo</td>
-                <td>
-                    <a href="cliente.php">Link</a></td>
-            </tr>
-            <tr class="dispari">
-                <td id="nome_loc">The Departed</td>
-                <td><a href="img/departed.jpg.jpg">Immagine</a></td>
-                <td>Descrizione</td>
-                <td>Quantità</td>
-                <td>prezzo</td>
-                <td>
-                    <a href="cliente.php">Link</a></td>
-            </tr>
-            <tr class="pari">
-                <td id="nome_loc">2001 Space Odysey</td>
-                <td><a href="img/2001.jpg">Immagine</a></td>
-                <td>Descrizione</td>
-                <td>Quantità</td>
-                <td>prezzo</td>
-                <td>
-                    <a href="cliente.php">Link</a></td>
-            </tr>
-            
-        </table>
+            <?php 
+            $i = 0;
+            foreach ($oggetti as $oggetto) {
+            ?>
+            <tr <?= $i % 2 == 0 ? 'class="alt-row"' : '' ?>>
+                <td id="nome_loc"><?= $oggetto->getNameObj() ?></td>
+                <td ><a href="img/fightclub.jpg"><?= $oggetto->getImage() ?></a></td>
+                <td><?= $oggetto->getDescription() ?></td>
+                <td><?= $oggetto->getPrice() ?></td>
+                <td><?= $oggetto->getAmount() ?></td>
+                <td><a href="cliente.php">Link</a></td> <!-- Aggiungere un qualcosa di statico per aggiungere al carrello -->
+            </tr> 
+              <?php
+                $i++;
+            }
+            ?>
+        </table> 
+        

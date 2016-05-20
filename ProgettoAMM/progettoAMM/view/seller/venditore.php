@@ -10,7 +10,7 @@
             <input type="number" name="prezzo_ogg" id="prezzo_ogg"/><br>
             
             <label for="quantita_ogg">Quantità di oggetto disponibili</label>
-            <select name="Quantità" size="1" name="quantita_ogg" id="quantita_ogg">
+            <select size="1" name="quantita_ogg" id="quantita_ogg">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
