@@ -1,7 +1,7 @@
 <!-- file di connessione al database -->
     
  <?php
-    include_once 'progetto/AMM/Settings.php';
+    include_once 'progettoAMM/Settings.php';
     
     class Db {
    
