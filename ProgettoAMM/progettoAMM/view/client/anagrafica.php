@@ -9,7 +9,6 @@
             <label for="data">Data di Nascita</label>
             <input type="date" name="data" id="data" value="<?= $user->getData() ?>" /><br>
             
-            <input type="submit" value="Salva" id="salva1"/>
             
             <label for="via">Via o Piazza</label>
             <input type="text" name="via" id="via" value="<?= $user->getVia() ?>"/><br>
@@ -23,12 +22,10 @@
             <label for="cap">CAP</label>
             <input type="text" name="cap" id="cap" value="<?= $user->getCap() ?>"/><br>
             
-            <input type="submit" value="Salva" id="salva2"/>
-            
             <label for="email">E-mail</label>
             <input type="email" name="email" id="email" value="<?= $user->getEmail() ?>"/><br>
             
-            <input type="submit" value="Salva" id="salva3"/>
+            <input type="submit" value="Salva" id="salva"/>
             
             <!-- valutare se mettere nuova password -->
             <!-- valutare i diversi tipi di input -->

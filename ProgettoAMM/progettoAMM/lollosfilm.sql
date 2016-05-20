@@ -1,4 +1,5 @@
 
+
 --
 -- Struttura della tabella `clienti`
 --
@@ -55,3 +56,16 @@ INSERT INTO `venditore` (`username`, `password`, `id`) VALUES
 -- Struttura tabella Oggetti
 -- (id, nome, prezzo, descrizione, immagine, quantità,)
 --
+
+CREATE TABLE IF NOT EXISTS `oggetti` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT, 
+  `nome` varchar(128) DEFAULT NULL,
+  `prezzo` int(11) DEFAULT NULL,
+  `descrizione` varchar(250) DEFAULT NULL,
+  `immagine` blob NOT NULL,        --BINARY LARGE OBJECT, vedere se salvarla cosi o con il link
+  `quantita` int(11) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`),
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+
+INSERT INTO `oggetti` (`id`, `nome`, `prezzo`, `descrizione`,`immagine`, `quantita`) VALUES

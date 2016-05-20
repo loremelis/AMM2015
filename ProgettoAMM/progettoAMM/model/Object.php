@@ -13,28 +13,37 @@ class Object {
     private $description;
     private $image;
     private $amount;
-    private $link;
+
     
     
      public function getID(){
         return $this->ID;
      }
-     public function setID($ID){
-         $this->ID= $ID;
-     }
+     public function setId($id) {
+        $intVal = filter_var($id, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+        if (!isset($intVal)) {
+            return false;
+        }
+        $this->id = $intVal;
+        return true;
+    }
      
      public function getNameObj(){
          return $this->name_obj;
      }
-     public function setName($name_obj){
+     public function setNameObj($name_obj){
          $this->name=$name_obj;
      }
      
      public function getPrice(){
         return $this->price;
      }
-     public function setPrice($price){
-         $this->price= $price;
+     public function setPrice($price) {
+        $intVal = filter_var($price, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+        if (!isset($intVal)) {
+            return false;
+        }
+        $this->price=$intVal;
      }
      
      public function getDescription(){
@@ -54,32 +63,16 @@ class Object {
      public function getAmount(){
         return $this->amount;
      }
-     public function setAmount($amount){
-         $this->amount= $amount;
+     public function setAmount($amount) {
+        $intVal = filter_var($amount, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+        if (!isset($intVal)) {
+            return false;
+        }
+        $this->amount=$intVal;
      }
-     
-     public function getLink(){
-        return $this->link;
-     }
-     public function setLink($link){
-         $this->link= $link;
-     }
-     
-    
-             
-     
-     
-     
-    
-    
-    
+
 }
 
 ?>
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 
