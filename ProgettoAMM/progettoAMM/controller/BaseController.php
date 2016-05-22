@@ -192,7 +192,7 @@ class BaseController {
         
         if (isset($request['pass1']) && isset($request['pass2'])) {
             if ($request['pass1'] == $request['pass2']) {
-                if (!$user->setPassword($request['pass1'])) {
+                if (!$user->setPassword($request['pass1'])) {     //NON LO PREDE
                     $msg[] = '<li>Il formato della password non &egrave; corretto</li>';
                 }
             } else {
@@ -202,7 +202,7 @@ class BaseController {
         
         // salviamo i dati se non ci sono stati errori
         if (count($msg) == 0) {
-            if (UserFactory::instance()->salva($user) != 1) {
+            if (UserFactory::instance()->salva($user) != 1) {   //NON LO PRENDE
                 $msg[] = '<li>Salvataggio non riuscito</li>';
             }
         }

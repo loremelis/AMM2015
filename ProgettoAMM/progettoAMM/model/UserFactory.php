@@ -2,6 +2,7 @@
 
 //Classe per la creazione di utenti Clienti e Venditori//
 include_once 'Db.php';
+include_once 'User.php';
 include_once 'UserClient.php';
 include_once 'UserSeller.php';
 
@@ -79,6 +80,7 @@ class UserFactory {
             return $venditore;
         }
     }
+    
     /* non penso mi serva una lista di venditori
     public function &getListaVenditori() {
         $docenti = array();
@@ -124,7 +126,7 @@ class UserFactory {
     public function &getListaCLienti() {
         $clienti = array();
         $query = "SELECT * FROM studenti ";
-        $mysqli = Db::getInstance()->connectDb();    //Queste istanze sono da valutare
+        $mysqli = Db::getInstance()->connectDb();    
         if (!isset($mysqli)) {
             error_log("[getListaClienti] impossibile inizializzare il database");
             $mysqli->close();
@@ -158,8 +160,8 @@ class UserFactory {
         switch ($role) {
             case User::Cliente:
                 $query = "SELECT *
-            FROM clienti 
-            WHERE studenti.id = ?";
+                          FROM clienti 
+                          WHERE studenti.id = ?";
                 $stmt = $mysqli->stmt_init();
                 $stmt->prepare($query);
                 if (!$stmt) {
@@ -202,20 +204,21 @@ class UserFactory {
         }
     }
     // Crea un Cliente da una riga del db
+    // Questa è TUTTA DA RIFARE
  
     public function creaClienteDaArray($row) {
-        $cliente = new Studente();
-        $cliente->setId($row['studenti_id']);
-        $cliente->setNome($row['studenti_nome']);
-        $cliente->setCognome($row['studenti_cognome']);
-        $cliente->setCitta($row['studenti_citta']);
-        $cliente->setCap($row['studenti_cap']);
-        $cliente->setVia($row['studenti_via']);
-        $cliente->setEmail($row['studenti_email']);
-        $cliente->setNumeroCivico($row['studenti_numero_civico']);
-        $cliente->setRuolo(User::Studente);
-        $cliente->setUsername($row['studenti_username']);
-        $cliente->setPassword($row['studenti_password']);
+        $cliente = new UserClient();
+        $cliente->setId($row['clienti_id']);
+        $cliente->setNome($row['clienti_nome']);
+        $cliente->setCognome($row['clienti_cognome']);
+        $cliente->setCitta($row['clienti_citta']);
+        $cliente->setCap($row['clienti_cap']);
+        $cliente->setVia($row['clienti_via']);
+        $cliente->setEmail($row['clienti_email']);
+        $cliente->setNumeroCivico($row['clienti_numero_civico']);
+        $cliente->setRuolo(User::Cliente);
+        $cliente->setUsername($row['clienti_username']);
+        $cliente->setPassword($row['clienti_password']);
         
         return $cliente;
     }
@@ -257,10 +260,10 @@ class UserFactory {
         $count = 0;
         switch ($user->getRuolo()) {
             case User::Studente:
-                $count = $this->salvaStudente($user, $stmt);
+                $count = $this->salvaCliente($user, $stmt);
                 break;
             case User::Docente:
-                $count = $this->salvaDocente($user, $stmt);
+                $count = $this->salvaVenditore($user, $stmt);   //NON PENSO DI AVERNE BISOGNO
         }
         $stmt->close();
         $mysqli->close();

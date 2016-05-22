@@ -19,12 +19,12 @@ class Object {
      public function getID(){
         return $this->ID;
      }
-     public function setId($id) {
+     public function setID($id) {
         $intVal = filter_var($id, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
         if (!isset($intVal)) {
             return false;
         }
-        $this->id = $intVal;
+        $this->ID = $intVal;
         return true;
     }
      
@@ -32,7 +32,7 @@ class Object {
          return $this->name_obj;
      }
      public function setNameObj($name_obj){
-         $this->name=$name_obj;
+         $this->name_obj=$name_obj;
      }
      
      public function getPrice(){
@@ -49,7 +49,7 @@ class Object {
      public function getDescription(){
         return $this->description;
      }
-     public function setDescriprion($description){
+     public function setDescription($description){
          $this->description= $description;
      }
      

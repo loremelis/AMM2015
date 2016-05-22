@@ -1,12 +1,10 @@
 <?php
 
-use Object;
-
 include_once 'Object.php';
-include_once 'User';
-include_once 'UserFactory';
-include_once 'UserClient';
-include_once 'UserSeller';
+include_once 'User.php';
+include_once 'UserFactory.php';
+include_once 'UserClient.php';
+include_once 'UserSeller.php';
 
 
 class ObjectFactory{
@@ -20,7 +18,7 @@ class ObjectFactory{
     
     public static function instance(){
         if(!isset(self::$singleton)){
-            self::$singleton = new AppelloFactory();
+            self::$singleton = new ObjectFactory();
         }
         
         return self::$singleton;
@@ -35,7 +33,7 @@ class ObjectFactory{
         if (!isset($mysqli)) {
             error_log("[cercaOggettoPerId] impossibile inizializzare il database");
             $mysqli->close();
-            return $oggetto;
+            return $oggetti;
         }
         
         $stmt = $mysqli->stmt_init();
@@ -78,7 +76,7 @@ class ObjectFactory{
     
     //modificare un oggetto
     public function salva(Object $oggetto){
-         $query = "update oggett set 
+         $query = "update oggetti set 
                     nome = ?,
                     prezzo = ?,
                     descrizione = ?,
@@ -90,7 +88,7 @@ class ObjectFactory{
     
     //aggiungere un nuovo oggetto
    public function nuovo(Object $oggetto){
-        $query = "insert into oggettii (id, nome, prezzo, descrizione, immagine, quantita)
+        $query = "insert into oggetti (id, nome, prezzo, descrizione, immagine, quantita)
                   values (?, ?, ?, ?, ?, ?)";
         return $this->modificaDB($oggetto, $query);
     }
@@ -120,10 +118,10 @@ class ObjectFactory{
         if (!$stmt->bind_param('ssisii', 
                 $oggetto->getNameObj(),
                 $oggetto->getDescription(),
-                $oggetto->getPrize(),
-                $oggetto->getImage,
+                $oggetto->getPrice(),
+                $oggetto->getImage(),
                 $oggetto->getAmount(),
-                $oggetto->getId())) {
+                $oggetto->getID())) {
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();

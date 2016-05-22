@@ -1,6 +1,6 @@
-<!-- file di connessione al database -->
-    
- <?php
+<?php
+ 
+ //file di connessione al database
     include_once 'Settings.php';
     
     class Db {

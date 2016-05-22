@@ -3,12 +3,7 @@
 // Aggiungere ruolo a questa classe e alla classe Seller 
 
 class UserClient{
-    
-    private $ID;
-    
-    private $username;
-    
-    private $password;
+   
 
     private $nome;
 
@@ -36,17 +31,7 @@ class UserClient{
     }
     
     //Verificare se serve la funzione Esiste come per il prof//
-    
-    public function getID(){
-        return $this->ID;
-    }
-    public function setId($ID){
-        $intVal = filter_var($ID, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
-        if(!isset($intVal)){
-            return false;
-        }
-        $this->ID = $intVal;
-    }
+
     
     public function getNome(){
         return $this->nome;
@@ -120,31 +105,6 @@ class UserClient{
         $this->email = $email;
         return true;
     }
-    
-    public function getUsername(){         //Guardare user del proff//
-        return $this->username;
-    }
-    //imposto l'username del clien //
-    public function setUsername($username) {
-        // utilizzo la funzione filter var specificando un'espressione regolare
-        // che implementa la validazione personalizzata
-        if (!filter_var($username, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/[a-zA-Z]{5,}/')))) {
-            return false;
-        }
-        $this->username = $username;
-        return true;
-    }
-    
-    public function getPassword(){
-        return $this->password;
-    }
-    public function setPassword($password){
-        $this->password=$password;
-        return true;    //restituisce true se la password è giusta //
-    }
-    
-    
-    
 }
 
 ?>
