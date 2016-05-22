@@ -6,6 +6,7 @@ include_once 'UserClient.php';
 include_once 'UserSeller.php';
 
 class UserFactory {
+    
     private static $singleton;
     private function __constructor() {
     }

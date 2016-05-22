@@ -1,10 +1,7 @@
-<!-- riportae tutto a questa pagina che sostituira progetto.php
-staccare tutti i vari pezzi-->
-
 <?php
 
 include_once 'ViewDescriptor.php';
-include_once 'Settings.php';
+include_once '../Settings.php';
 
 //ciclo if isJson//
 

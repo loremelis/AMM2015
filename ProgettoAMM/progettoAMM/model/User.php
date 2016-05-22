@@ -6,19 +6,18 @@ class User {
     
     //Costanti che definiscono il ruolo di Venditore e Studente
     
-    const Docente = 1;
+    const Venditore = 1;
    
-    const Studente = 2;
+    const Cliente = 2;
 
-    
     private $ruolo;
-    
-    private $id;
-    
+  
     private $password;
     
     private $username;
-    
+  
+    private $ID;
+
     public function __construct() {
         
     }
@@ -29,8 +28,8 @@ class User {
    
     public function setRuolo($ruolo) {
         switch ($ruolo) {
-            case self::Docente:
-            case self::Studente:
+            case self::Venditore:
+            case self::Cliente:
                 $this->ruolo = $ruolo;
                 return true;
             default:
@@ -41,13 +40,14 @@ class User {
     public function getID(){
         return $this->ID;
     }
-    public function setId($ID){
+    public function setID($ID){
         $intVal = filter_var($ID, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
         if(!isset($intVal)){
             return false;
         }
         $this->ID = $intVal;
     }
+
     
     public function getUsername(){         //Guardare user del proff//
         return $this->username;

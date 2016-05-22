@@ -88,7 +88,7 @@ class BaseController {
         $vd->setTitolo("Lollosfilm - gestione Cliente ");
         $vd->setHeaderFile('view/client/HEADER.php');
         $vd->setContentFile('view/client/CONTENT.php');
-        $vd->setFooterFile('view/cient/FOOTER.php');
+        $vd->setFooterFile('view/client/FOOTER.php');
        
     }
     
