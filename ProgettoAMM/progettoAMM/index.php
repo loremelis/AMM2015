@@ -40,9 +40,9 @@ class FrontController {
                     
                     $controller = new clientController();
                     if (isset($_SESSION[BaseController::role]) &&
-                        $_SESSION[BaseController::role] != User::Client) {   //User Client//
-                        self::write403();                                     // crea una pagina di errore//
-                    }                                                          //vedere se abbiamo bisogno di un amministratore//
+                        $_SESSION[BaseController::role] != User::Client) {   
+                        self::write403();                                     
+                    }                                                      
                     $controller->handleInput($request);
                     break;
                 

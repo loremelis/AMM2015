@@ -24,6 +24,7 @@ class BaseController {
     // Metodo per gestire l'input dell'utente. Le sottoclassi lo sovrascrivono
      
     public function handleInput(&$request) {   
+        
         $vd = new ViewDescriptor();
         // imposto la pagina
         
@@ -42,7 +43,7 @@ class BaseController {
                     $password = isset($request['password']) ? $request['password'] : '';
                     $this->login($vd, $username, $password);
                     
-                    // questa variabile viene poi utilizzata dalla vista
+              
                     if ($this->loggedIn()) {
                         $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
                     }
@@ -61,7 +62,7 @@ class BaseController {
             }
         }
         // richiamo la vista
-        require basename(__DIR__) . '/../view/master.php';
+        require 'view/master.php';
     }
     
     // Verifica se l'utente sia correttamente autenticato
@@ -75,9 +76,9 @@ class BaseController {
     protected function showLoginPage($vd) {       
         // mostro la pagina di login
         $vd->setTitolo("lollosfilm - login");
-        $vd->setHeaderFile(basename(__DIR__) . '/../view/login/HEADER.php');
-        $vd->setContentFile(basename(__DIR__) . '/../view/login/CONTENT.php');
-        $vd->setFooterFile(basename(__DIR__) . '/../view/login/FOOTER.php');
+        $vd->setHeaderFile('view/login/HEADER.php');
+        $vd->setContentFile('view/login/CONTENT.php');
+        $vd->setFooterFile('view/login/FOOTER.php');
     }
     
     //Funzione che imposta la vista del Cliente
@@ -85,9 +86,9 @@ class BaseController {
     protected function showHomeCLiente($vd) {
         
         $vd->setTitolo("Lollosfilm - gestione Cliente ");
-        $vd->setHeaderFile(basename(__DIR__) . '/../view/client/HEADER.php');
-        $vd->setContentFile(basename(__DIR__) . '/../view/client/CONTENT.php');
-        $vd->setFooterFile(basename(__DIR__) . '/../view/cient/FOOTER.php');
+        $vd->setHeaderFile('view/client/HEADER.php');
+        $vd->setContentFile('view/client/CONTENT.php');
+        $vd->setFooterFile('view/cient/FOOTER.php');
        
     }
     
@@ -95,9 +96,9 @@ class BaseController {
     protected function showHomeVenditore($vd) {
         
         $vd->setTitolo("Lollosfilm - gestione venditore ");
-        $vd->setHeaderFile(basename(__DIR__) . '/../view/seller/HEADER.php');
-        $vd->setContentFile(basename(__DIR__) . '/../view/seller/CONTENT.php');
-        $vd->setFooterFile(basename(__DIR__) . '/../view/seller/FOOTER.php');
+        $vd->setHeaderFile('view/seller/HEADER.php');
+        $vd->setContentFile('view/seller/CONTENT.php');
+        $vd->setFooterFile('view/seller/FOOTER.php');
        
     }
     
@@ -112,7 +113,11 @@ class BaseController {
             case User::Venditore:
                 $this->showHomeVenditore($vd);
                 break;
-            //HO TOLTO IL RUOLO AMMINISTRATORE
+            case User::Amministratore:
+                $this->showHomeAmministratore($vd);
+                break;
+            
+            //DA CONTROLLARE
         }
     }
     
@@ -147,8 +152,8 @@ class BaseController {
         $_SESSION = array();
         // termino la validita' del cookie di sessione
         if (session_id() != '' || isset($_COOKIE[session_name()])) {
-            // imposto il termine di validita' al mese scorso
-            setcookie(session_name(), '', time() - 2592000, '/'); //DA VALUTARE
+            
+            setcookie(session_name(), '', time() - 2032016, '/');
         }
         // distruggo il file di sessione
         session_destroy();
@@ -163,7 +168,7 @@ class BaseController {
                 $msg[] = '<li>La via specificata non &egrave; corretta</li>';
             }
         }
-        if (isset($request['civico'])) {
+        if (isset($request['civico'])) 
             if (!$user->setNumCivico($request['civico'])) {
                 $msg[] = '<li>Il formato del numero civico non &egrave; corretto</li>';
             }
