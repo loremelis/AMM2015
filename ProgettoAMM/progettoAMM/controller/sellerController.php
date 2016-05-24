@@ -25,64 +25,55 @@ class sellerController extends BaseController {
             //gestisco le sottopagine da visualizzare
             if (isset($request["subpage"])) {
                 switch ($request["subpage"]) {
+                    // modifica dei dati anagrafici
+                    case 'venditore':
+                        $vd->setSottoVista('venditore');
+                        break;
                     
-                    // inserimento di una lista di appelli
-                    case 'inserisci_oggetto':
-                        //TUTTA DA FARE
-                    // modifica di un appello
-                    case 'modifica_oggetto':
-                        //tutta da fare
+                    case 'cliente': 
+                        $vd->setSottoVista('cliente');
+                        break;
                     
+                    case 'home':
+                        $vd->setSottoVista('home');
+                        break;
+                    
+                    case 'info':
+                        $vd->setSottoVista('info');
+                        break;
+                    
+                    default:
+                        $vd->setSottoVista('home');
+                        break; 
                 }
             }
+            
             // gestione dei comandi inviati dall'utente
             if (isset($request["cmd"])) {
+                //logout
                 switch ($request["cmd"]) {
                     // logout
                     case 'logout':
                         $this->logout($vd);
                         break;
-                    // modifica delle informazioni sull'indirizzo dell'ufficio
+                    
+                    // aggiunta di un elemento nella tabella
                    
-                    /*case 'a_modifica':
-                        $appelli = AppelloFactory::instance()->getAppelliPerDocente($user);
-                        if (isset($request['appello'])) {
-                            $intVal = filter_var($request['appello'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
-                            if (isset($intVal)) {
-                                $mod_appello = $this->cercaAppelloPerId($intVal, $appelli);
-                                $insegnamenti = InsegnamentoFactory::instance()->getListaInsegnamentiPerDocente($user);
-                                //$vd->setStato('a_modifica');
-                            }
-                        }
-                        $this->showHomeUtente($vd);
-                        break;
-                    // salvataggio delle modifiche ad un appello esistente
-                    case 'a_salva':
+                    /* case 'aggiungi_elemento':
+                     * break;
+                     */
+                      
+                    // case salva elemento 
+                    
+                    /* case 'a_salva':
                         $msg = array();
-                        if (isset($request['appello'])) {
-                            $intVal = filter_var($request['appello'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
-                            if (isset($intVal)) {
-                                $mod_appello = $this->cercaAppelloPerId($intVal, $appelli);
-                                $this->updateAppello($mod_appello, $request, $msg);
-                                if (count($msg) == 0 && AppelloFactory::instance()->salva($mod_appello) != 1) {
-                                    $msg[] = '<li> Impossibile salvare l\'appello </li>';
-                                }
-                                $this->creaFeedbackUtente($msg, $vd, "Appello aggiornato");
-                                if (count($msg) == 0) {
-                                    $vd->setSottoPagina('appelli');
-                                }
-                            } 
-                        } else {
-                            $msg[] = '<li> Appello non specificato </li>';
-                        }
+                        
                         $this->showHomeUtente($vd);
                         break; */
                     
             }
             } else {
-                // nessun comando, dobbiamo semplicemente visualizzare 
-                // la vista
-                // nessun comando
+                
                 $user = UserFactory::instance()->cercaUtentePerId(
                         $_SESSION[BaseController::user], $_SESSION[BaseController::role]);
                 $this->showHomeUtente($vd);
@@ -95,7 +86,7 @@ class sellerController extends BaseController {
      * Aggiorna i dati relativi ad un oggetto in base ai parametri specificati
      * dall'utente
      * TUTTA DA RIVEDERE
-     */
+     
     private function updateTabella($mod_tabella, &$request, &$msg) {
         if (isset($request['oggetto'])) {
             $oggetto = ObjectFactory::instance()->creaOggettoDaCodice($request['oggetto']);
@@ -106,7 +97,7 @@ class sellerController extends BaseController {
             }
         
     }
-    }
+    } */
     
     /**
      * Calcola l'id per un nuovo oggetto
@@ -120,6 +111,9 @@ class sellerController extends BaseController {
         }
         return $max + 1;
     }
+    
+    //private function aggiungiElemento(){}
+    //private funciotn salvaElemento(){}
     
 }
 ?>

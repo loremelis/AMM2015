@@ -69,6 +69,13 @@ class User {
         $this->password=$password;
         return true;    //restituisce true se la password è giusta //
     }
+    
+    
+    //Verifica che l'utente esista per il sistema
+    public function esiste() {
+        // implementazione di comodo, va fatto con il db
+        return isset($this->ruolo);
+    }
 }
 
 ?>

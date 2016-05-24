@@ -23,6 +23,8 @@ class ViewDescriptor {
     
     private $impToken;
     
+    private $footer_file;
+    
    
     public function __construct() {
     
@@ -40,6 +42,13 @@ class ViewDescriptor {
     }
     public function getHeaderFile() {
         return $this->header_file;
+    }
+    
+    public function setFooterFile($footerFile) {
+        $this->footer_file = $footerFile;
+    }
+    public function getFooterFile() {
+        return $this->footer_file;
     }
 
     public function setContentFile($contentFile) {

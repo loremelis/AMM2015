@@ -32,9 +32,7 @@ class BaseController {
         
         // imposto il token per impersonare un utente
         $this->setImpToken($vd, $request);        
-        
-        // gestion dei comandi
-        
+         
         if (isset($request["cmd"])) {
             
             switch ($request["cmd"]) {
@@ -65,6 +63,40 @@ class BaseController {
         require 'view/master.php';
     }
     
+//Gestisce la visualizzazione della pagina Home
+    public function handleInput2(&$request) {
+        
+        $vd = new ViewDescriptor();
+        // imposto la pagina
+        
+        $vd->setVista($request['page']);      
+        
+        // imposto il token per impersonare un utente
+        $this->setImpToken($vd, $request);   
+        
+        $this->showHomePage($vd);
+        
+        // richiamo la vista
+        require 'view/master.php';
+    }
+    
+ //Gestisce la visualizzazione della pagina Info
+    public function handleInput3(&$request) {
+        
+        $vd = new ViewDescriptor();
+        // imposto la pagina
+        
+        $vd->setVista($request['page']);      
+        
+        // imposto il token per impersonare un utente
+        $this->setImpToken($vd, $request);   
+        
+        $this->showInfoPage($vd);
+        
+        // richiamo la vista
+        require 'view/master.php';
+    }
+    
     // Verifica se l'utente sia correttamente autenticato
      
     protected function loggedIn() {
@@ -80,6 +112,8 @@ class BaseController {
         $vd->setContentFile('view/login/CONTENT.php');
         $vd->setFooterFile('view/login/FOOTER.php');
     }
+
+    
     
     //Funzione che imposta la vista del Cliente
     
@@ -136,7 +170,7 @@ class BaseController {
         if (isset($user) && $user->esiste()) {
             
             // utente autenticato
-            $_SESSION[self::user] = $user->getId();
+            $_SESSION[self::user] = $user->getID();   //NON LO PRENDE
             $_SESSION[self::role] = $user->getRuolo();
             $this->showHomeUtente($vd);
         } else {
@@ -226,4 +260,30 @@ class BaseController {
             $vd->setMessaggioConferma($okMsg);
         }
     }
+
+    
+         
+        
+            
+    //visualizzazione Home
+    protected function showHomePage($vd) {       
+        // mostro la pagina di login
+        $vd->setTitolo("lollosfilm - home");
+        $vd->setHeaderFile('view/home/HEADER.php');
+        $vd->setContentFile('view/home/CONTENT.php');
+        $vd->setFooterFile('view/home/FOOTER.php');
+    }
+
+    public function showInfoPage($vd) {
+        // mostro la pagina di login
+        $vd->setTitolo("lollosfilm - home");
+        $vd->setHeaderFile('view/info/HEADER.php');
+        $vd->setContentFile('view/info/CONTENT.php');
+        $vd->setFooterFile('view/info/FOOTER.php');
+        
+        
+    }
+
 }
+
+

@@ -27,12 +27,24 @@ class FrontController {
         if (isset($request["page"])) {
             switch ($request["page"]) {
                 
+                //Pagine Login, Home, e Info visualizzabili da tutti gi utenti
+                //Per questo sono controllate dal Base Controller
                 case "login":
-                
-                //pagina Login accessibile a tutti, per questo è controllata dal Base Controller
                     $controller = new BaseController();
                     $controller->handleInput($request);  
                     break;
+                
+                case "home":
+                    $controller = new BaseController();
+                    $controller->handleInput2($request);  
+                    break;
+                
+                case "info":
+                    $controller = new BaseController();
+                    $controller->handleInput3($request);  
+                    break;
+                    
+                    
                 
                 
                 case 'client':
@@ -40,7 +52,7 @@ class FrontController {
                     
                     $controller = new clientController();
                     if (isset($_SESSION[BaseController::role]) &&
-                        $_SESSION[BaseController::role] != User::Client) {   
+                        $_SESSION[BaseController::role] != User::Cliente) {   
                         self::write403();                                     
                     }                                                      
                     $controller->handleInput($request);
@@ -51,7 +63,7 @@ class FrontController {
                     //Pagina accessibile solo ai venditori controllata dal sellerController
                     $controller = new sellerController();
                     if (isset($_SESSION[BaseController::role]) &&
-                        $_SESSION[BaseController::role] != User::Seller)  {    
+                        $_SESSION[BaseController::role] != User::Venditore)  {    
                         self::write403();
                     }
                     $controller->handleInput($request);

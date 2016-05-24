@@ -14,17 +14,17 @@ class clientController extends BaseController {
     
     //gestisce gli input
     public function handleInput(&$request) {
-        // creo il descrittore della vista
+        
         $vd = new ViewDescriptor();
-        // imposto la vista
+        
         $vd->setVista($request['page']);
-        // imposto il token per impersonare un utente (nel lo stia facendo)
+        
         $this->setImpToken($vd, $request);
         
         // gestion dei comandi
         if (!$this->loggedIn()) {
-            // utente non autenticato, rimando alla pagina di Login
-            $this->showLoginPage($vd);
+            
+            $this->showHomePage($vd);
         } else {
             // utente autenticato
             $user = UserFactory::instance()->cercaUtentePerId($_SESSION[BaseController::user], $_SESSION[BaseController::role]);
@@ -36,7 +36,7 @@ class clientController extends BaseController {
                     case 'anagrafica':
                         $vd->setSottoVista('anagrafica');
                         break;
-                    // visualizzazione degli esami sostenuti
+                    
                     case 'carrello': 
                         $vd->setSottoVista('carrello');
                         break;
@@ -44,10 +44,18 @@ class clientController extends BaseController {
                     case 'cliente':
                         $vd->setSottoVista('client');
                         break;
-                    default:
+                    
+                    case 'home':
                         $vd->setSottoVista('home');
                         break;
-                }
+                    
+                    case 'info':
+                        $vd->setSottoVista('info');
+                        break;
+                    default:
+                        $vd->setSottoVista('home');
+                        break; 
+                } // VALUTARE SE SERVE ANCHE LOGIN
             }
             // gestione dei comandi inviati dall'utente
             
@@ -58,15 +66,18 @@ class clientController extends BaseController {
                     case 'logout':
                         $this->logout($vd);
                         break;
+                    
                     // aggiornamento tutta anagrafica
-                    case 'indirizzo':
+                    case 'anagrafica':
                         // in questo array inserisco i messaggi di 
                         // cio' che non viene validato
                         $msg = array();
-                        $this->aggiornaAnagrafica($user, $request, $msg);
-                        $this->creaFeedbackUtente($msg, $vd, "Indirizzo aggiornato");
-                        $this->showHomeUtente($vd);
+                        $this->aggiornaAnagrafica($user, $request, $msg); //DA VALUTARE
+                        $this->creaFeedbackUtente($msg, $vd, "Indirizzo aggiornato"); //ok
+                        $this->showHomePage($vd);
                         break;
+                    
+                    // case 'aggiungiCarrello' forse è da fare
                     
                 }
             } else {
@@ -76,8 +87,13 @@ class clientController extends BaseController {
             }
         }
         // includo la vista
-        require basename(__DIR__) . '/../view/master.php';
+        require 'view/master.php';
     }
+    
+    //private function aggiugiCarrello(){};
+    //private function eliminaCarrello(){}
+    //
+    
     
     
 }

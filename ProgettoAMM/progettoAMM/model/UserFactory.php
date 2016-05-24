@@ -208,7 +208,7 @@ class UserFactory {
  
     public function creaClienteDaArray($row) {
         $cliente = new UserClient();
-        $cliente->setId($row['clienti_id']);
+        $cliente->setID($row['clienti_id']);
         $cliente->setNome($row['clienti_nome']);
         $cliente->setCognome($row['clienti_cognome']);
         $cliente->setCitta($row['clienti_citta']);

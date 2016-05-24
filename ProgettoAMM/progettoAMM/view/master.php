@@ -1,7 +1,7 @@
 <?php
 
 include_once 'ViewDescriptor.php';
-include_once '../Settings.php';
+include_once 'Settings.php';
 
 //ciclo if isJson//
 

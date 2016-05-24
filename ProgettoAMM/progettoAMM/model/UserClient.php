@@ -2,7 +2,7 @@
 
 // Aggiungere ruolo a questa classe e alla classe Seller 
 
-class UserClient{
+class UserClient extends User {
    
 
     private $nome;
