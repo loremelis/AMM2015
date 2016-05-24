@@ -1,4 +1,4 @@
-<form method="post" action="login" id="entrare">
+<form method="post" action="../index.php?page=login&cmd=login" id="entrare">
             <br>
             <h2>Login</h2>
             <input type="hidden" name="cmd" value="login"/>
