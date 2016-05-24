@@ -44,7 +44,7 @@ class UserClient extends User {
     public function getCognome(){
         return $this->cognome;
     }
-    public function setCOgnome($Cognome){
+    public function setCognome($Cognome){
         $this->cognome=$Cognome;
         return true;
     }

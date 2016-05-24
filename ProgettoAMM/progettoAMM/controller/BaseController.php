@@ -31,6 +31,7 @@ class BaseController {
         $vd->setVista($request['page']);      
         
         // imposto il token per impersonare un utente
+        //VEDERE SE MI SERVE
         $this->setImpToken($vd, $request);        
          
         if (isset($request["cmd"])) {

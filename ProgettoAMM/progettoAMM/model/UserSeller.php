@@ -1,7 +1,7 @@
 <?php
 //Probabilmente non mi serve questa classe
 
-class UserSeller{
+class UserSeller extends User {
     
  
     private $ruolo;
