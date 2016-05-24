@@ -25,6 +25,8 @@ class BaseController {
      
     public function handleInput(&$request) {   
         
+     
+        
         $vd = new ViewDescriptor();
         // imposto la pagina
         
@@ -34,9 +36,13 @@ class BaseController {
         //VEDERE SE MI SERVE
         $this->setImpToken($vd, $request);        
          
+        
+        
         if (isset($request["cmd"])) {
+            printf("ciao");
             
             switch ($request["cmd"]) {
+            
                 case 'login':
                     $username = isset($request['user']) ? $request['user'] : '';
                     $password = isset($request['password']) ? $request['password'] : '';
@@ -50,6 +56,7 @@ class BaseController {
                 default : $this->showLoginPage();
             }
         } else {
+            
             if ($this->loggedIn()) {
                 //utente autenticato
                 //imposta la pagina principale dell'utente
@@ -166,6 +173,7 @@ class BaseController {
     
     //Autenticazione
     protected function login($vd, $username, $password) {
+
         // carichiamo i dati dell'utente
         $user = UserFactory::instance()->caricaUtente($username, $password);
         if (isset($user) && $user->esiste()) {

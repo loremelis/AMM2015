@@ -10,7 +10,7 @@ class Settings {
     public static $db_host = 'localhost';
     public static $db_user = 'melisLorenzo';
     public static $db_password = 'sogliola2040';
-    public static $db_name='amm_meliLorenzo';
+    public static $db_name= 'amm15_melisLorenzo';
     
     private static $appPath;
           
