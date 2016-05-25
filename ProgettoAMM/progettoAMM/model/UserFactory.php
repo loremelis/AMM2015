@@ -39,6 +39,7 @@ class UserFactory {
         
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
+         printf($stmt);
         if (!$stmt) {
             error_log("[loadUser] impossibile" . " inizializzare il prepared statement");
             $mysqli->close();
