@@ -20,89 +20,7 @@ class UserFactory {
         }
         return self::$singleton;
     }
-    
-   
-    // Carica un utente tramite username e password
-    public function caricaUtente($username, $password) {
-        $mysqli = Db::getInstance()->connectDb();
-        
-        if (!isset($mysqli)) {
-            error_log("[loadUser] impossibile inizializzare il database");
-            $mysqli->close();
-            return null;
-        }
-        
-        $stmt = $mysqli->stmt_init();
-        
-        // cerco prima nella tabella clienti
-        $query = "SELECT * FROM cliente WHERE username=\"$username\" AND password=\"$password\";";
-        printf($query);
-        
-        $stmt->prepare($query);
-        
-        if (!$stmt) {
-            error_log("[loadUser] impossibile" . " inizializzare il prepared statement");
-            return false;
-        }
-        if (!$stmt->execute()) {
-            error_log("[loadUser] impossibile" . " effettuare il binding in input");
-            $stmt->close();
-            $mysqli->close();
-            return false;
-        }
-        
-        $cliente = array();
-        $bind = $stmt->bind_result(
-                $cliente['id'], $cliente['nome'], $cliente['cognome'],$cliente['email'], 
-                $cliente['citta'], $cliente['via'], $cliente['cap'],$cliente['numCivico'], 
-                $cliente['username'], $cliente['password']);
-        if (!$bind) 
-            // ho trovato uno studente
-            
-            return false;
-        
-        if(!$stmt->fetch()){
-            $stmt->close();
-            $mysqli->close();
-            return false;
-        }
-        
-        $stmt->close();
-        $mtsqli->close();
-        
-        return true;
-    }
 
-        
-        
-        
-/* ora cerco il venditore
-        $query = "SELECT *
-               FROM venditore 
-               WHERE venditore.username = ? AND venditore.password = ?;";
-        $stmt = $mysqli->stmt_init();
-        $stmt->prepare($query);
-        if (!$stmt) {
-            error_log("[loadUser] impossibile" .
-                    " inizializzare il prepared statement");
-            $mysqli->close();
-            return null;
-        }
-        if (!$stmt->bind_param('ss', $username, $password)) {
-            error_log("[loadUser] impossibile" .
-                    " effettuare il binding in input");
-            $mysqli->close();
-            return null;
-        }
-        $venditore = self::caricaVenditoreDaStmt($stmt);
-        if (isset($venditore)) {
-            // ho trovato un venditore
-            $mysqli->close();
-            return $venditore;
-        }
-    } */
-    
- /*
     // Carica un utente tramite username e password
     public function caricaUtente($username, $password) {
         $mysqli = Db::getInstance()->connectDb();
@@ -113,12 +31,8 @@ class UserFactory {
         }
         
         // cerco prima nella tabella clienti
-        $query = "SELECT *
-                  FROM clienti 
-                  WHERE clienti.username = ?";
-        
-  
-        
+        $query= "SELECT * FROM clienti WHERE username=\"$username\"AND password=\"$password\";";
+
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
         
@@ -140,9 +54,7 @@ class UserFactory {
         }
         
         // ora cerco il venditore
-        $query = "SELECT *
-               FROM venditore 
-               WHERE venditore.username = ? AND venditore.password = ?;";
+        $query= "SELECT * FROM venditore WHERE username=\"$username\"AND password=\"$password\";";
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
         if (!$stmt) {
@@ -164,8 +76,6 @@ class UserFactory {
             return $venditore;
         }
     }
-     * 
-     */
    
     // Restituisce la lista dei Clienti
     // $clienti
