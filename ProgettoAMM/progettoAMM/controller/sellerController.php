@@ -57,20 +57,22 @@ class sellerController extends BaseController {
                         $this->logout($vd);
                         break;
                     
-                    // aggiunta di un elemento nella tabella
-                   
-                    /* case 'aggiungi_elemento':
-                     * break;
-                     */
-                      
-                    // case salva elemento 
+                    case 'aggiungi_oggetto':
                     
-                    /* case 'a_salva':
-                        $msg = array();
-                        
-                        $this->showHomeUtente($vd);
-                        break; */
-                    
+                        $msg=array();
+                        $nuovo = new Object();
+                        $nuovo->setID(-1);
+                        $this->updateObject($nuovo, $request, $msg);
+                        $this->creaFeedbackUtente($msg, $vd, "Appello creato");
+                        if (count($msg) == 0) {
+                            $vd->setSottoPagina('cliente');
+                            if (ObjectFactory::instance()->nuovo($nuovo) != 1) {
+                                $msg[] = '<li> Impossibile creare l\'appello </li>';
+                            }
+                        }
+                        //$appelli = ObjectFactory::instance()->getAppelliPerDocente($user);
+                        $this->showHomeUtente($vd);   //Forse
+                        break;                    
             }
             } else {
                 
@@ -82,23 +84,7 @@ class sellerController extends BaseController {
         // richiamo la vista
         require basename(__DIR__) . '/../view/master.php';
     }
-    /**
-     * Aggiorna i dati relativi ad un oggetto in base ai parametri specificati
-     * dall'utente
-     * TUTTA DA RIVEDERE
-     
-    private function updateTabella($mod_tabella, &$request, &$msg) {
-        if (isset($request['oggetto'])) {
-            $oggetto = ObjectFactory::instance()->creaOggettoDaCodice($request['oggetto']);
-            if (isset($oggetto)) {
-                $mod_tabella->setOggetto($oggetto);
-            } else {
-                $msg[] = "<li>Oggetto non aggiunto</li>";
-            }
-        
-    }
-    } */
-    
+
     /**
      * Calcola l'id per un nuovo oggetto
      */
@@ -112,8 +98,21 @@ class sellerController extends BaseController {
         return $max + 1;
     }
     
-    //private function aggiungiElemento(){}
-    //private funciotn salvaElemento(){}
+    //aggiorna i dati del nuovo Oggetto
+    //ASSOLUTAMENTE DA RIVEDERE
+    public function updateObject($nuovo, $request, $msg) {
+
+        if (isset($request['oggetto'])) {
+            $oggetto = ObjectFactory::instance()->creaDaArray($request['oggetto']);
+            if (isset($oggetto)) {
+                $nuovo->setOggetto($oggetto);
+            } else {
+                $msg[] = "<li>Oggetto non aggiunto</li>";
+            }
+        
+    }
+        
+    }
     
 }
 ?>

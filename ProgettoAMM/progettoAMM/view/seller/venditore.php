@@ -1,4 +1,4 @@
-<form id="inserzione" action="venditore/oggetti<?= $vd->scriviToken('?') ?>">
+<form id="inserzione" action="index.php?page=seller&cmd=aggiungi_oggetto">
             <h2> Inserire l'elemento da aggiungere al catalogo</h2>
             <label for="nome_ogg">Nome oggetto</label>
             <input type="text" name="nome_ogg" id="nome_ogg"/><br>
