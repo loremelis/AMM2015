@@ -39,7 +39,6 @@ class BaseController {
         
         
         if (isset($request["cmd"])) {
-            printf("ciao");
             
             switch ($request["cmd"]) {
             
