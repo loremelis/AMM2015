@@ -154,11 +154,6 @@ class BaseController {
             case User::Venditore:
                 $this->showHomeVenditore($vd);
                 break;
-            case User::Amministratore:
-                $this->showHomeAmministratore($vd);
-                break;
-            
-            //DA CONTROLLARE
         }
     }
     
