@@ -42,7 +42,7 @@ class UserFactory {
             return null;
         }
         
-        if (!$stmt->execute()) {
+        if (!$stmt->execute()) {   ////ho cambiato bind_param('i', $intval)
             error_log("[loadUser] impossibile" . " effettuare il binding in input");
             $mysqli->close();
             return null;
@@ -64,7 +64,7 @@ class UserFactory {
             $mysqli->close();
             return null;
         }
-        if (!$stmt->bind_param('ss', $username, $password)) {
+        if (!$stmt->execute()) {     //ho cambiato bind_param('i', $intval)
             error_log("[loadUser] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
@@ -171,13 +171,13 @@ class UserFactory {
                     $mysqli->close();
                     return null;
                 }
-                if (!$stmt->bind_param('i', $intval)) {
+                if (!$stmt->execute()) {      //ho cambiato bind_param('i', $intval)
                     error_log("[cercaUtentePerId] impossibile" .
                             " effettuare il binding in input");
                     $mysqli->close();
                     return null;
                 }
-                return self::caricaClienteDaStmt($stmt);  //DA VALUTARE
+                return self::caricaClienteDaStmt($stmt);  
                 break;
             case User::Venditore:
                 $query= "SELECT * FROM venditore WHERE id =\"$id\";";
@@ -189,13 +189,13 @@ class UserFactory {
                     $mysqli->close();
                     return null;
                 }
-                if (!$stmt->bind_param('i', $intval)) {
+                if (!$stmt->execute()) {  //ho cambiato bind_param('i', $intval)
                     error_log("[loadUser] impossibile" .
                             " effettuare il binding in input");
                     $mysqli->close();
                     return null;
                 }
-                $toRet = self::caricaVenditoreDaStmt($stmt);   //DA VALUTARE
+                $toRet = self::caricaVenditoreDaStmt($stmt);   
                 $mysqli->close();
                 return $toRet;
                 break;
