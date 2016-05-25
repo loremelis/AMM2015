@@ -162,9 +162,7 @@ class UserFactory {
         }
         switch ($role) {
             case User::Cliente:
-                $query = "SELECT *
-                          FROM clienti 
-                          WHERE clienti.id = ?";
+                $query= "SELECT * FROM clienti WHERE id =\"$id\";";
                 $stmt = $mysqli->stmt_init();
                 $stmt->prepare($query);
                 if (!$stmt) {
@@ -182,9 +180,7 @@ class UserFactory {
                 return self::caricaClienteDaStmt($stmt);  //DA VALUTARE
                 break;
             case User::Venditore:
-                $query = "SELECT *
-                          FROM venditore
-                          WHERE venditore.id = ?";
+                $query= "SELECT * FROM venditore WHERE id =\"$id\";";
                 $stmt = $mysqli->stmt_init();
                 $stmt->prepare($query);
                 if (!$stmt) {
