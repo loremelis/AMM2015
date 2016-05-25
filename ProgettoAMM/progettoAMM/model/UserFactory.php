@@ -35,7 +35,6 @@ class UserFactory {
             
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
-        printf($stmt);
         
         if (!$stmt) {
             error_log("[loadUser] impossibile" . " inizializzare il prepared statement");
@@ -43,7 +42,7 @@ class UserFactory {
             return null;
         }
         
-        if (!$stmt->bind_param('ss',$username, $password)) {
+        if (!$stmt->execute()) {
             error_log("[loadUser] impossibile" . " effettuare il binding in input");
             $mysqli->close();
             return null;
