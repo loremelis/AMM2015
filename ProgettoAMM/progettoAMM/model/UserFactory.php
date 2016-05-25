@@ -198,7 +198,9 @@ class UserFactory {
                 $mysqli->close();
                 return $toRet;
                 break;
-            default: return null;
+            default:
+                printf("aa");
+                return null;
         }
     }
 
