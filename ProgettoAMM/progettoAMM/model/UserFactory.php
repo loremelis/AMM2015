@@ -200,6 +200,7 @@ class UserFactory {
                 break;
             default:
                 printf("aa");
+                exit();
                 return null;
         }
     }
