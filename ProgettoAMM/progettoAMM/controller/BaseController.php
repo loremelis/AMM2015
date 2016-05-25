@@ -50,6 +50,7 @@ class BaseController {
                     
               
                     if ($this->loggedIn()) {
+                        printf("3");
                         $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
                     }
                     break;
