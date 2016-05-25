@@ -33,7 +33,7 @@ class UserFactory {
         // cerco prima nella tabella clienti
         $query = "SELECT *
                   FROM clienti 
-                  WHERE username = ?";
+                  WHERE clienti.username = ?";
         printf($query);
   
         
