@@ -24,7 +24,7 @@ class clientController extends BaseController {
         // gestion dei comandi
         if (!$this->loggedIn()) {
             
-            $this->showHomePage($vd);
+            $this->showLoginPage($vd);
         } else {
             // utente autenticato
             $user = UserFactory::instance()->cercaUtentePerId($_SESSION[BaseController::user], $_SESSION[BaseController::role]);
@@ -59,6 +59,7 @@ class clientController extends BaseController {
             }
             // gestione dei comandi inviati dall'utente
             
+            
             if (isset($request["cmd"])) {
                 // abbiamo ricevuto un comando
                 switch ($request["cmd"]) {
@@ -68,20 +69,30 @@ class clientController extends BaseController {
                         break;
                     
                     // aggiornamento tutta anagrafica
+                    //TUTTO DA VEDERE
                     case 'anagrafica':
-                        // in questo array inserisco i messaggi di 
-                        // cio' che non viene validato
+
                         $msg = array();
                         $this->aggiornaAnagrafica($user, $request, $msg); //DA VALUTARE
-                        $this->creaFeedbackUtente($msg, $vd, "Indirizzo aggiornato"); //ok
-                        $this->showHomePage($vd);
+                        $this->creaFeedbackUtente($msg, $vd, "Anagrafica aggiornata"); //ok
+                        $this->showHomeCLiente($vd);
                         break;
                     
-                    // case 'aggiungiCarrello' forse è da fare
+                    //TUTTO DA VEDERE
+                     case 'aggiungiCarrello':
+                         $object = ObjectFactory::instance()->cercaOggettoPerId(); //VALUTARE COSA METTERE DENTRO LE PARENTESI
+                         $msg= array();
+                         $this->aggiungiCarrello($object, $request, $msg);
+                         $this->creaFeedbackUtente($msg, $vd, "Oggetto aggiunto al carrello");
+                         $this->showHomeCLiente($vd);
+                         break;
+                    default: $this->showHomeCLiente($vd);
+                        
+                        //Forse fare funzione che elimina dal carrello
                     
-                }
+            }
             } else {
-                // nessun comando
+                // VALUTARE
                 $user = UserFactory::instance()->cercaUtentePerId($_SESSION[BaseController::user], $_SESSION[BaseController::role]);
                 $this->showHomeUtente($vd);
             }
@@ -89,13 +100,12 @@ class clientController extends BaseController {
         // includo la vista
         require 'view/master.php';
     }
-    
-    //private function aggiugiCarrello(){};
-    //private function eliminaCarrello(){}
-    //
-    
-    
-    
+     
+    /*Da fare               
+    public function aggiungiCarrello($object, $request, $msg) {
+        
+    } */
+ 
 }
 ?>
 

@@ -42,7 +42,7 @@ class UserFactory {
             return null;
         }
         
-        if (!$stmt->execute()) {   ////ho cambiato bind_param('i', $intval)
+        if (!$stmt->execute()) {   ////bind_param('ss', $username, $password))
             error_log("[loadUser] impossibile" . " effettuare il binding in input");
             $mysqli->close();
             return null;
@@ -64,9 +64,8 @@ class UserFactory {
             $mysqli->close();
             return null;
         }
-        if (!$stmt->execute()) {     //ho cambiato bind_param('i', $intval)
-            error_log("[loadUser] impossibile" .
-                    " effettuare il binding in input");
+        if (!$stmt->execute()) {     //bind_param('ss', $username, $password))
+            error_log("[loadUser] impossibile" . " effettuare il binding in input");
             $mysqli->close();
             return null;
         }
@@ -224,10 +223,10 @@ class UserFactory {
     //Crea un Venditore
     public function creaVenditoreDaArray($row) {
         $venditore = new UserSeller();
-        $venditore->setID($row['venditore_id']);
-        $venditore->setRuolo(User::Docente);
-        $venditore->setUsername($row['venditore_username']);
-        $venditore->setPassword($row['venditore_password']);
+        $venditore->setID($row['id']);
+        $venditore->setRuolo(User::Venditore);
+        $venditore->setUsername($row['username']);
+        $venditore->setPassword($row['password']);
         return $venditore;
     }
 
