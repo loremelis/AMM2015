@@ -59,7 +59,6 @@ class BaseController {
         } else {
             
             if ($this->loggedIn()) {
-                printf("2");
                 //utente autenticato
                 //imposta la pagina principale dell'utente
                 $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
