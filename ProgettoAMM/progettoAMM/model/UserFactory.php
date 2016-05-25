@@ -151,12 +151,16 @@ class UserFactory {
     public function cercaUtentePerId($id, $role) {
         $intval = filter_var($id, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
         if (!isset($intval)) {
+            printf("a7");
+                exit();
             return null;
         }
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
             error_log("[cercaUtentePerId] impossibile inizializzare il database");
             $mysqli->close();
+            printf("aa6");
+                exit();
             return null;
         }
         switch ($role) {
@@ -168,12 +172,16 @@ class UserFactory {
                     error_log("[cercaUtentePerId] impossibile" .
                             " inizializzare il prepared statement");
                     $mysqli->close();
+                    printf("aa5");
+                exit();
                     return null;
                 }
                 if (!$stmt->execute()) {      //ho cambiato bind_param('i', $intval)
                     error_log("[cercaUtentePerId] impossibile" .
                             " effettuare il binding in input");
                     $mysqli->close();
+                    printf("aa3");
+                exit();
                     return null;
                 }
                 return self::caricaClienteDaStmt($stmt);  
@@ -186,12 +194,16 @@ class UserFactory {
                     error_log("[cercaUtentePerId] impossibile" .
                             " inizializzare il prepared statement");
                     $mysqli->close();
+                    printf("aa2");
+                exit();
                     return null;
                 }
                 if (!$stmt->execute()) {  //ho cambiato bind_param('i', $intval)
                     error_log("[loadUser] impossibile" .
                             " effettuare il binding in input");
                     $mysqli->close();
+                    printf("aa1");
+                exit();
                     return null;
                 }
                 $toRet = self::caricaVenditoreDaStmt($stmt);   
