@@ -45,6 +45,7 @@ class BaseController {
                 case 'login':
                     $username = isset($request['user']) ? $request['user'] : '';
                     $password = isset($request['password']) ? $request['password'] : '';
+                    printf("1");
                     $this->login($vd, $username, $password);
                     
               
@@ -175,6 +176,7 @@ class BaseController {
             // utente autenticato
             $_SESSION[self::user] = $user->getID();   //NON LO PRENDE
             $_SESSION[self::role] = $user->getRuolo();
+            printf("2");
             $this->showHomeUtente($vd);
         } else {
             $vd->setMessaggioErrore("Utente sconosciuto o password errata");

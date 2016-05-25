@@ -20,8 +20,7 @@ class UserClient extends User {
     private $cap;
     
     private $email;
-    
-    private $ruolo;
+
 
     /**
      * Costruttore

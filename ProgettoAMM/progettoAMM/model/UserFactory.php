@@ -257,10 +257,10 @@ class UserFactory {
         $stmt = $mysqli->stmt_init();
         $count = 0;
         switch ($user->getRuolo()) {
-            case User::Studente:
+            case User::Cliente:
                 $count = $this->salvaCliente($user, $stmt);
                 break;
-            case User::Docente:
+            case User::Venditore:
                 $count = $this->salvaVenditore($user, $stmt);   //NON PENSO DI AVERNE BISOGNO
         }
         $stmt->close();
