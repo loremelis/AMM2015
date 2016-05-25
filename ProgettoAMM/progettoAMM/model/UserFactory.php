@@ -86,9 +86,9 @@ class UserFactory {
         }
         $row = array();
         $bind = $stmt->bind_result(
-                $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'],$row['clienti_email'], 
-                $row['clienti_citta'], $row['clienti_via'], $row['clienti_cap'],$row['clienti_numCivico'], 
-                $row['clienti_username'], $row['clienti_password']);
+                $row['id'], $row['nome'], $row['cognome'],$row['email'], 
+                $row['citta'], $row['via'], $row['cap'],$row['numCivico'], 
+                $row['username'], $row['password']);
         if (!$bind) {
             error_log("[caricaClienteDaStmt] impossibile" .
                     " effettuare il binding in output");
@@ -110,9 +110,9 @@ class UserFactory {
         }
         $row = array();
         $bind = $stmt->bind_result(
-                $row['venditore_id'], 
-                $row['venditore_username'], 
-                $row['venditore_password']); 
+                $row['id'], 
+                $row['username'], 
+                $row['password']); 
         if (!$bind) {
             error_log("[caricaVenditoreDaStmt] impossibile" .
                     " effettuare il binding in output");

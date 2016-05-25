@@ -27,11 +27,11 @@ INSERT INTO `clienti` (`username`, `password`, `nome`, `cognome`, `email`, `numC
 -- Struttura della tabella `venditore`
 --
 
-CREATE TABLE IF NOT EXISTS venditore (
-  username varchar(128) DEFAULT NULL,
-  password varchar(128) DEFAULT NULL,
-  id bigint(20) unsigned NOT NULL AUTO_INCREMENT,  
-  UNIQUE KEY id (id)
+CREATE TABLE IF NOT EXISTS `venditore` (
+  `username` varchar(128) DEFAULT NULL,
+  `password` varchar(128) DEFAULT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS venditore (
 --
 
 
-INSERT INTO venditore (username, password) VALUES
+INSERT INTO `venditore` (`username`, `password`) VALUES
 ('seller', 'password');
 
 
