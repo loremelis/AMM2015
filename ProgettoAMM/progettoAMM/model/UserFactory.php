@@ -33,11 +33,12 @@ class UserFactory {
         // cerco prima nella tabella clienti
         $query = "SELECT *
                   FROM clienti 
-                  WHERE studenti.username = ?";
+                  WHERE username = ?";
+        printf($query);
+  
         
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
-        printf($query);
         if (!$stmt) {
             error_log("[loadUser] impossibile" . " inizializzare il prepared statement");
             $mysqli->close();
