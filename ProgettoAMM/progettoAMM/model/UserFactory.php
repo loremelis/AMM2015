@@ -32,15 +32,17 @@ class UserFactory {
         
         // cerco prima nella tabella clienti
         $query= "SELECT * FROM clienti WHERE username=\"$username\"AND password=\"$password\";";
-
+            
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
+        printf($stmt);
         
         if (!$stmt) {
             error_log("[loadUser] impossibile" . " inizializzare il prepared statement");
             $mysqli->close();
             return null;
         }
+        
         if (!$stmt->bind_param('ss',$username, $password)) {
             error_log("[loadUser] impossibile" . " effettuare il binding in input");
             $mysqli->close();
@@ -76,7 +78,54 @@ class UserFactory {
             return $venditore;
         }
     }
-   
+            
+    //Carica un Cliente eseguendo un prepared statement
+    private function caricaClienteDaStmt(mysqli_stmt $stmt) {
+        if (!$stmt->execute()) {
+            error_log("[caricaClienteDaStmt] impossibile" . " eseguire lo statement");
+            return null;
+        }
+        $row = array();
+        $bind = $stmt->bind_result(
+                $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'],$row['clienti_email'], 
+                $row['clienti_citta'], $row['clienti_via'], $row['clienti_cap'],$row['clienti_numCivico'], 
+                $row['clienti_username'], $row['clienti_password']);
+        if (!$bind) {
+            error_log("[caricaClienteDaStmt] impossibile" .
+                    " effettuare il binding in output");
+            return null;
+        }
+        if (!$stmt->fetch()) {
+            return null;
+        }
+        $stmt->close();
+        return self::creaClienteDaArray($row);
+    }
+    
+    //Carica un Venditore eseguendo un prepared statement
+    private function caricaVenditoreDaStmt(mysqli_stmt $stmt) {
+        if (!$stmt->execute()) {
+            error_log("[caricaVenditoreDaStmt] impossibile" .
+                    " eseguire lo statement");
+            return null;
+        }
+        $row = array();
+        $bind = $stmt->bind_result(
+                $row['venditore_id'], 
+                $row['venditore_username'], 
+                $row['venditore_password']); 
+        if (!$bind) {
+            error_log("[caricaVenditoreDaStmt] impossibile" .
+                    " effettuare il binding in output");
+            return null;
+        }
+        if (!$stmt->fetch()) {
+            return null;
+        }
+        $stmt->close();
+        return self::creaVenditoreDaArray($row);
+    }
+
     // Restituisce la lista dei Clienti
     // $clienti
     public function &getListaCLienti() {
@@ -158,7 +207,7 @@ class UserFactory {
             default: return null;
         }
     }
-    
+
     // Crea un Cliente da una riga del db
     public function creaClienteDaArray($row) {
         $cliente = new UserClient();
@@ -242,52 +291,6 @@ class UserFactory {
         }
         return $stmt->affected_rows;
     }
-    
-    //Carica un Venditore eseguendo un prepared statement
-    private function caricaVenditoreDaStmt(mysqli_stmt $stmt) {
-        if (!$stmt->execute()) {
-            error_log("[caricaVenditoreDaStmt] impossibile" .
-                    " eseguire lo statement");
-            return null;
-        }
-        $row = array();
-        $bind = $stmt->bind_result(
-                $row['venditore_id'], 
-                $row['venditore_username'], 
-                $row['venditore_password']); 
-        if (!$bind) {
-            error_log("[caricaVenditoreDaStmt] impossibile" .
-                    " effettuare il binding in output");
-            return null;
-        }
-        if (!$stmt->fetch()) {
-            return null;
-        }
-        $stmt->close();
-        return self::creaVenditoreDaArray($row);
-    }
-    
-    //Carica un Cliente eseguendo un prepared statement
-    private function caricaClienteDaStmt(mysqli_stmt $stmt) {
-        if (!$stmt->execute()) {
-            error_log("[caricaClienteDaStmt] impossibile" . " eseguire lo statement");
-            return null;
-        }
-        $row = array();
-        $bind = $stmt->bind_result(
-                $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'],$row['clienti_email'], 
-                $row['clienti_citta'], $row['clienti_via'], $row['clienti_cap'],$row['clienti_numCivico'], 
-                $row['clienti_username'], $row['clienti_password']);
-        if (!$bind) {
-            error_log("[caricaClienteDaStmt] impossibile" .
-                    " effettuare il binding in output");
-            return null;
-        }
-        if (!$stmt->fetch()) {
-            return null;
-        }
-        $stmt->close();
-        return self::creaClienteDaArray($row);
-    }
+
 }
 ?>
