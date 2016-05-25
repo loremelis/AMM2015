@@ -36,6 +36,7 @@ class UserFactory {
         
         // cerco prima nella tabella clienti
         $query = "SELECT * FROM cliente WHERE username=\"$username\" AND password=\"$password\";";
+        printf($query);
         
         $stmt->prepare($query);
         
