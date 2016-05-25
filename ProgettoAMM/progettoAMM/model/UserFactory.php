@@ -34,12 +34,12 @@ class UserFactory {
         $query = "SELECT *
                   FROM clienti 
                   WHERE clienti.username = ?";
-        printf($query);
+        
   
         
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
-         printf($stmt);
+        printf($stmt);
         if (!$stmt) {
             error_log("[loadUser] impossibile" . " inizializzare il prepared statement");
             $mysqli->close();
