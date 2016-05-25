@@ -51,7 +51,10 @@ class BaseController {
               
                     if ($this->loggedIn()) {
                         printf("3");
+                        
+                        printf($_SESSION[self::user]);
                         $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
+                    
                     }
                     break;
                 default : $this->showLoginPage();

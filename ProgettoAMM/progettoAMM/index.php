@@ -24,10 +24,7 @@ class FrontController {
         
         // inizializziamo la sessione 
         session_start();
-        
-        $_SESSION["newsession"]=$value;
-/*session created*/
-         echo $_SESSION["newsession"];
+
 
         if (isset($request["page"])) {
             switch ($request["page"]) {
