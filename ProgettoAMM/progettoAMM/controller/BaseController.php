@@ -14,7 +14,7 @@ include_once 'model/UserSeller.php';
 class BaseController {
     const user = 'user';
     const role = 'role';
-    const impersonato = '_imp';
+    
     
     
     public function __construct() {
@@ -31,13 +31,7 @@ class BaseController {
         // imposto la pagina
         
         $vd->setVista($request['page']);      
-        
-        // imposto il token per impersonare un utente
-        //VEDERE SE MI SERVE
-        $this->setImpToken($vd, $request);        
-         
-        
-        
+               
         if (isset($request["cmd"])) {
             
             switch ($request["cmd"]) {
@@ -83,8 +77,7 @@ class BaseController {
         
         $vd->setVista($request['page']);      
         
-        // imposto il token per impersonare un utente
-        $this->setImpToken($vd, $request);   
+      
         
         $this->showHomePage($vd);
         
@@ -100,8 +93,7 @@ class BaseController {
         
         $vd->setVista($request['page']);      
         
-        // imposto il token per impersonare un utente
-        $this->setImpToken($vd, $request);   
+       
         
         $this->showInfoPage($vd);
         
@@ -161,14 +153,7 @@ class BaseController {
                 break;
         }
     }
-    
-    
-    
-    protected function setImpToken(ViewDescriptor $vd, &$request) {
-        if (array_key_exists('_imp', $request)) {
-            $vd->setImpToken($request['_imp']);
-        }
-    }
+
     
     //Autenticazione
     protected function login($vd, $username, $password) {

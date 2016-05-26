@@ -18,8 +18,7 @@ class clientController extends BaseController {
         $vd = new ViewDescriptor();
         
         $vd->setVista($request['page']);
-        
-        $this->setImpToken($vd, $request);
+
         
         // gestion dei comandi
         if (!$this->loggedIn()) {

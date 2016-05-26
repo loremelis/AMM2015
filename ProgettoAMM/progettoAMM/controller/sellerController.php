@@ -13,8 +13,7 @@ class sellerController extends BaseController {
         $vd = new ViewDescriptor();
         // imposto la pagina
         $vd->setVista($request['page']);
-        // imposto il token per impersonare un utente (nel lo stia facendo)
-        $this->setImpToken($vd, $request);
+
         if (!$this->loggedIn()) {
             // utente non autenticato, rimando alla home
             $this->showLoginPage($vd);
