@@ -9,6 +9,7 @@ include_once 'UserSeller.php';
 class UserFactory {
     
     private static $singleton;
+    
     private function __constructor() {
     }
     
@@ -88,10 +89,12 @@ class UserFactory {
         }
         printf("2");
         $row = array();
-        $bind = $stmt->bind_result(
+        $bind = $stmt->get_result(); /*bind_result(
                 $row['id'], $row['nome'], $row['cognome'],$row['email'], 
                 $row['citta'], $row['via'], $row['cap'],$row['numCivico'], 
                 $row['username'], $row['password']);
+           
+         */
         if (!$bind) {
             printf("3");
             error_log("[caricaClienteDaStmt] impossibile" .
