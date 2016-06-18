@@ -101,7 +101,7 @@ class UserFactory {
                     " effettuare il binding in output");
             return null;
         }
-        if (!$stmt->fetch()) {
+        if (!$stmt) {     //->fetch()
             printf("4");
             return null;
         }
