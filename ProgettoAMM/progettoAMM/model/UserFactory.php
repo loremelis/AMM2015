@@ -89,12 +89,12 @@ class UserFactory {
         }
         printf("2");
         $row = array();
-        $bind = $stmt->get_result(); /*bind_result(
-                $row['id'], $row['nome'], $row['cognome'],$row['email'], 
-                $row['citta'], $row['via'], $row['cap'],$row['numCivico'], 
-                $row['username'], $row['password']);
+        $bind = $stmt->bind_result(
+                $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'],$row['clienti_email'], 
+                $row['clienti_citta'], $row['clienti_via'], $row['clienti_cap'],$row['clienti_numCivico'], 
+                $row['clienti_username'], $row['clienti_password']);
            
-         */
+        
         if (!$bind) {
             printf("3");
             error_log("[caricaClienteDaStmt] impossibile" .
