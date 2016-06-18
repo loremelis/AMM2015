@@ -32,7 +32,7 @@ class UserFactory {
         
         // cerco prima nella tabella clienti
         $query= "SELECT * FROM clienti WHERE username=\"$username\"AND password=\"$password\";";
-        printf($query);  //AGGIUNTO IO
+        
             
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
@@ -80,6 +80,7 @@ class UserFactory {
             
     //Carica un Cliente eseguendo un prepared statement
     private function caricaClienteDaStmt(mysqli_stmt $stmt) {
+        printf("3");
         if (!$stmt->execute()) {
             error_log("[caricaClienteDaStmt] impossibile" . " eseguire lo statement");
             return null;
