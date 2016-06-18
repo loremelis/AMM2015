@@ -1,4 +1,29 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.11.1deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generato il: Giu 18, 2016 alle 13:39
+-- Versione del server: 5.5.35
+-- Versione PHP: 5.4.6-1ubuntu1.7
 
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `lollosfilm`
+--
+
+-- --------------------------------------------------------
+
+
+USE amm15_melisLorenzo;
 --
 -- Struttura della tabella `clienti`
 --
@@ -21,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `clienti` (
 -- Dump dei dati per la tabella `clienti`
 --
 INSERT INTO `clienti` (`username`, `password`, `nome`, `cognome`, `email`, `numCivico`, `citta`, `cap`, `via`,`id`) VALUES
-('cliente', 'password', 'Lorenzo', 'Melis', 'lorenzo.melis@unica.it', 9, 'Cagliari', '09124', 'via di cagliari', 1);
+('cliente', 'password', 'Lorenzo', 'Melis', 'lorenzo.melis@unica.it', 9, 'Cagliari', '09124', 'via di cagliari', 10);
 
 --
 -- Struttura della tabella `venditore`
