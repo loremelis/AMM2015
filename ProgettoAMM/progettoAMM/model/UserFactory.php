@@ -230,17 +230,17 @@ class UserFactory {
     // Crea un Cliente da una riga del db
     public function creaClienteDaArray($row) {
         $cliente = new UserClient();
-        $cliente->setID($row['id']);
-        $cliente->setNome($row['nome']);
-        $cliente->setCognome($row['cognome']);
-        $cliente->setCitta($row['citta']);
-        $cliente->setCap($row['cap']);
-        $cliente->setVia($row['via']);
-        $cliente->setEmail($row['email']);
-        $cliente->setNumCivico($row['numCivico']);
+        $cliente->setID($row['clienti_id']);
+        $cliente->setNome($row['clienti_nome']);
+        $cliente->setCognome($row['clienti_cognome']);
+        $cliente->setCitta($row['clienti_citta']);
+        $cliente->setCap($row['clienti_cap']);
+        $cliente->setVia($row['clienti_via']);
+        $cliente->setEmail($row['clienti_email']);
+        $cliente->setNumCivico($row['clienti_numCivico']);
         $cliente->setRuolo(User::Cliente);
-        $cliente->setUsername($row['username']);
-        $cliente->setPassword($row['password']);
+        $cliente->setUsername($row['clienti_username']);
+        $cliente->setPassword($row['clienti_password']);
         
         return $cliente;
     }
