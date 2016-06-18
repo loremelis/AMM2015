@@ -80,7 +80,7 @@ class UserFactory {
             
     //Carica un Cliente eseguendo un prepared statement
     private function caricaClienteDaStmt(mysqli_stmt $stmt) {
-        printf("3");
+        
         if (!$stmt->execute()) {
             error_log("[caricaClienteDaStmt] impossibile" . " eseguire lo statement");
             return null;
