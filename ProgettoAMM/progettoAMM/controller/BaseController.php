@@ -39,14 +39,10 @@ class BaseController {
                 case 'login':
                     $username = isset($request['user']) ? $request['user'] : '';
                     $password = isset($request['password']) ? $request['password'] : '';
-                    printf("1");
                     $this->login($vd, $username, $password);
                     
               
                     if ($this->loggedIn()) {
-                        printf("3");
-                        
-                        printf($_SESSION[self::role]);
                         $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
                     
                     }
