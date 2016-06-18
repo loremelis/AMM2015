@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS `clienti` (
 --
 -- Dump dei dati per la tabella `clienti`
 --
-INSERT INTO `clienti` (`username`, `password`, `nome`, `cognome`, `email`, `numCivico`, `citta`, `cap`, `via`) VALUES
-('cliente', 'password', 'Lorenzo', 'Melis', 'lorenzo.melis@unica.it', 9, 'Cagliari', '09124', 'via di cagliari');
+INSERT INTO `clienti` (`username`, `password`, `nome`, `cognome`, `email`, `numCivico`, `citta`, `cap`, `via`,`id`) VALUES
+('cliente', 'password', 'Lorenzo', 'Melis', 'lorenzo.melis@unica.it', 9, 'Cagliari', '09124', 'via di cagliari', '1');
 
 --
 -- Struttura della tabella `venditore`
