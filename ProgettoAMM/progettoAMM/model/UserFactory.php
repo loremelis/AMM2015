@@ -82,22 +82,27 @@ class UserFactory {
     private function caricaClienteDaStmt(mysqli_stmt $stmt) {
         
         if (!$stmt->execute()) {
+            printf("1");
             error_log("[caricaClienteDaStmt] impossibile" . " eseguire lo statement");
             return null;
         }
+        printf("2");
         $row = array();
         $bind = $stmt->bind_result(
                 $row['id'], $row['nome'], $row['cognome'],$row['email'], 
                 $row['citta'], $row['via'], $row['cap'],$row['numCivico'], 
                 $row['username'], $row['password']);
         if (!$bind) {
+            printf("3");
             error_log("[caricaClienteDaStmt] impossibile" .
                     " effettuare il binding in output");
             return null;
         }
         if (!$stmt->fetch()) {
+            printf("4");
             return null;
         }
+        printf("5");
         $stmt->close();
         return self::creaClienteDaArray($row);
     }
