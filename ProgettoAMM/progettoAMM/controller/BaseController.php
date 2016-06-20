@@ -167,6 +167,9 @@ class BaseController {
             // utente autenticato
             $_SESSION[self::user] = $user->getID2();  //NON LO PRENDE
             $_SESSION[self::role] = $user->getRuolo();
+            printf("11".$_SESSION[self::role]);
+            printf("22".$_SESSION[self::user]);
+            
             $this->showHomeUtente($vd);
         } else {
             $vd->setMessaggioErrore("Utente sconosciuto o password errata");
