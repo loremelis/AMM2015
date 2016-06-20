@@ -92,8 +92,8 @@ class UserFactory {
                 $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'],$row['clienti_email'], 
                 $row['clienti_citta'], $row['clienti_via'], $row['clienti_cap'],$row['clienti_numCivico'], 
                 $row['clienti_username'], $row['clienti_password']);
-        printf("stampo l'id");
-        echo implode("",$row);
+        printf("stampo row");
+        print implode("",$row);
            
         
         if (!$bind) {
