@@ -33,7 +33,7 @@ class UserFactory {
         }
         
         // cerco prima nella tabella clienti
-        $query= "SELECT * FROM clienti WHERE username=\"$username\"AND password=\"$password\";";
+        $query= "SELECT * FROM clienti WHERE username=? AND password=?";
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
         
@@ -43,7 +43,7 @@ class UserFactory {
             return null;
         }
         
-        if (!$stmt->bind_param($username, $password)) {   
+        if (!$stmt->bind_param('ss',$username, $password)) {   
             error_log("[loadUser] impossibile" . " effettuare il binding in input");
             $mysqli->close();
             return null;
@@ -57,7 +57,7 @@ class UserFactory {
         }
         
         // ora cerco il venditore
-        $query= "SELECT * FROM venditore WHERE username=\"$username\"AND password=\"$password\";";
+        $query= "SELECT id,username,password FROM venditore WHERE username=? and password=?";
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
         
