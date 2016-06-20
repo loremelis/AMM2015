@@ -53,7 +53,7 @@ class User {
         }
     }
     
-    public function getID(){
+    public function getID2(){
         return $this->ID;
     }
     public function setID($ID){

@@ -86,7 +86,7 @@ class UserFactory {
             error_log("[caricaClienteDaStmt] impossibile" . " eseguire lo statement");
             return null;
         }
-        printf("u4");
+        printf("u3");
         $row = array();
         $bind = $stmt->bind_result(
                 $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'],$row['clienti_email'], 
@@ -102,7 +102,7 @@ class UserFactory {
         if (!$stmt) {     //->fetch()
             return null;
         }
-        printf("u3");
+        printf("u4");
         $stmt->close();
         return self::creaClienteDaArray($row);
     }

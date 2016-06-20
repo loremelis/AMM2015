@@ -165,7 +165,7 @@ class BaseController {
             printf("b4");
             
             // utente autenticato
-            $_SESSION[self::user] = $user->getID();   //NON LO PRENDE
+            $_SESSION[self::user] = $user->getID2();  //NON LO PRENDE
             $_SESSION[self::role] = $user->getRuolo();
             $this->showHomeUtente($vd);
         } else {
