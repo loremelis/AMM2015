@@ -24,6 +24,7 @@ class UserFactory {
 
     // Carica un utente tramite username e password
     public function caricaUtente($username, $password) {
+        printf("b3");
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
             error_log("[loadUser] impossibile inizializzare il database");

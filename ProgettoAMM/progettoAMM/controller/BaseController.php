@@ -52,6 +52,7 @@ class BaseController {
         } else {
             
             if ($this->loggedIn()) {
+                printf("b1");
                 //utente autenticato
                 //imposta la pagina principale dell'utente
                 $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
@@ -153,6 +154,7 @@ class BaseController {
     
     //Autenticazione
     protected function login($vd, $username, $password) {
+        print("b2");
 
         // carichiamo i dati dell'utente
         $user = UserFactory::instance()->caricaUtente($username, $password);
