@@ -86,7 +86,7 @@ class UserFactory {
             error_log("[caricaClienteDaStmt] impossibile" . " eseguire lo statement");
             return null;
         }
-        printf("u2");
+        printf("u4");
         $row = array();
         $bind = $stmt->bind_result(
                 $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'],$row['clienti_email'], 
@@ -158,7 +158,7 @@ class UserFactory {
     public function cercaUtentePerId($id, $role) {
         $intval = filter_var($id, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
         if (!isset($intval)) {
-            printf("u5");
+            printf("u6");
             return null;
         }
         $mysqli = Db::getInstance()->connectDb();
@@ -219,7 +219,7 @@ class UserFactory {
 
     // Crea un Cliente da una riga del db
     public function creaClienteDaArray($row) {
-        printf("u4");
+        printf("u5");
         $cliente = new User();
         $cliente->setID($row['clienti_id']);
         $cliente->setNome($row['clienti_nome']);
@@ -232,9 +232,7 @@ class UserFactory {
         $cliente->setRuolo(User::Cliente);
         $cliente->setUsername($row['clienti_username']);
         $cliente->setPassword($row['clienti_password']);
-        
-        
-        printf($cliente);
+
         return $cliente;
     }
     
