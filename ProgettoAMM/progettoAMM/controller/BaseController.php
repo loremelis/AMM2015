@@ -140,6 +140,7 @@ class BaseController {
     
     // Funziona che decide che pagina mostrare a seconda del l'Utente
     protected function showHomeUtente($vd) {
+        printf("b4");
         $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
         switch ($user->getRuolo()) {
             case User::Cliente:
