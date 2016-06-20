@@ -33,7 +33,7 @@ class UserFactory {
         }
         
         // cerco prima nella tabella clienti
-        $query= "SELECT * FROM clienti WHERE username=? AND password=?";
+        $query= "SELECT * FROM clienti WHERE username=? and password=?";
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
         
