@@ -234,6 +234,8 @@ class UserFactory {
         $cliente->setRuolo(User::Cliente);
         $cliente->setUsername($row['clienti_username']);
         $cliente->setPassword($row['clienti_password']);
+        
+        print("(".$cliente.")");
 
         return $cliente;
     }
