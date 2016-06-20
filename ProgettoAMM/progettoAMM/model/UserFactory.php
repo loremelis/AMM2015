@@ -126,7 +126,7 @@ class UserFactory {
                     " effettuare il binding in output");
             return null;
         }
-        if (!$stmt->fetch()) {
+        if (!$stmt) { //->fetch()
             return null;
         }
         $stmt->close();
@@ -234,15 +234,13 @@ class UserFactory {
         $cliente->setRuolo(User::Cliente);
         $cliente->setUsername($row['clienti_username']);
         $cliente->setPassword($row['clienti_password']);
-        
-        print("(".$cliente.")");
-
+     
         return $cliente;
     }
     
     //Crea un Venditore
     public function creaVenditoreDaArray($row) {
-        $venditore = new UserSeller();
+        $venditore = new User();
         $venditore->setID($row['venditore_id']);
         $venditore->setRuolo(User::Venditore);
         $venditore->setUsername($row['venditore_username']);
@@ -294,7 +292,7 @@ class UserFactory {
         }
         if (!$stmt->bind_param('ccccicici', $c->getPassword(), $c->getNome(), 
                 $c->getCognome(), $c->getEmail(), $c->getNumCivico(), 
-                $c->getCitta(),$c->getCap(), $c->getVia(), $c->getID())) {   //NON PRENDE GetID
+                $c->getCitta(),$c->getCap(), $c->getVia(), $c->getID2())) {   //NON PRENDE GetID
             error_log("[salvaCliente] impossibile" .
                     " effettuare il binding in input");
             return 0;
