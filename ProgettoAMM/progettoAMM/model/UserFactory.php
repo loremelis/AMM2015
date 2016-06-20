@@ -93,7 +93,7 @@ class UserFactory {
                 $row['clienti_citta'], $row['clienti_via'], $row['clienti_cap'],$row['clienti_numCivico'], 
                 $row['clienti_username'], $row['clienti_password']);
         
-         print ("Id =" .$row['clienti_id']);
+         print ("Id =" .$row['clienti_username']);
         
         if (!$bind) {
             error_log("[caricaClienteDaStmt] impossibile" .
