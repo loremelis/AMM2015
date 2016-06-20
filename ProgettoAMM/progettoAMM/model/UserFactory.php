@@ -24,7 +24,7 @@ class UserFactory {
 
     // Carica un utente tramite username e password
     public function caricaUtente($username, $password) {
-        printf("b3");
+        printf("u1");
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
             error_log("[loadUser] impossibile inizializzare il database");
@@ -48,6 +48,7 @@ class UserFactory {
             $mysqli->close();
             return null;
         }
+        printf("u2");
         $cliente = self::caricaClienteDaStmt($stmt);
         if (isset($cliente)) {
             // ho trovato uno studente
@@ -82,11 +83,10 @@ class UserFactory {
     private function caricaClienteDaStmt(mysqli_stmt $stmt) {
         
         if (!$stmt->execute()) {
-            printf("1");
             error_log("[caricaClienteDaStmt] impossibile" . " eseguire lo statement");
             return null;
         }
-        printf("2");
+        printf("u2");
         $row = array();
         $bind = $stmt->bind_result(
                 $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'],$row['clienti_email'], 
@@ -95,16 +95,14 @@ class UserFactory {
            
         
         if (!$bind) {
-            printf("3");
             error_log("[caricaClienteDaStmt] impossibile" .
                     " effettuare il binding in output");
             return null;
         }
         if (!$stmt) {     //->fetch()
-            printf("4");
             return null;
         }
-        printf("5");
+        printf("u3");
         $stmt->close();
         return self::creaClienteDaArray($row);
     }
@@ -160,8 +158,7 @@ class UserFactory {
     public function cercaUtentePerId($id, $role) {
         $intval = filter_var($id, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
         if (!isset($intval)) {
-            printf("a7");
-                exit();
+            printf("u5");
             return null;
         }
         $mysqli = Db::getInstance()->connectDb();
@@ -222,6 +219,7 @@ class UserFactory {
 
     // Crea un Cliente da una riga del db
     public function creaClienteDaArray($row) {
+        printf("u4");
         $cliente = new User();
         $cliente->setID($row['clienti_id']);
         $cliente->setNome($row['clienti_nome']);
@@ -235,6 +233,8 @@ class UserFactory {
         $cliente->setUsername($row['clienti_username']);
         $cliente->setPassword($row['clienti_password']);
         
+        
+        printf($cliente);
         return $cliente;
     }
     

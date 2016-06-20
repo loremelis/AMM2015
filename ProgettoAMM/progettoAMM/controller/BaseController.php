@@ -43,6 +43,7 @@ class BaseController {
                     
               
                     if ($this->loggedIn()) {
+                        printf("b1.2");
                         $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
                     
                     }
@@ -52,7 +53,7 @@ class BaseController {
         } else {
             
             if ($this->loggedIn()) {
-                printf("b1");
+                printf("b1.3");
                 //utente autenticato
                 //imposta la pagina principale dell'utente
                 $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
@@ -140,8 +141,9 @@ class BaseController {
     
     // Funziona che decide che pagina mostrare a seconda del l'Utente
     protected function showHomeUtente($vd) {
-        printf("b4");
+        printf("b5");
         $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
+        printf("b6");
         switch ($user->getRuolo()) {
             case User::Cliente:
                 $this->showHomeCLiente($vd);
@@ -155,11 +157,12 @@ class BaseController {
     
     //Autenticazione
     protected function login($vd, $username, $password) {
-        print("b2");
+        printf("b1");
 
         // carichiamo i dati dell'utente
         $user = UserFactory::instance()->caricaUtente($username, $password);
         if (isset($user) && $user->esiste()) {
+            printf("b4");
             
             // utente autenticato
             $_SESSION[self::user] = $user->getID();   //NON LO PRENDE
