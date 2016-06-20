@@ -33,8 +33,6 @@ class UserFactory {
         
         // cerco prima nella tabella clienti
         $query= "SELECT * FROM clienti WHERE username=\"$username\"AND password=\"$password\";";
-        
-            
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
         
@@ -119,9 +117,9 @@ class UserFactory {
         }
         $row = array();
         $bind = $stmt->bind_result(
-                $row['id'], 
-                $row['username'], 
-                $row['password']); 
+                $row['venditore_id'], 
+                $row['venditore_username'], 
+                $row['venditore_password']); 
         if (!$bind) {
             error_log("[caricaVenditoreDaStmt] impossibile" .
                     " effettuare il binding in output");
@@ -242,10 +240,11 @@ class UserFactory {
     //Crea un Venditore
     public function creaVenditoreDaArray($row) {
         $venditore = new UserSeller();
-        $venditore->setID($row['id']);
+        $venditore->setID($row['venditore_id']);
         $venditore->setRuolo(User::Venditore);
-        $venditore->setUsername($row['username']);
-        $venditore->setPassword($row['password']);
+        $venditore->setUsername($row['venditore_username']);
+        $venditore->setPassword($row['venditore_password']);
+        
         return $venditore;
     }
 

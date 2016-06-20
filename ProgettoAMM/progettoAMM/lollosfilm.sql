@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `clienti` (
 --
 -- Dump dei dati per la tabella `clienti`
 --
-INSERT INTO `clienti` (`username`, `password`, `nome`, `cognome`, `email`, `numCivico`, `citta`, `cap`, `via`,`id`) VALUES
-('cliente', 'password', 'Lorenzo', 'Melis', 'lorenzo.melis@unica.it', 9, 'Cagliari', '09124', 'via di cagliari', 10);
+INSERT INTO `clienti` (`username`, `password`, `nome`, `cognome`, `email`, `numCivico`, `citta`, `cap`, `via`) VALUES
+('cliente', 'password', 'Lorenzo', 'Melis', 'lorenzo.melis@unica.it', 9, 'Cagliari', '09124', 'via di cagliari');
 
 --
 -- Struttura della tabella `venditore`
@@ -58,6 +58,8 @@ CREATE TABLE IF NOT EXISTS `venditore` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+
 
 --
 -- Dump dei dati per la tabella `venditore`
