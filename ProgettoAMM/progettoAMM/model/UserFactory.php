@@ -43,7 +43,7 @@ class UserFactory {
             return null;
         }
         
-        if (!$stmt->execute()) {   ////bind_param('ss', $username, $password))
+        if (!$stmt->bind_param('ss', $username, $password)) {   
             error_log("[loadUser] impossibile" . " effettuare il binding in input");
             $mysqli->close();
             return null;
@@ -60,13 +60,15 @@ class UserFactory {
         $query= "SELECT * FROM venditore WHERE username=\"$username\"AND password=\"$password\";";
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
+        
         if (!$stmt) {
             error_log("[loadUser] impossibile" .
                     " inizializzare il prepared statement");
             $mysqli->close();
             return null;
         }
-        if (!$stmt->execute()) {     //bind_param('ss', $username, $password))
+        
+        if (!$stmt->bind_param('ss', $username, $password)){
             error_log("[loadUser] impossibile" . " effettuare il binding in input");
             $mysqli->close();
             return null;
