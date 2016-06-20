@@ -92,16 +92,16 @@ class UserFactory {
                 $row['clienti_id'], $row['clienti_nome'], $row['clienti_cognome'],$row['clienti_email'], 
                 $row['clienti_citta'], $row['clienti_via'], $row['clienti_cap'],$row['clienti_numCivico'], 
                 $row['clienti_username'], $row['clienti_password']);
-        printf("stampo row");
-        
-           
+        while($stmt->fetch()){
+            print ("Id =" .$row['clienti_id']);
+        }
         
         if (!$bind) {
             error_log("[caricaClienteDaStmt] impossibile" .
                     " effettuare il binding in output");
             return null;
         }
-        if (!$stmt) {     //->fetch()
+        if (!$stmt->fetch()) {    
             return null;
         }
         printf("u4");
