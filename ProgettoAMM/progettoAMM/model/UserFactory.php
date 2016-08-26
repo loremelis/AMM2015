@@ -223,7 +223,7 @@ class UserFactory {
     // Crea un Cliente da una riga del db
     public function creaClienteDaArray($row) {
         printf("u5");
-        $cliente = new User();
+        $cliente = new UserClient();
         $cliente->setID($row['clienti_id']);
         $cliente->setNome($row['clienti_nome']);
         $cliente->setCognome($row['clienti_cognome']);
@@ -241,7 +241,7 @@ class UserFactory {
     
     //Crea un Venditore
     public function creaVenditoreDaArray($row) {
-        $venditore = new User();
+        $venditore = new UserSeller();
         $venditore->setID($row['venditore_id']);
         $venditore->setRuolo(User::Venditore);
         $venditore->setUsername($row['venditore_username']);

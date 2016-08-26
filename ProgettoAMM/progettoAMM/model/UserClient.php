@@ -25,7 +25,18 @@ class UserClient extends User {
     /**
      * Costruttore
      */
-    public function __construct() {
+    public function __construct($ruolo, $password, $username, $ID, $nome, $cognome, $data, $via, $numCivico, $città, $cap, $email) {
+        
+        parent::__construct($ruolo, $password, $username, $ID);
+        $this->nome = $nome;
+        $this->cognome = $cognome;
+        $this->data = $data;
+        $this->via = $via;
+        $this->numCivico = $numCivico;
+        $this->citta = $citta;
+        $this->cap = $cap;
+        $this->email = $email;
+        
         
     }
     

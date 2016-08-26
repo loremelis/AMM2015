@@ -51,7 +51,6 @@ INSERT INTO `clienti` (`username`, `password`, `nome`, `cognome`, `email`, `numC
 --
 -- Struttura della tabella `venditore`
 --
-
 CREATE TABLE IF NOT EXISTS `venditore` (
   `username` varchar(128) DEFAULT NULL,
   `password` varchar(128) DEFAULT NULL,
@@ -64,8 +63,6 @@ CREATE TABLE IF NOT EXISTS `venditore` (
 --
 -- Dump dei dati per la tabella `venditore`
 --
-
-
 INSERT INTO `venditore` (`username`, `password`) VALUES
 ('seller', 'password');
 
@@ -81,10 +78,18 @@ CREATE TABLE IF NOT EXISTS `oggetti` (
   `nome` varchar(128) DEFAULT NULL,
   `prezzo` int(11) DEFAULT NULL,
   `descrizione` varchar(250) DEFAULT NULL,
-  `immagine` blob NOT NULL,        
+  `immagine` varchar(250) NOT NULL,        
   `quantita` int(11) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 
 
+
+INSERT INTO `oggetti` (`nome`, `prezzo`, `descrizione`, `immagine`, `quantita`) VALUES
+('seller', 'password', 'password', 'password', 'password'),
+('seller', 'password', 'password', 'password', 'password'),
+('seller', 'password', 'password', 'password', 'password'),
+('seller', 'password', 'password', 'password', 'password'),
+('seller', 'password', 'password', 'password', 'password'),
+('seller', 'password', 'password', 'password', 'password');
