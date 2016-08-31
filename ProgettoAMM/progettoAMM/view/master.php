@@ -71,23 +71,20 @@ include_once 'Settings.php';
 
         </div>
 
-    <footer> 
-        <?php
+        <footer> 
+            <?php
                 $footer = $vd->getFooterFile(); 
                 require "$footer";
              ?>
-    </footer>
+       
         
         
-        
-        <div class="validator">
-            
-                <a href="http://validator.w3.org/check/referer" class="xhtml" title="Questa pagina contiene HTML valido">
+            <a href="http://validator.w3.org/check/referer" class="xhtml" title="Questa pagina contiene HTML valido">
                 <abbr title="eXtensible HyperText Markup Language">HTML</abbr> Valido</a>
-                <a href="http://jigsaw.w3.org/css/check/referer" class="css" title="Questa pagina ha CSS validi">
+            <a href="http://jigsaw.w3.org/css/check/referer" class="css" title="Questa pagina ha CSS validi">
                 <abbr title="Cascading Style Sheets">CSS</abbr> Valido</a>
-            
-        </div>
+        
+        </footer>
     </div>
          
 </body>
