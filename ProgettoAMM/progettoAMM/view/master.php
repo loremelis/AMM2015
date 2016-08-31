@@ -27,7 +27,7 @@ include_once 'Settings.php';
         
         <!-- valutare se abbiamo bisogno di un javascript-->
 </head>
-<body background="logo.jpg">  
+<body background="../img/logo.jpg">  
     <div id="page">
         <header>
             <?php
