@@ -63,8 +63,8 @@ CREATE TABLE IF NOT EXISTS `venditore` (
 --
 -- Dump dei dati per la tabella `venditore`
 --
-INSERT INTO `venditore` (`username`, `password`) VALUES
-('seller', 'password');
+INSERT INTO `venditore` (`username`, `password`,`id`) VALUES
+('seller', 'password',2);
 
 
 
@@ -86,10 +86,10 @@ CREATE TABLE IF NOT EXISTS `oggetti` (
 
 
 
-INSERT INTO `oggetti` (`nome`, `prezzo`, `descrizione`, `immagine`, `quantita`) VALUES
-('seller', 'password', 'password', 'password', 'password'),
-('seller', 'password', 'password', 'password', 'password'),
-('seller', 'password', 'password', 'password', 'password'),
-('seller', 'password', 'password', 'password', 'password'),
-('seller', 'password', 'password', 'password', 'password'),
-('seller', 'password', 'password', 'password', 'password');
+INSERT INTO `oggetti` (`id`,`nome`, `prezzo`, `descrizione`, `immagine`, `quantita`) VALUES
+(5,'seller', 0, 'password', 'password', 2),
+(6,'seller', 0, 'password', 'password', 3),
+(7,'seller', 0, 'password', 'password', 5),
+(8,'seller', 0, 'password', 'password', 6),
+(9,'seller', 0, 'password', 'password', 7),
+(10,'seller', 0, 'password', 'password', 8);
