@@ -1,5 +1,5 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.11.1deb1
+-- version 4.1.7
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `lollosfilm`
+-- Database: `my loremelis`
 --
 
 -- --------------------------------------------------------
 
 
-USE amm15_melisLorenzo;
+
 --
 -- Struttura della tabella `clienti`
 --
@@ -40,13 +40,13 @@ CREATE TABLE IF NOT EXISTS `clienti` (
   `cap` varchar(5) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5;
 
 --
 -- Dump dei dati per la tabella `clienti`
 --
-INSERT INTO `clienti` (`password`, `username`, `nome`, `cognome`, `via`, `numCivico`, `citta`, `cap`, `email`) VALUES
-('password','cliente', 'Lorenzo', 'Melis',, 'via di cagliari',9 , 'Cagliari', 09124 , 'lorenzo.melis@unica.it');
+INSERT INTO `clienti` (`password`, `username`,`id`, `nome`, `cognome`, `via`, `numCivico`, `citta`, `cap`, `email`) VALUES
+('password','cliente',3, 'Lorenzo', 'Melis', 'via di cagliari',9 , 'Cagliari', '09124' , 'lorenzo.melis@unica.it');
 
 --
 -- Struttura della tabella `venditore`
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `venditore` (
   `password` varchar(128) DEFAULT NULL,
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 
 
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `oggetti` (
   `immagine` varchar(250) NOT NULL,        
   `quantita` int(11) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 
 
