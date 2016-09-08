@@ -1,4 +1,5 @@
 <?php
+
 include_once 'model/ObjectFactory.php';
 include_once 'clientController.php';
 
@@ -7,27 +8,27 @@ include_once 'clientController.php';
  * Clienti con il ruolo Clienti
  */
 class clientController extends BaseController {
-    
+
     public function __construct() {
         parent::__construct();
     }
-    
+
     //gestisce gli input
     public function handleInput(&$request) {
-        
+
         $vd = new ViewDescriptor();
-        
+
         $vd->setVista($request['page']);
 
-        
+
         // gestion dei comandi
         if (!$this->loggedIn()) {
-            
+
             $this->showLoginPage($vd);
         } else {
             // utente autenticato
             $user = UserFactory::instance()->cercaUtentePerId($_SESSION[BaseController::user], $_SESSION[BaseController::role]);
-            
+
             // verifico quale sia la sottopagina della categoria da visalizzare
             if (isset($request["subpage"])) {
                 switch ($request["subpage"]) {
@@ -35,31 +36,31 @@ class clientController extends BaseController {
                     case 'anagrafica':
                         $vd->setSottoVista('anagrafica');
                         break;
-                    
-                    case 'carrello': 
+
+                    case 'carrello':
                         $vd->setSottoVista('carrello');
                         break;
-                    
+
                     case 'client':
                         $oggetti = ObjectFactory::instance()->getListaOggetti();
                         $vd->setSottoVista('client');
                         break;
-                    
+
                     case 'home':
                         $vd->setSottoVista('home');
                         break;
-                    
+
                     case 'info':
                         $vd->setSottoVista('info');
                         break;
                     default:
                         $vd->setSottoVista('home');
-                        break; 
+                        break;
                 } // VALUTARE SE SERVE ANCHE LOGIN
             }
             // gestione dei comandi inviati dall'utente
-            
-            
+
+
             if (isset($request["cmd"])) {
                 // abbiamo ricevuto un comando
                 switch ($request["cmd"]) {
@@ -67,52 +68,51 @@ class clientController extends BaseController {
                     case 'logout':
                         $this->logout($vd);
                         break;
-                    
+
                     // aggiornamento tutta anagrafica
                     case 'anagrafica':
 
                         $msg = array();
                         $this->aggiornaAnagrafica($user, $request, $msg);
-                        $this->creaFeedbackUtente($msg, $vd, "Anagrafica aggiornata"); 
+                        $this->creaFeedbackUtente($msg, $vd, "Anagrafica aggiornata");
                         $this->showHomeCliente($vd);
                         break;
-                    
-                    
-                      case 'aggiungiCarrello':
+
+
+                    case 'aggiungiCarrello':
                         // recuperiamo l'indice 
                         $msg = array();
-                        $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
+                        $a = $this->getOggettoPerId($oggetti, $request, $msg);
                         if (isset($a)) {
-                            print("c1");
                             //$isOk = $a->aggiungi($oggetto); //non so
                             $count = CarrelloFactory::instance()->nuovo($a);
-                            /*if (!$isOk || $count != 1) {
-                                $msg[] = "<li> Impossibile cancellare l'oggetto </li>";
-                            }*/
+                            /* if (!$isOk || $count != 1) {
+                              $msg[] = "<li> Impossibile cancellare l'oggetto </li>";
+                              } */
                         } else {
                             $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";
                         }
                         $this->creaFeedbackUtente($msg, $vd, "Hai cancellato correttamente l'oggetto");
                         $this->showHomeCliente($vd);
                         break;
-                      
-                      case 'cancella':
+
+                    case 'cancella':
                         // recuperiamo l'indice 
                         $msg = array();
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         if (isset($a)) {
                             // $isOk = $a->cancella($oggetto);
                             $count = CarrelloFactory::instance()->cancella($a);
-                            /*if (!$isOk || $count != 1) {
-                                $msg[] = "<li> Impossibile cancellare l'oggetto </li>";
-                            }*/
+                            /* if (!$isOk || $count != 1) {
+                              $msg[] = "<li> Impossibile cancellare l'oggetto </li>";
+                              } */
                         } else {
                             $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";
                         }
                         $this->creaFeedbackUtente($msg, $vd, "Hai cancellato correttamente l'oggetto");
                         $this->showHomeCliente($vd);
                         break;
-                    
+
                     default: $this->showHomeCLiente($vd);
                 }
             } else {
@@ -124,13 +124,14 @@ class clientController extends BaseController {
         // includo la vista
         require 'view/master.php';
     }
-     
-    private function getOggettoPerIndice(&$oggetti, &$request, &$msg) {
+
+    private function getOggettoPerId(&$oggetti, &$request, &$msg) {
         if (isset($request['oggetto'])) {
             // verifichiamo che sia un intero
             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
-            if (isset($intVal) && $intVal > -1 && $intVal < count($oggetti)) {
-                return $oggetti[$intVal];
+            if (isset($intVal)) { //&& $intVal > -1 && $intVal < count($oggetti)) {
+                $o = ObjectFactory::instance()->cercaOggettoPerId($intVal);
+                return $o;
             } else {
                 $msg[] = "<li> L'oggetto specificato non esiste </li>";
                 return null;
@@ -140,8 +141,7 @@ class clientController extends BaseController {
             return null;
         }
     }
-    
-    
+
     //DA RIVEDERE E PROBABILMENTE DA SPOSTARE IN CLIENT CONTROLLER
     //Aggiorno l'anagrafica
     protected function aggiornaAnagrafica($user, &$request, &$msg) {
@@ -150,7 +150,7 @@ class clientController extends BaseController {
                 $msg[] = '<li>La via specificata non &egrave; corretta</li>';
             }
         }
-        if (isset($request['civico'])){ 
+        if (isset($request['civico'])) {
             if (!$user->setNumCivico($request['civico'])) {
                 $msg[] = '<li>Il formato del numero civico non &egrave; corretto</li>';
             }
@@ -165,26 +165,25 @@ class clientController extends BaseController {
                 $msg[] = '<li>Il CAP specificato non &egrave; corretto</li>';
             }
         }
-       
+
         if (isset($request['email'])) {
             if (!$user->setEmail($request['email'])) {
                 $msg[] = '<li>L\'indirizzo email specificato non &egrave; corretto</li>';
             }
         }
-        
+
         // salviamo i dati se non ci sono stati errori
         if (count($msg) == 0) {
-            if (UserFactory::instance()->salva($user) != 1) {   
+            if (UserFactory::instance()->salva($user) != 1) {
                 $msg[] = '<li>Salvataggio non riuscito</li>';
             }
         }
     }
-    
-    
-    public function aggiungiCarrello($oggetto,$request,$msg){
+
+    public function aggiungiCarrello($oggetto, $request, $msg) {
         
     }
- 
+
 }
 ?>
 
