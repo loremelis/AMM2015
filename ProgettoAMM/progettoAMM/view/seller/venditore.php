@@ -1,4 +1,4 @@
-<form id="inserzione" action="index.php" method="post">
+<form id="inserzione" action="../index.php" method="post">
         <input type="hidden" value="seller" name="page"/>
         <input type="hidden" value="aggiungiOggetto" name="cmd"/>
             <h2> Inserire l'elemento da aggiungere al catalogo</h2>
