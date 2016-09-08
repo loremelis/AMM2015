@@ -106,7 +106,7 @@ class clientController extends BaseController {
                         } else {
                             $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";
                         }
-                        $this->creaFeedbackUtente($msg, $vd, "Hai cancellato correttamente l'oggetto");
+                        $this->creaFeedbackUtente($msg, $vd, "Hai aggiunto l'oggetto al carrello");
                         $this->showHomeCliente($vd);
                         break;
 
