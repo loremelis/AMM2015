@@ -92,7 +92,7 @@ class clientController extends BaseController {
                         if (isset($a)) {
                           //  var_dump($a->getNameObj());
                             $carrello = new Carrello(
-                                    $carrello->getID(),
+                                    '',
                                     $a->getNameObj(),
                                     $a->getPrice(),
                                     '1',
