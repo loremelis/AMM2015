@@ -7,7 +7,7 @@
                 <?php
                  $i = 0;
                  $c = 0;
-                 foreach ($oggetti as $oggetto) {
+                 foreach ($carrelli as $carrello) {
                 ?>
                     <tr <?= $c % 2 == 0 ? 'class="alt-row"' : '' ?>>
                         <td><?= $carrello->getTitolo() ?></td>
