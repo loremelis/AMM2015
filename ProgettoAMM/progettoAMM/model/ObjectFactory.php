@@ -192,32 +192,13 @@ class ObjectFactory{
     } */
     
     //aggiungere un nuovo oggetto
-   public function nuovo($oggetto){
-       unset($oggetto['cmd']);
-       unset($oggetto['page']);
+   public function nuovo(Object $oggetto){
        
        
-        $query = "INSERT INTO oggetti ( nome, prezzo, descrizione, immagine, quantita)
-                  values ( 
-                '".$oggetto['nome_ogg']."',
-                '".$oggetto['prezzo_ogg']."',
-                '".$oggetto['descrizione_ogg']."',
-                '',
-                '".$oggetto['quantita_ogg']."'
-                 )";
-        
-        ///$newObj['getName']=$oggetto['nome_ogg'];
-        $object = (object) $oggetto;
-        var_dump($oggetto);
-       /*
-            $newobj->nome_ogg = $oggetto['nome_ogg'];
-            $newobj->prezzo_ogg = $oggetto['prezzo_ogg'];
-            $newobj->descrizione_ogg = $oggetto['descrizione_ogg'];
-           $newobj->immagine_ogg = $oggetto['immagine_ogg'];
-            $newobj->quantita_ogg = $oggetto['quantita_ogg'];*/
-        
-        
-        return $this->modificaDB($object, $query);
+        $query = "INSERT INTO oggetti (id,nome, prezzo, descrizione, immagine, quantita)
+                  values (',?,?,?,?,?)" ;
+            
+        return $this->modificaDB($oggetto, $query);
     }
     
     public function cancella(Object $oggetto){

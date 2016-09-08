@@ -1,6 +1,7 @@
 <?php
 include_once 'BaseController.php';
 include_once 'model/ObjectFactory.php';
+include_once 'model/Object.php';
 
 //Gestisce il Venditore
 class sellerController extends BaseController {
@@ -108,10 +109,10 @@ class sellerController extends BaseController {
         return $max + 1;
     }
     
-    protected function aggiungiOggetto($oggetto, $request, $msg) {
+    protected function aggiungiOggetto(Object $oggetto, $request, $msg) {
         
         if (isset($request['nome_ogg'])) {
-            if (!$oggetto->setNomeObj($request['nome_ogg'])) {
+            if (!$oggetto->setNameObj($request['nome_ogg'])) {
                 $msg[] = '<li>La via specificata non &egrave; corretta</li>';
             }
         }
