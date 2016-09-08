@@ -41,6 +41,7 @@ class Object {
      }
      public function setNameObj($name_obj){
          $this->name_obj=$name_obj;
+         return true;
      }
      
      public function getPrice(){
@@ -52,6 +53,7 @@ class Object {
             return false;
         }
         $this->price=$intVal;
+        return true;
      }
      
      public function getDescription(){
@@ -71,6 +73,7 @@ class Object {
             return false;
         }
         $this->image=$intVal;
+        return true;
      }
      
      public function getAmount(){
@@ -82,6 +85,7 @@ class Object {
             return false;
         }
         $this->amount=$intVal;
+        return true;
      }
      
     

@@ -213,7 +213,7 @@ class UserFactory {
                 $toRet = self::caricaVenditoreDaStmt($stmt);   
                 $mysqli->close();
                 return $toRet;
-                break;
+                break; 
             default:
 
                 return null;

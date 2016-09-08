@@ -262,5 +262,41 @@ class ObjectFactory{
         $mysqli->close();
         return $stmt->affected_rows;
     }
+    
+    
+    public function creaOggettoDaCodice($codice) {
+        
+        
+        $query = "select * where oggetto.id = ?";
+        $mysqli = Db::getInstance()->connectDb();
+        if (!isset($mysqli)) {
+            error_log("[creaOggettoDaCodice] impossibile inizializzare il database");
+            $mysqli->close();
+            return $oggetti;
+        }
+        
+        $stmt = $mysqli->stmt_init();
+        $stmt->prepare($query);
+        if (!$stmt) {
+            error_log("[creaOggettiDaCodice] impossibile" .
+                    " inizializzare il prepared statement");
+            $mysqli->close();
+            return null;
+        }
+        if (!$stmt->bind_param('s', $codice)) {
+            error_log("[creaOggettiDaCodice] impossibile" .
+                    " effettuare il binding in input");
+            $mysqli->close();
+            return null;
+        }
+        $oggetti = self::caricaOggettiDaStmt($stmt);
+        if(count($oggetti) > 0){
+            $mysqli->close();
+            return $oggetti[0];
+        }else{
+            $mysqli->close();
+            return null;
+        }
+    }
   }
 ?>
