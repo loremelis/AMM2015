@@ -3,6 +3,7 @@
 include_once 'model/ObjectFactory.php';
 include_once 'clientController.php';
 include_once 'model/CarrelloFactory.php';
+include_once 'model/Carrello.php';
 
 /**
  * Controller che gestisce la modifica dei dati dell'applicazione relativa agli 
