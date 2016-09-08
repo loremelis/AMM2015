@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.11.1deb1
+-- version 4.1.7
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generato il: Giu 18, 2016 alle 13:39
--- Versione del server: 5.5.35
--- Versione PHP: 5.4.6-1ubuntu1.7
+-- Generation Time: Set 08, 2016 alle 11:19
+-- Versione del server: 5.6.31-log
+-- PHP Version: 5.3.10
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -22,7 +22,6 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
-
 USE amm15_melisLorenzo;
 --
 -- Struttura della tabella `clienti`
@@ -36,60 +35,80 @@ CREATE TABLE IF NOT EXISTS `clienti` (
   `email` varchar(128) DEFAULT NULL,
   `numCivico` int(11) DEFAULT NULL,
   `citta` varchar(128) DEFAULT NULL,
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `cap` varchar(5) DEFAULT NULL,
   `via` varchar(128) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dump dei dati per la tabella `clienti`
 --
-INSERT INTO `clienti` (`username`, `password`, `nome`, `cognome`, `email`, `numCivico`, `citta`, `cap`, `via`) VALUES
-('cliente', 'password', 'Lorenzo', 'Melis', 'lorenzo.melis@unica.it', 9, 'Cagliari', '09124', 'via di cagliari');
+
+INSERT INTO `clienti` (`username`, `password`, `nome`, `cognome`, `email`, `numCivico`, `citta`, `id`, `cap`, `via`) VALUES
+('cliente', 'password', 'Lorenzo', 'Melis', 'lorenzo.melis9@gmail.com', 3, 'Cagliari', 3, '09126', 'aquilona'),
+('riccardo', 'riccardo', 'riccardo', 'tocco', 'riccardo.tocco@live.it', 31, 'ussana', 4, '09020', 'rsanzio');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `oggetti`
+--
+
+CREATE TABLE IF NOT EXISTS `oggetti` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(128) DEFAULT NULL,
+  `prezzo` int(11) DEFAULT NULL,
+  `descrizione` varchar(250) DEFAULT NULL,
+  `immagine` varchar(250) NOT NULL,
+  `quantita` int(11) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Dump dei dati per la tabella `oggetti`
+--
+
+INSERT INTO `oggetti` (`id`, `nome`, `prezzo`, `descrizione`, `immagine`, `quantita`) VALUES
+(5, '2001 Odissea nello spazio', 0, '', '2001_piccola.jpg', 2),
+(6, 'seller', 0, 'password', 'password', 3),
+(7, 'seller', 0, 'password', 'password', 0),
+(8, 'seller', 0, 'password', 'password', 5),
+(9, 'seller', 0, 'password', 'password', 0),
+(10, 'seller', 0, 'password', 'password', 0);
+
+-- --------------------------------------------------------
 
 --
 -- Struttura della tabella `venditore`
 --
+
 CREATE TABLE IF NOT EXISTS `venditore` (
   `username` varchar(128) DEFAULT NULL,
   `password` varchar(128) DEFAULT NULL,
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
-
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dump dei dati per la tabella `venditore`
 --
-INSERT INTO `venditore` (`username`, `password`) VALUES
-('seller', 'password');
+
+INSERT INTO `venditore` (`username`, `password`, `id`) VALUES
+('seller', 'password', 2);
 
 
-
---
--- Struttura tabella Oggetti
--- (id, nome, prezzo, descrizione, immagine, quantità,)
---
-
-CREATE TABLE IF NOT EXISTS `oggetti` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT, 
-  `nome` varchar(128) DEFAULT NULL,
-  `prezzo` int(11) DEFAULT NULL,
-  `descrizione` varchar(250) DEFAULT NULL,
-  `immagine` varchar(250) NOT NULL,        
-  `quantita` int(11) DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `carrello` (
+  `titolo` varchar(128) DEFAULT NULL,
+  `quantità` int(11) DEFAULT NULL,
+   `prezzo` int(11) DEFAULT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 
 
 
-INSERT INTO `oggetti` (`nome`, `prezzo`, `descrizione`, `immagine`, `quantita`) VALUES
-('seller', 'password', 'password', 'password', 'password'),
-('seller', 'password', 'password', 'password', 'password'),
-('seller', 'password', 'password', 'password', 'password'),
-('seller', 'password', 'password', 'password', 'password'),
-('seller', 'password', 'password', 'password', 'password'),
-('seller', 'password', 'password', 'password', 'password');
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

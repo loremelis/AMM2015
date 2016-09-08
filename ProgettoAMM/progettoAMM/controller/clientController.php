@@ -78,21 +78,21 @@ class clientController extends BaseController {
                         $this->showHomeCliente($vd);
                         break;
                     
-                    //TUTTO DA VEDERE
-                     case 'aggiungiCarrello':
+                    
+                      case 'aggiungi_carrello':
                         // recuperiamo l'indice 
                         $msg = array();
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         if (isset($a)) {
-                            $isOk = $a->aggiungi($oggetto);
-                            $count = ObjectFactory::instance()->nuovo($oggetto);
+                            $isOk = $a->aggiungi($oggetto); //non so
+                            $oggetti = CarrelloFactory::instance()->nuovo();
                             if (!$isOk || $count != 1) {
-                                $msg[] = "<li> Impossibile aggiungere l'oggetto </li>";
+                                $msg[] = "<li> Impossibile cancellare l'oggetto </li>";
                             }
                         } else {
-                            $msg[] = "<li> Impossibile aggiungere l'oggetto. Verifica la quantita </li>";
+                            $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";
                         }
-                        $this->creaFeedbackUtente($msg, $vd, "Hai aggiunto l'oggetto selezionato");
+                        $this->creaFeedbackUtente($msg, $vd, "Hai cancellato correttamente l'oggetto");
                         $this->showHomeCliente($vd);
                         break;
                       
@@ -101,11 +101,11 @@ class clientController extends BaseController {
                         $msg = array();
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         if (isset($a)) {
-                            $isOk = $a->cancella($oggetto);
-                            $count = AppelloFactory::instance()->cancella($oggetto);
-                            if (!$isOk || $count != 1) {
+                            // $isOk = $a->cancella($oggetto);
+                            $count = CarrelloFactory::instance()->cancella($a);
+                            /*if (!$isOk || $count != 1) {
                                 $msg[] = "<li> Impossibile cancellare l'oggetto </li>";
-                            }
+                            }*/
                         } else {
                             $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";
                         }
@@ -172,14 +172,17 @@ class clientController extends BaseController {
             }
         }
         
-     
-        
         // salviamo i dati se non ci sono stati errori
         if (count($msg) == 0) {
             if (UserFactory::instance()->salva($user) != 1) {   
                 $msg[] = '<li>Salvataggio non riuscito</li>';
             }
         }
+    }
+    
+    
+    public function aggiungiCarrello($oggetto,$request,$msg){
+        
     }
  
 }

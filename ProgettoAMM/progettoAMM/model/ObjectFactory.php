@@ -7,8 +7,6 @@ include_once 'UserSeller.php';
 include_once 'UserFactory.php';
 
 
-
-
 class ObjectFactory{
     
     private static $singleton;
@@ -28,7 +26,7 @@ class ObjectFactory{
     
     public function cercaOggettoPerId($oggettoId){
         $oggetti = array();
-        $query= "SELECT * FROM oggetti WHERE id=\"$ID\";";
+        $query= "SELECT * FROM oggetti WHERE id=\"$oggettoId\";";
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
             error_log("[cercaOggettoPerId] impossibile inizializzare il database");
@@ -63,8 +61,8 @@ class ObjectFactory{
         }
         
         $oggetti =  self::caricaOggettiDaStmt($stmt);
-        foreach($oggetti as $oggettoo){
-            self::caricaIscritti($oggetto);
+        foreach($oggetti as $oggetto){
+            self::caricaOggetto($oggetto);
         }
         if(count($oggetti > 0)){
             $mysqli->close();
@@ -133,7 +131,7 @@ class ObjectFactory{
     
     public function caricaOggetto(Object $oggetto){
         
-        $query = "select * from oggetti where oggetti_id = ?";
+        $query = "select * from oggetti where id = ?";
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
             error_log("[cercaOggettoPerId] impossibile inizializzare il database");
@@ -161,7 +159,7 @@ class ObjectFactory{
             $mysqli->close();
             return null;
         }
-   }
+    }
     
     
    public function &caricaOggettiDaStmt(mysqli_stmt $stmt){
@@ -186,7 +184,7 @@ class ObjectFactory{
             return null;
         }
         while ($stmt->fetch()) {
-            $oggetti[] = self::creaDaArray($row);
+            $oggetti[] = self::creaOggettoDaArray($row);
         }
         
         $stmt->close();
@@ -247,7 +245,7 @@ class ObjectFactory{
     
     public function cancella(Object $oggetto){
         $query = "delete from oggetti where oggetti_id = ?";
-        return $this->modificaDB($appello, $query);
+        return $this->modificaDB($oggetto, $query);
     }
     
     //Funzione che modifica il Db
