@@ -69,7 +69,6 @@ class clientController extends BaseController {
                         break;
                     
                     // aggiornamento tutta anagrafica
-                    //TUTTO DA VEDERE
                     case 'anagrafica':
 
                         $msg = array();
