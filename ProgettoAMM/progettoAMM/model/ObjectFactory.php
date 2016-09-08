@@ -196,7 +196,7 @@ class ObjectFactory{
        unset($oggetto['cmd']);
        unset($oggetto['page']);
        
-       var_dump($oggetto);
+       
         $query = "INSERT INTO oggetti ( nome, prezzo, descrizione, immagine, quantita)
                   values ( 
                 '".$oggetto['nome_ogg']."',
@@ -205,7 +205,10 @@ class ObjectFactory{
                 '',
                 '".$oggetto['quantita_ogg']."'
                  )";
+        
+        ///$newObj['getName']=$oggetto['nome_ogg'];
         $object = (object) $oggetto;
+        var_dump($oggetto);
        /*
             $newobj->nome_ogg = $oggetto['nome_ogg'];
             $newobj->prezzo_ogg = $oggetto['prezzo_ogg'];
