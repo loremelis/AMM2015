@@ -22,6 +22,7 @@
                         <td><a href="recensioni/<?= $oggetto->getDescription() ?>">Leggi..</a></td>
                         <td><a href="../img/<?=$oggetto->getImage() ?>">Immagine</a></td>
                         <td><?= $oggetto->getAmount() ?></td>
+                        <td><a href="../index.php?page=client&cmd=cancellaOggetto&oggetto=<?=$c ?> ">Cancella</a></td>
                     </tr>
                     <?php
                     $c++;

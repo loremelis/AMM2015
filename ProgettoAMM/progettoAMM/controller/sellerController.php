@@ -66,7 +66,7 @@ class sellerController extends BaseController {
                         $nuovo = new Object('','','','','','');
                         $nuovo->setId(-1);
                         $this->aggiungiOggetto($nuovo, $request, $msg);
-                        $this->creaFeedbackUtente($msg, $vd, "Appello creato");
+                        $this->creaFeedbackUtente($msg, $vd, "Oggetto creato");
                         if (count($msg) == 0) {
                             if (ObjectFactory::instance()->nuovo($nuovo) != 1) {
                                 $msg[] = '<li> Impossibile creare l\'appello </li>';
@@ -76,14 +76,23 @@ class sellerController extends BaseController {
                         $this->showHomeVenditore($vd);
                         break;
                         
-                        //var_dump($request);
-                        //die();
-                        //$msg[] = 'msg';
-                        //$oggetto = new Object();
-                       //$msg= $this->aggiungiOggetto($request);
-                        //$oggetto = ObjectFactory::instance()->nuovo($request);
-                        //$this->creaFeedbackUtente($msg, $vd, "Oggetto aggiunto al database");
-                        //break;                   
+                    case 'cancellaOggetto':
+                        if (isset($request['oggetto'])) {
+                            $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+                            if (isset($intVal)) {
+                                $ogg = ObjectFactory::instance()->getOggettoPerIndice($intVal);
+                                if ($ogg != null) {
+                                    if (ObjectFactory::instance()->cancella($ogg) != 1) {
+                                        $msg[] = '<li> Impossibile cancellare l\'oggetto </li>';
+                                    }
+                                }
+                                $this->creaFeedbackUtente($msg, $vd, "Oggetto eliminato");
+                            }
+                        }
+                        $oggetti = ObjectFactory::instance()->getListaOggetti();
+                        $this->showHomeVenditore($vd);
+                        break;
+                                          
             }
             } else {
                 
@@ -96,18 +105,6 @@ class sellerController extends BaseController {
         require basename(__DIR__) . '/../view/master.php';
     }
 
-    /**
-     * Calcola l'id per un nuovo oggetto
-     */
-    private function prossimoIdOggetto(&$oggetto) {
-        $max = -1;
-        foreach ($oggetto as $o) {
-            if ($o->getId() > $max) {
-                $max = $o->getId();
-            }
-        }
-        return $max + 1;
-    }
     
     protected function aggiungiOggetto(Object $oggetto, $request, $msg) {
         
@@ -139,30 +136,24 @@ class sellerController extends BaseController {
         }
         return $msg;
       } 
-      
-      
-     /* private function aggiungiOggetto($oggetto, &$request, &$msg) {
+
+    
+    
+    private function getOggettoPerIndice(&$oggetti, &$request, &$msg) {
         if (isset($request['oggetto'])) {
-            $oggetto = ObjectFactory::instance()->creaOggettoDaCodice($request['oggetto']);
-            if (isset($insegnamento)) {
-                $oggetto->setInsegnamento($insegnamento);
+            // verifichiamo che sia un intero
+            $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+            if (isset($intVal) && $intVal > -1 && $intVal < count($oggetti)) {
+                return $oggetti[$intVal];
             } else {
-                $msg[] = "<li>Insegnamento non trovato</li>";
+                $msg[] = "<li> L'oggetto specificato non esiste </li>";
+                return null;
             }
+        } else {
+            $msg[] = '<li> Oggetto non specificato<li>';
+            return null;
         }
-        /* if (isset($request['data'])) {
-            $data = DateTime::createFromFormat("d/m/Y", $request['data']);
-            if (isset($data) && $data != false) {
-                $mod_appello->setData($data);
-            } else {
-                $msg[] = "<li>La data specificata non &egrave; corretta</li>";
-            }
-        }*/
-        /*if (isset($request['posti'])) {
-            if (!$mod_appello->setCapienza($request['posti'])) {
-                $msg[] = "<li>La capienza specificata non &egrave; corretta</li>";
-            }
-        } */
-    } 
+    }
+}
 
 ?>
