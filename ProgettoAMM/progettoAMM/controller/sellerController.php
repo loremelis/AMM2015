@@ -108,7 +108,7 @@ class sellerController extends BaseController {
         return $max + 1;
     }
     
-    protected function aggiungiOggetto($nuovo, $request, $msg) {
+    protected function aggiungiOggetto($oggetto, $request, $msg) {
         
         if (isset($request['nome_ogg'])) {
             if (!$oggetto->setNomeObj($request['nome_ogg'])) {
