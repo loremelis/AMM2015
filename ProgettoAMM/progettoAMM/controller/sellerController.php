@@ -26,10 +26,12 @@ class sellerController extends BaseController {
                 switch ($request["subpage"]) {
                     // modifica dei dati anagrafici
                     case 'venditore':
+                        
                         $vd->setSottoVista('venditore');
                         break;
                     
                     case 'cliente': 
+                        $oggetti = ObjectFactory::instance()->getListaOggetti();
                         $vd->setSottoVista('cliente');
                         break;
                     
@@ -49,9 +51,9 @@ class sellerController extends BaseController {
             
             // gestione dei comandi inviati dall'utente
             if (isset($request["cmd"])) {
-                //logout
+                 
                 switch ($request["cmd"]) {
-                    // logout
+                    
                     case 'logout':
                         $this->logout($vd);
                         break;
@@ -61,16 +63,16 @@ class sellerController extends BaseController {
                         $msg=array();
                         $nuovo = new Object();
                         $nuovo->setID(-1);
-                        $this->updateObject($nuovo, $request, $msg);
+                        $this->aggiungiOggetto($nuovo, $request, $msg);
                         $this->creaFeedbackUtente($msg, $vd, "Appello creato");
                         if (count($msg) == 0) {
-                            $vd->setSottoPagina('cliente');
+                            $vd->setSottoVista('venditore');
                             if (ObjectFactory::instance()->nuovo($nuovo) != 1) {
                                 $msg[] = '<li> Impossibile creare l\'appello </li>';
                             }
                         }
-                        //$appelli = ObjectFactory::instance()->getAppelliPerDocente($user);
-                        $this->showHomeUtente($vd);   //Forse
+                        $oggetti = ObjectFactory::instance()->getListaOggetti();
+                        $this->showHomeVenditore($vd);   
                         break;                    
             }
             } else {
@@ -97,21 +99,38 @@ class sellerController extends BaseController {
         return $max + 1;
     }
     
-    //aggiorna i dati del nuovo Oggetto
-    //ASSOLUTAMENTE DA RIVEDERE
-    public function updateObject($nuovo, $request, $msg) {
-
-        if (isset($request['oggetto'])) {
-            $oggetto = ObjectFactory::instance()->creaDaArray($request['oggetto']);
-            if (isset($oggetto)) {
-                $nuovo->setOggetto($oggetto);
-            } else {
-                $msg[] = "<li>Oggetto non aggiunto</li>";
+    protected function aggiungiOggetto($oggetto, &$request, &$msg) {
+        if (isset($request['nome_ogg'])) {
+            if (!$oggetto->setNomeObj($request['nome_ogg'])) {
+                $msg[] = '<li>La via specificata non &egrave; corretta</li>';
             }
+        }
+        if (isset($request['foto_ogg'])){ 
+            if (!$oggetto->setImage($request['foto_ogg'])) {
+                $msg[] = '<li>Il formato del numero civico non &egrave; corretto</li>';
+            }
+        }
+        if (isset($request['prezzo_ogg'])) {
+            if (!$oggetto->setPrice($request['prezzo_ogg'])) {
+                $msg[] = '<li>La citt&agrave; specificata non &egrave; corretta</li>';
+            }
+        }
+        if (isset($request['quantita_ogg'])) {
+            if (!$oggetto->setAmount($request['quantita_ogg'])) {
+                $msg[] = '<li>Il CAP specificato non &egrave; corretto</li>';
+            }
+        }
+       
+        if (isset($request['descrizione_ogg'])) {
+            if (!$oggetto->setDescription($request['descrizione_ogg'])) {
+                $msg[] = '<li>L\'indirizzo email specificato non &egrave; corretto</li>';
+            }
+        }
+      }
         
-    }
-        
-    }
+    
+    
+    
     
 }
 ?>

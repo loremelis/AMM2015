@@ -1,6 +1,6 @@
 <?php
 switch ($vd->getSottoVista()) {
-    case 'cliente':
+    case 'client':
         include_once 'client.php';
         break;
     case 'anagrafica':
@@ -12,7 +12,11 @@ switch ($vd->getSottoVista()) {
     case 'home':
         include_once 'home.php';
         break;
+    case 'info':
+        include_once 'info.php';
+        break;
     default: 
         include_once 'home.php';
+        break;
 }
-?>     
+?>  

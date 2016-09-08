@@ -1,6 +1,49 @@
- <div id="carrello"><a href="carrello.php">Carrello</a></div>
+ <div id="carrello"><a href="../index.php?page=client&subpage=carrello">Carrello</a></div>
+ 
+<?php if (count($oggetti) > 0) { ?>
+    <table id="tab_client">
+            <caption>Catalogo delle locandine</caption>
+        <thead>
+            <tr>
+                <th >Titolo</th>
+                <th >Prezzo</th>
+                <th >Descrizione</th>
+                <th >Immagine</th>
+                <th >Quantità</th>
+                <th >Aggiungere al carrello</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $i = 0;
+            $c = 0;
+            foreach ($oggetti as $oggetto) {
+                    ?>
+                    <tr <?= $c % 2 == 0 ? 'class="alt-row"' : '' ?>>
+                        <td><?= $oggetto->getNameObj() ?></td>
+                        <td><?= $oggetto->getPrice() ?></td>
+                        <td><a href="recensioni/<?= $oggetto->getDescription() ?>">Leggi..</a></td>
+                        <td><a href="../img/<?=$oggetto->getImage() ?>">Immagine</a></td>
+                        <td><?= $oggetto->getAmount() ?></td>
+                        <td><a href="..index.php?page=client&cmd=aggiungiCarrello&oggetto=<?=$oggetto->getId() ?> ">Aggiungi</a></td>
+                        
+                    </tr>
+                    <?php
+                    $c++;
+                    $i++;
+            }
+            ?>
+        </tbody>
+    </table>
+<?php } else { ?>
+    <p> Nessun oggetto disponibile </p>
+<?php } ?>
+
+
+
+
         
-        <!-- Qua ci sarà tutto il codice per gestire gli ordini -->
+        <!-- Qua ci sarà tutto il codice per gestire gli ordini 
         
         <table id="tab_client">
             <caption>Catalogo delle locandine</caption>
@@ -10,7 +53,7 @@
                 <td>Descrizione</td>
                 <td>Quantità</td>
                 <td>prezzo</td>
-                <td><a href="cliente.php">Link</a></td>
+                <td><a href="../index.php?page=client&cmd=aggiungiCarrello">Link</a></td>
             </tr>
             <tr class="pari">
                 <td id="nome_loc">The Lord of the Rings</td>
@@ -18,8 +61,7 @@
                 <td>Descrizione</td>
                 <td>Quantità</td>
                 <td>prezzo</td>
-                <td>
-                    <a href="cliente.php">Link</a></td>
+                <td><a href="../index.php?page=client&cmd=aggiungiCarrello">Link</a></td>
             </tr>
             <tr class="dispari">
                 <td id="nome_loc">Star Wars</td>
@@ -28,7 +70,7 @@
                 <td>Quantità</td>
                 <td>prezzo</td>
                 <td>
-                    <a href="cliente.php">Link</a></td>
+                    <a href="../index.php?page=client&cmd=aggiungiCarrello">Link</a></td>
             </tr>
             <tr class="pari">
                 <td id="nome_loc">Godfather</td>
@@ -37,7 +79,7 @@
                 <td>Quantità</td>
                 <td>prezzo</td>
                 <td>
-                    <a href="cliente.php">Link</a></td>
+                    <a href="../index.php?page=client&cmd=aggiungiCarrello">Link</a></td>
             </tr>
             <tr class="dispari">
                 <td id="nome_loc">The Departed</td>
@@ -46,7 +88,7 @@
                 <td>Quantità</td>
                 <td>prezzo</td>
                 <td>
-                    <a href="cliente.php">Link</a></td>
+                    <a href="../index.php?page=client&cmd=aggiungiCarrello">Link</a></td>
             </tr>
             <tr class="pari">
                 <td id="nome_loc">2001 Space Odysey</td>
@@ -55,7 +97,8 @@
                 <td>Quantità</td>
                 <td>prezzo</td>
                 <td>
-                    <a href="cliente.php">Link</a></td>
+                    <a href="../index.php?page=client&cmd=aggiungiCarrello">Link</a></td>
             </tr>
             
-        </table>
+        </table> -->
+        

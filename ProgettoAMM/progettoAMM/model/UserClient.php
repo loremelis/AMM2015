@@ -1,15 +1,11 @@
 <?php
 
-// Aggiungere ruolo a questa classe e alla classe Seller 
-
 class UserClient extends User {
    
-
+	
     private $nome;
 
     private $cognome;
-    
-    private $data;
    
     private $via;
    
@@ -22,26 +18,28 @@ class UserClient extends User {
     private $email;
 
 
-    /**
-     * Costruttore
-     */
-    public function __construct($ruolo, $password, $username, $ID, $nome, $cognome, $data, $via, $numCivico, $città, $cap, $email) {
+    // Costruttore
+    
+    public function __construct($ruolo, $password, $username, $ID, $nome, $cognome, $via, $numCivico, $citta, $cap, $email) {
         
         parent::__construct($ruolo, $password, $username, $ID);
         $this->nome = $nome;
         $this->cognome = $cognome;
-        $this->data = $data;
         $this->via = $via;
         $this->numCivico = $numCivico;
         $this->citta = $citta;
         $this->cap = $cap;
         $this->email = $email;
+		$this->ID=$ID;
         
         
     }
     
-    //Verificare se serve la funzione Esiste come per il prof//
-
+    
+    public function getID2(){
+    	
+        return $this->ID;
+    }
     
     public function getNome(){
         return $this->nome;
@@ -57,13 +55,6 @@ class UserClient extends User {
     public function setCognome($Cognome){
         $this->cognome=$Cognome;
         return true;
-    }
-    
-    public function getData(){
-        return $this->data;
-    }
-    public function setData($data){
-        $this->data=$data;
     }
     
     public function getVia(){
@@ -97,7 +88,7 @@ class UserClient extends User {
     public function getCap(){
         return $this->cap;
     }
-    public function setCap($cap) {                     //Il cap è formato da 5 numeri da 0 a 9 //
+    public function setCap($cap) {                  //Il cap è formato da 5 numeri da 0 a 9 //
         if (!filter_var($cap, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/[0-9]{5}/')))) {
             return false;
         }

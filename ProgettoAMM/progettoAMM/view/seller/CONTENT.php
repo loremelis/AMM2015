@@ -1,4 +1,3 @@
-
 <?php
 switch ($vd->getSottoVista()) {
     case 'cliente':

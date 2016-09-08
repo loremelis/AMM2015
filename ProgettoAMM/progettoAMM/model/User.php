@@ -1,10 +1,10 @@
 <?php
 
-//classe che mi serve per definire il ruolo di Cliente o venditore
+//classe che mi serve per definire il ruolo di Cliente o Venditore
 
 class User {
     
-    //Costanti che definiscono il ruolo di Venditore e Studente
+    //Costanti che definiscono il ruolo di Venditore e Cliente
     
     const Venditore = 1;
    
@@ -54,12 +54,11 @@ class User {
     }
 
     
-    public function getUsername(){         //Guardare user del proff//
+    public function getUsername(){      
         return $this->username;
     }
     public function setUsername($username) {
-        // utilizzo la funzione filter var specificando un'espressione regolare
-        // che implementa la validazione personalizzata
+
         if (!filter_var($username, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/[a-zA-Z]{5,}/')))) {
             return false;
         }
@@ -77,7 +76,7 @@ class User {
     
     //Verifica che l'utente esista per il sistema
     public function esiste() {
-        // implementazione di comodo, va fatto con il db
+        
         return isset($this->ruolo);
     }
 }

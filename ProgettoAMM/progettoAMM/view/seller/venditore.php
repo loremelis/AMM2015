@@ -1,4 +1,4 @@
-<form id="inserzione" action="index.php?page=seller&cmd=aggiungi_oggetto">
+<form id="inserzione" action="../index.php?page=seller&cmd=aggiungi_oggetto">
             <h2> Inserire l'elemento da aggiungere al catalogo</h2>
             <label for="nome_ogg">Nome oggetto</label>
             <input type="text" name="nome_ogg" id="nome_ogg"/><br>
@@ -23,7 +23,7 @@
                 <option value="10">10</option>
             </select><br>
             
-            <label for='descrizione_ogg'>Descrizione del film</label>
+            <label for="descrizione_ogg">Descrizione del film</label>
             <textarea name="descrizione_ogg" id="descrizione_ogg" rows="10">Descrizione</textarea><br>
             
             <input type="submit" value="Inserisci" id="inserire_ogg"/>

@@ -1,4 +1,3 @@
-
             <!-- titolo del sito -->
             <h1>LOLLOSFILM</h1>
             <!-- barra di navigazione all'interno dell'header -->

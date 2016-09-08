@@ -1,7 +1,6 @@
-
             
                  <div id="tastoHome">
-                     <a href="../index.php?page=home">Home</a>
+                     <a href="../index.php?page=seller&subpage=home">Home</a>
             </div>
             
              <div id="info">
@@ -14,11 +13,7 @@
                 locandina <br> 
                 </h4>
             </div>
-           
-        
-             <div id="login_info">
-                 Login <!-- aggiungere parte dinamica che cambia a seconda del Login Client o Venditore -->
-                  - Sito creato da Lorenzo Melis </div>
+
 
 
 

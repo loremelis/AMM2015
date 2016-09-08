@@ -1,6 +1,6 @@
 <?php
-
-include_once 'BaseController.php';
+include_once 'model/ObjectFactory.php';
+include_once 'clientController.php';
 
 /**
  * Controller che gestisce la modifica dei dati dell'applicazione relativa agli 
@@ -40,7 +40,8 @@ class clientController extends BaseController {
                         $vd->setSottoVista('carrello');
                         break;
                     
-                    case 'cliente':
+                    case 'client':
+                        $oggetti = ObjectFactory::instance()->getListaOggetti();
                         $vd->setSottoVista('client');
                         break;
                     
@@ -72,24 +73,48 @@ class clientController extends BaseController {
                     case 'anagrafica':
 
                         $msg = array();
-                        $this->aggiornaAnagrafica($user, $request, $msg); //DA VALUTARE
-                        $this->creaFeedbackUtente($msg, $vd, "Anagrafica aggiornata"); //ok
-                        $this->showHomeCLiente($vd);
+                        $this->aggiornaAnagrafica($user, $request, $msg);
+                        $this->creaFeedbackUtente($msg, $vd, "Anagrafica aggiornata"); 
+                        $this->showHomeCliente($vd);
                         break;
                     
                     //TUTTO DA VEDERE
                      case 'aggiungiCarrello':
-                         $object = ObjectFactory::instance()->cercaOggettoPerId(); //VALUTARE COSA METTERE DENTRO LE PARENTESI
-                         $msg= array();
-                         $this->aggiungiCarrello($object, $request, $msg);
-                         $this->creaFeedbackUtente($msg, $vd, "Oggetto aggiunto al carrello");
-                         $this->showHomeCLiente($vd);
-                         break;
-                    default: $this->showHomeCLiente($vd);
-                        
-                        //Forse fare funzione che elimina dal carrello
+                        // recuperiamo l'indice 
+                        $msg = array();
+                        $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
+                        if (isset($a)) {
+                            $isOk = $a->aggiungi($oggetto);
+                            $count = ObjectFactory::instance()->nuovo($oggetto);
+                            if (!$isOk || $count != 1) {
+                                $msg[] = "<li> Impossibile aggiungere l'oggetto </li>";
+                            }
+                        } else {
+                            $msg[] = "<li> Impossibile aggiungere l'oggetto. Verifica la quantita </li>";
+                        }
+                        $this->creaFeedbackUtente($msg, $vd, "Hai aggiunto l'oggetto selezionato");
+                        $this->showHomeCliente($vd);
+                        break;
+                      
+                      case 'cancella':
+                        // recuperiamo l'indice 
+                        $msg = array();
+                        $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
+                        if (isset($a)) {
+                            $isOk = $a->cancella($oggetto);
+                            $count = AppelloFactory::instance()->cancella($oggetto);
+                            if (!$isOk || $count != 1) {
+                                $msg[] = "<li> Impossibile cancellare l'oggetto </li>";
+                            }
+                        } else {
+                            $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";
+                        }
+                        $this->creaFeedbackUtente($msg, $vd, "Hai cancellato correttamente l'oggetto");
+                        $this->showHomeCliente($vd);
+                        break;
                     
-            }
+                    default: $this->showHomeCLiente($vd);
+                }
             } else {
                 // VALUTARE
                 $user = UserFactory::instance()->cercaUtentePerId($_SESSION[BaseController::user], $_SESSION[BaseController::role]);
@@ -100,10 +125,62 @@ class clientController extends BaseController {
         require 'view/master.php';
     }
      
-    /*Da fare               
-    public function aggiungiCarrello($object, $request, $msg) {
+    private function getOggettoPerIndice(&$oggetti, &$request, &$msg) {
+        if (isset($request['oggetto'])) {
+            // verifichiamo che sia un intero
+            $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+            if (isset($intVal) && $intVal > -1 && $intVal < count($oggetti)) {
+                return $oggetti[$intVal];
+            } else {
+                $msg[] = "<li> L'oggetto specificato non esiste </li>";
+                return null;
+            }
+        } else {
+            $msg[] = '<li>Oggetti non specificato<li>';
+            return null;
+        }
+    }
+    
+    
+    //DA RIVEDERE E PROBABILMENTE DA SPOSTARE IN CLIENT CONTROLLER
+    //Aggiorno l'anagrafica
+    protected function aggiornaAnagrafica($user, &$request, &$msg) {
+        if (isset($request['via'])) {
+            if (!$user->setVia($request['via'])) {
+                $msg[] = '<li>La via specificata non &egrave; corretta</li>';
+            }
+        }
+        if (isset($request['civico'])){ 
+            if (!$user->setNumCivico($request['civico'])) {
+                $msg[] = '<li>Il formato del numero civico non &egrave; corretto</li>';
+            }
+        }
+        if (isset($request['citta'])) {
+            if (!$user->setCitta($request['citta'])) {
+                $msg[] = '<li>La citt&agrave; specificata non &egrave; corretta</li>';
+            }
+        }
+        if (isset($request['cap'])) {
+            if (!$user->setCap($request['cap'])) {
+                $msg[] = '<li>Il CAP specificato non &egrave; corretto</li>';
+            }
+        }
+       
+        if (isset($request['email'])) {
+            if (!$user->setEmail($request['email'])) {
+                $msg[] = '<li>L\'indirizzo email specificato non &egrave; corretto</li>';
+            }
+        }
         
-    } */
+     
+        
+        // salviamo i dati se non ci sono stati errori
+        if (count($msg) == 0) {
+            if (UserFactory::instance()->salva($user) != 1) {   
+                $msg[] = '<li>Salvataggio non riuscito</li>';
+            }
+        }
+    }
  
 }
 ?>
