@@ -72,7 +72,7 @@ class sellerController extends BaseController {
                                 $msg[] = '<li> Impossibile creare l\'appello </li>';
                             }
                         }
-                        $oggetti = ObjectFactory::instance()->getListaOggett();
+                        $oggetti = ObjectFactory::instance()->getListaOggetti();
                         $this->showHomeVenditore($vd);
                         break;
                         

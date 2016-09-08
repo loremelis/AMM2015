@@ -196,7 +196,7 @@ class ObjectFactory{
        
        
         $query = "INSERT INTO oggetti (id,nome, prezzo, descrizione, immagine, quantita)
-                  values (',?,?,?,?,?)" ;
+                  values (?,?,?,?,?,?)" ;
             
         return $this->modificaDB($oggetto, $query);
     }
