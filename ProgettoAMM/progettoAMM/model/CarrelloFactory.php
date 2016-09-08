@@ -111,10 +111,10 @@ class CarrelloFactory{
             return 0;
         }
         if (!$stmt->bind_param('siii',
+                $carrello->getID(),
                 $carrello->getTitolo(),
-                $carrello->getAmount(),
                 $carrello->getPrice(),
-                $carrello->getID())) {
+                $carrello->getAmount())) {
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();

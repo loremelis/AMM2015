@@ -31,10 +31,10 @@ class Carrello {
     }
      
      public function getTitolo(){
-         return $this->name_obj;
+         return $this->titolo;
      }
-     public function setTitolo($name_obj){
-         $this->name_obj=$name_obj;
+     public function setTitolo($titolo){
+         $this->titolo=$titolo;
      }
      
      public function getPrice(){
