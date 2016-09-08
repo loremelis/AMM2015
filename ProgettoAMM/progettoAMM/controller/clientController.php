@@ -130,6 +130,7 @@ class clientController extends BaseController {
         if (isset($request['oggetto'])) {
             // verifichiamo che sia un intero
             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+            print($intVal);
             if (isset($intVal)) { //&& $intVal > -1 && $intVal < count($oggetti)) {
                 
                 return $oggetti[$intVal];
