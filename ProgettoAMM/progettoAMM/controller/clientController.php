@@ -131,7 +131,6 @@ class clientController extends BaseController {
             // verifichiamo che sia un intero
             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
             if (isset($intVal)) { //&& $intVal > -1 && $intVal < count($oggetti)) {
-                print($oggetti[$intval-4]);
                 return $oggetti[$intVal];
             } else {
                 $msg[] = "<li> L'oggetto specificato non esiste </li>";
