@@ -110,6 +110,7 @@ class CarrelloFactory{
             $mysqli->close();
             return 0;
         }
+		var_dump($carrello);
         if (!$stmt->bind_param('siii',
                 $carrello->getTitolo(),
                 $carrello->getPrice(),
