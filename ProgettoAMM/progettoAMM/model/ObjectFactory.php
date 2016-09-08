@@ -53,7 +53,7 @@ class ObjectFactory{
         }
         
          
-        if (!$stmt->bind_param('i', $oggettoId)) {
+        if (!$stmt->execute()){ //bind_param('i', $oggettoId)) {
             error_log("[cercaOggettoPerId] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
