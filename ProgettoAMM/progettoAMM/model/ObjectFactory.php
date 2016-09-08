@@ -202,15 +202,16 @@ class ObjectFactory{
                 '',
                 '".$oggetto['quantita_ogg']."'
                  )";
-        
-       
+        $object = (object) $oggetto;
+       /*
             $newobj->nome_ogg = $oggetto['nome_ogg'];
             $newobj->prezzo_ogg = $oggetto['prezzo_ogg'];
             $newobj->descrizione_ogg = $oggetto['descrizione_ogg'];
-           // $newobj->immagine_ogg = $oggetto['immagine_ogg'];
-            $newobj->quantita_ogg = $oggetto['quantita_ogg'];
+           $newobj->immagine_ogg = $oggetto['immagine_ogg'];
+            $newobj->quantita_ogg = $oggetto['quantita_ogg'];*/
         
-        return $this->modificaDB($newobj, $query);
+        
+        return $this->modificaDB($object, $query);
     }
     
     public function cancella(Object $oggetto){
