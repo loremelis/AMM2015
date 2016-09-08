@@ -193,8 +193,14 @@ class ObjectFactory{
     
     //aggiungere un nuovo oggetto
    public function nuovo(Object $oggetto){
-        $query = "INSERT INTO oggetti (id, nome, prezzo, descrizione, immagine, quantita)
-                  values (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO oggetti ( nome, prezzo, descrizione, immagine, quantita)
+                  values ( 
+                '".$oggetto['nome_ogg']."',
+                '".$oggetto['prezzo_ogg']."',
+                '".$oggetto['descrizione_ogg']."',
+                '',
+                '".$oggetto['quantita_ogg']."'
+                 )";
         return $this->modificaDB($oggetto, $query);
     }
     

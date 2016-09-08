@@ -59,13 +59,12 @@ class sellerController extends BaseController {
                         break;
                     
                     case 'aggiungiOggetto':
-                        
-                        var_dump($request);
-                        die();
-                        //$msg[] = 'msg';
+                        //var_dump($_REQUEST);
+                        //die();
+                        $msg = array();
                         //$oggetto = new Object();
-                       $msg= $this->aggiungiOggetto($request);
-                        $oggetto = ObjectFactory::instance()->nuovo($request);
+                        $this->aggiungiOggetto( $request, $msg);
+                        $oggetto = ObjectFactory::instance()->nuovo($oggetto);
                         $this->creaFeedbackUtente($msg, $vd, "Oggetto aggiunto al database");
                         break;                   
             }
@@ -93,35 +92,33 @@ class sellerController extends BaseController {
         return $max + 1;
     }
     
-    protected function aggiungiOggetto($request) {
-        $msg=array();
+    protected function aggiungiOggetto($oggetto, &$request, &$msg) {
         if (isset($request['nome_ogg'])) {
-          //  if (!$oggetto->setNomeObj($request['nome_ogg'])) {
+            if (!$oggetto->setNomeObj($request['nome_ogg'])) {
                 $msg[] = '<li>La via specificata non &egrave; corretta</li>';
-           // }
+            }
         }
         if (isset($request['foto_ogg'])){ 
-           // if (!$oggetto->setImage($request['foto_ogg'])) {
+            if (!$oggetto->setImage($request['foto_ogg'])) {
                 $msg[] = '<li>Il formato del numero civico non &egrave; corretto</li>';
-          //  }
+            }
         }
         if (isset($request['prezzo_ogg'])) {
-           // if (!$oggetto->setPrice($request['prezzo_ogg'])) {
+            if (!$oggetto->setPrice($request['prezzo_ogg'])) {
                 $msg[] = '<li>La citt&agrave; specificata non &egrave; corretta</li>';
-           // }
+            }
         }
         if (isset($request['quantita_ogg'])) {
-          //  if (!$oggetto->setAmount($request['quantita_ogg'])) {
+            if (!$oggetto->setAmount($request['quantita_ogg'])) {
                 $msg[] = '<li>Il CAP specificato non &egrave; corretto</li>';
-          //  }
+            }
         }
        
         if (isset($request['descrizione_ogg'])) {
-          //  if (!$oggetto->setDescription($request['descrizione_ogg'])) {
+            if (!$oggetto->setDescription($request['descrizione_ogg'])) {
                 $msg[] = '<li>L\'indirizzo email specificato non &egrave; corretto</li>';
-          //  }
+            }
         }
-        return $msg;
       }
         
     
