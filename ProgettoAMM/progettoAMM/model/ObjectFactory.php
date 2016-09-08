@@ -1,7 +1,7 @@
 <?php
 
 include_once 'Object.php';
-include_once 'User.php';
+include_once 'model/User.php';
 include_once 'UserFactory.php';
 include_once 'UserClient.php';
 include_once 'UserSeller.php';
