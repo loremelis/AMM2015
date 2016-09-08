@@ -126,7 +126,7 @@ class clientController extends BaseController {
         require 'view/master.php';
     }
 
-    private function getOggettoPerId(&$oggetti, &$request, &$msg) {
+    private function getOggettoPerIndice(&$oggetti, &$request, &$msg) {
         if (isset($request['oggetto'])) {
             // verifichiamo che sia un intero
             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
