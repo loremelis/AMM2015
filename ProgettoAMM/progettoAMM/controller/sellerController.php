@@ -64,7 +64,7 @@ class sellerController extends BaseController {
                         $oggetti = ObjectFactory::instance()->getListaOggetti();
                         $nuovo = new Object('','','','','','');
                         $nuovo->setId(-1);
-                        $this->aggiungiAppello($nuovo, $request, $msg);
+                        $this->aggiungiOggetto($nuovo, $request, $msg);
                         $this->creaFeedbackUtente($msg, $vd, "Appello creato");
                         if (count($msg) == 0) {
                             if (AppelloFactory::instance()->nuovo($nuovo) != 1) {
@@ -162,9 +162,6 @@ class sellerController extends BaseController {
                 $msg[] = "<li>La capienza specificata non &egrave; corretta</li>";
             }
         } */
-    }
-        
-    
-    
+    } 
 
 ?>
