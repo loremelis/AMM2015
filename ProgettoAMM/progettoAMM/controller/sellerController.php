@@ -69,7 +69,7 @@ class sellerController extends BaseController {
                         $this->creaFeedbackUtente($msg, $vd, "Oggetto creato");
                         if (count($msg) == 0) {
                             if (ObjectFactory::instance()->nuovo($nuovo) != 1) {
-                                $msg[] = '<li> Impossibile creare l\'appello </li>';
+                                $msg[] = '<li> Impossibile creare l\'oggetto </li>';
                             }
                         }
                         $oggetti = ObjectFactory::instance()->getListaOggetti();
