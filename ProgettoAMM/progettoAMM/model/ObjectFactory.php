@@ -2,8 +2,6 @@
 
 include_once 'Object.php';
 
-
-
 class ObjectFactory{
     
     private static $singleton;
