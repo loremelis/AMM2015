@@ -83,7 +83,7 @@ class clientController extends BaseController {
                     case 'aggiungiCarrello':
                         // recuperiamo l'indice 
                         $msg = array();
-                        $a = $this->getOggettoPerId($oggetti, $request, $msg);
+                        $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         if (isset($a)) {
                             //$isOk = $a->aggiungi($oggetto); //non so
                             $count = CarrelloFactory::instance()->nuovo($a);
