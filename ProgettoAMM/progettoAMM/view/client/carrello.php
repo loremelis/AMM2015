@@ -1,12 +1,25 @@
- <div id="contenuto_carrelllo"> <!-- Qua ci sarà tutto il codice per gestire gli ordini -->
-            <h2>Prezzo totale: </h2>
+ <div id="contenuto_carrelllo"> 
+            <h2>Prezzo totale: <!--codice per calcolare il totale--> </h2>
+            <!-- Tasto per procedere all'aquisto -->
         
             <table id="table_carrello">
                 <caption>Contentuto del tuo carrello</caption>
-                <tr>
-                    <td>Titolo</td>
-                    <td>quantità</td>
-                 </tr>
+                <?php
+                 $i = 0;
+                 $c = 0;
+                 foreach ($oggetti as $oggetto) {
+                ?>
+                    <tr <?= $c % 2 == 0 ? 'class="alt-row"' : '' ?>>
+                        <td><?= $carrello->getTitolo() ?></td>
+                        <td><?= $carrello->getAmount() ?></td>
+                        <td><a href="../index.php?page=client&cmd=cancella&carrello=<?=$c ?> ">Cancella</a></td>
+                        
+                    </tr>
+                    <?php
+                    $c++;
+                    $i++;
+            }
+            ?>
             </table>
         </div>
 

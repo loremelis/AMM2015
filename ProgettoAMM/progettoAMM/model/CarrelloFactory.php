@@ -47,17 +47,17 @@ class CarrelloFactory{
     
     public function &caricaCarrelloDaStmt(mysqli_stmt $stmt){
         $carrello = array();
-         if (!$stmt->execute()) {
+        if (!$stmt->execute()) {
             error_log("[caricaCarrelloDaStmt] impossibile" .
                     " eseguire lo statement");
             return null;
         }
         $row = array();
         $bind = $stmt->bind_result(
-                $row['oggetti_nome'],
-                $row['oggetti_quantita'],
-                $row['oggetti_prezzo'],
-                $row['oggetti_id']);
+                $row['carrello_nome'],
+                $row['carrello_quantita'],
+                $row['carrello_prezzo'],
+                $row['carrello_id']);
                 
         if (!$bind) {
             error_log("[caricaOggettoDaStmt] impossibile" .
@@ -75,12 +75,12 @@ class CarrelloFactory{
 
     public static function creaCarrelloDaArray($row) {
    
-        $oggetto = new Carrello(
+        $carrello = new Carrello(
         $row['titolo'],
         $row['quantita'],        
         $row['prezzo'],
         $row['id']);
-        return $oggetto;
+        return $carrello;
      }
      
      public function nuovo(Carrello $carrello){
@@ -110,7 +110,7 @@ class CarrelloFactory{
             $mysqli->close();
             return 0;
         }
-        if (!$stmt->bind_param('isissi',
+        if (!$stmt->bind_param('siii',
                 $carrello->getTitolo(),
                 $carrello->getAmount(),
                 $carrello->getPrice(),

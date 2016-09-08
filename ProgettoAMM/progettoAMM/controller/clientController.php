@@ -39,6 +39,7 @@ class clientController extends BaseController {
                         break;
 
                     case 'carrello':
+                        $carrelli = CarrelloFactory::instance()->getListaCarrello();
                         $vd->setSottoVista('carrello');
                         break;
 
@@ -85,11 +86,15 @@ class clientController extends BaseController {
                         $msg = array();
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         if (isset($a)) {
-                            //$isOk = $a->aggiungi($oggetto); //non so
-                            $count = CarrelloFactory::instance()->nuovo($a);
+                            $carrello = new Carrello(
+                                    $a->getID(),
+                                    $a->getNameObj,
+                                    $a->getPrice,
+                                    '+1'); //Questo uno da rivedere perchè deve aggiungersi
+                            $c = CarrelloFactory::instance()->nuovo($carrello);
                             /* if (!$isOk || $count != 1) {
-                              $msg[] = "<li> Impossibile cancellare l'oggetto </li>";
-                              } */
+                              $msg[] = "<li> Impossibile aggiungere l'oggetto </li>";
+                            }*/
                         } else {
                             $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";
                         }
@@ -100,13 +105,10 @@ class clientController extends BaseController {
                     case 'cancella':
                         // recuperiamo l'indice 
                         $msg = array();
-                        $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
+                        $a = $this->getCarrelloPerIndice($carrelli, $request, $msg);
                         if (isset($a)) {
-                            // $isOk = $a->cancella($oggetto);
-                            $count = CarrelloFactory::instance()->cancella($a);
-                            /* if (!$isOk || $count != 1) {
-                              $msg[] = "<li> Impossibile cancellare l'oggetto </li>";
-                              } */
+                            $c = CarrelloFactory::instance()->cancella($a);
+                            //Funzione che aumenta la quantita di prodotti nella tabella clienti in base a quanto era nel carrello
                         } else {
                             $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";
                         }
@@ -128,7 +130,6 @@ class clientController extends BaseController {
 
     private function getOggettoPerIndice(&$oggetti, &$request, &$msg) {
         if (isset($request['oggetto'])) {
-            print("c1");
             // verifichiamo che sia un intero
             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
             if (isset($intVal) && $intVal > -1 && $intVal < count($oggetti)) {
@@ -138,7 +139,23 @@ class clientController extends BaseController {
                 return null;
             }
         } else {
-            $msg[] = '<li>Oggetti non specificato<li>';
+            $msg[] = '<li> Oggetto non specificato<li>';
+            return null;
+        }
+    }
+    
+    private function getCarrelloPerIndice(&$carrelli, &$request, &$msg) {
+        if (isset($request['carrello'])) {
+            // verifichiamo che sia un intero
+            $intVal = filter_var($request['carrello'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+            if (isset($intVal) && $intVal > -1 && $intVal < count($carrelli)) {
+                return $carrelli[$intVal];
+            } else {
+                $msg[] = "<li> L'oggetto specificato non esiste </li>";
+                return null;
+            }
+        } else {
+            $msg[] = '<li> Oggetto non specificato<li>';
             return null;
         }
     }
