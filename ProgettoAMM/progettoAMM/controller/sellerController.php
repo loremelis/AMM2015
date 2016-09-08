@@ -60,7 +60,7 @@ class sellerController extends BaseController {
                     
                     case 'aggiungiOggetto':
                         var_dump($_REQUEST);
-                        DIE();
+                        die();
                         $msg = array();
                         $oggetto = new Object($id);
                         $this->aggiungiOggetto($oggetto, $request, $msg);
