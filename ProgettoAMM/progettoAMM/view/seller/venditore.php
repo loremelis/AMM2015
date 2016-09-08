@@ -1,4 +1,6 @@
-<form id="inserzione" action="../index.php?page=seller&cmd=aggiungiOggetto">
+<form id="inserzione" action="index.php">
+        <input type="hidden" value="seller" name="page"/>
+        <input type="hidden" value="aggiungiOggetto" name="cmd"/>
             <h2> Inserire l'elemento da aggiungere al catalogo</h2>
             <label for="nome_ogg">Nome oggetto</label>
             <input type="text" name="nome_ogg" id="nome_ogg"/><br>
@@ -27,4 +29,4 @@
             <textarea name="descrizione_ogg" id="descrizione_ogg" rows="10">Descrizione</textarea><br>
             
             <input type="submit" value="Inserisci" id="inserire_ogg"/>
-        </form>
+</form>
