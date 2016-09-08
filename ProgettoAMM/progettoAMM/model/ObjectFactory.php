@@ -141,20 +141,20 @@ class ObjectFactory{
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
         if (!$stmt) {
-            error_log("[caricaCarrello] impossibile" .
+            error_log("[caricaOggetto] impossibile" .
                     " inizializzare il prepared statement");
             $mysqli->close();
             return null;
         }
         if (!$stmt->bind_param('i', $oggetto->getId())) {
-            error_log("[caricaCarrello] impossibile" .
+            error_log("[caricaOggetto] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
             return null;
         }
         
         if (!$stmt->execute()) {
-            error_log("[caricaCarrello] impossibile" .
+            error_log("[caricaOggetto] impossibile" .
                     " eseguire lo statement");
             $mysqli->close();
             return null;

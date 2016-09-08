@@ -131,8 +131,8 @@ class clientController extends BaseController {
             // verifichiamo che sia un intero
             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
             if (isset($intVal)) { //&& $intVal > -1 && $intVal < count($oggetti)) {
-                $o = ObjectFactory::instance()->cercaOggettoPerId($intVal);
-                return $o;
+                
+                return $oggetti[$intVal];
             } else {
                 $msg[] = "<li> L'oggetto specificato non esiste </li>";
                 return null;
@@ -143,7 +143,7 @@ class clientController extends BaseController {
         }
     }
 
-    //DA RIVEDERE E PROBABILMENTE DA SPOSTARE IN CLIENT CONTROLLER
+    
     //Aggiorno l'anagrafica
     protected function aggiornaAnagrafica($user, &$request, &$msg) {
         if (isset($request['via'])) {
@@ -181,9 +181,7 @@ class clientController extends BaseController {
         }
     }
 
-    public function aggiungiCarrello($oggetto, $request, $msg) {
-        
-    }
+    
 
 }
 ?>
