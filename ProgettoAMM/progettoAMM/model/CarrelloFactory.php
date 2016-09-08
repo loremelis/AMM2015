@@ -129,6 +129,11 @@ class CarrelloFactory{
         $mysqli->close();
         return $stmt->affected_rows;
     }
+    
+    //Funzione che calcola il totale del prezzo
+    private function calcolaTotale($carrelli){
+        
+    }
  }
 
 

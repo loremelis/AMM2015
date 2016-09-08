@@ -24,6 +24,7 @@ class ObjectFactory{
         return self::$singleton;
     }
     
+    //VALUTARE SE MI SERVA
     public function cercaOggettoPerId($oggettoId){
         $oggetti = array();
         $query= "SELECT * FROM oggetti WHERE id=\"$oggettoId\";";
@@ -72,41 +73,6 @@ class ObjectFactory{
             return null;
         }
     }
-    
-    //mi serve una variabile che scorra tutti gli id degli oggetti
-    
-    /* public function &getCarelloPerCliente(int $i){ 
-        $oggetti = array();
-        $query = "select * from oggetti where oggetti_id = ?";
-        $mysqli = Db::getInstance()->connectDb();
-        if (!isset($mysqli)) {
-            error_log("[getcarrelloPerCliente] impossibile inizializzare il database");
-            $mysqli->close();
-            return $oggetti;
-        }
-        
-        $stmt = $mysqli->stmt_init();
-        $stmt->prepare($query);
-        if (!$stmt) {
-            error_log("[getcarrelloPerCliente] impossibile" .
-                    " inizializzare il prepared statement");
-            $mysqli->close();
-            return $oggetti;
-        }
-        
-        if (!$stmt->bind_param('i',$i)){
-            error_log("[getcarrelloPerCliente] impossibile" .
-                    " effettuare il binding in input");
-            $mysqli->close();
-            return $oggetti;
-        }
-        $oggetti =  self::caricaOggettiDaStmt($stmt);
-        foreach($oggetti as $oggetto){
-            self::caricaOggetto($oggetto);
-        }
-        $mysqli->close();
-        return $oggetti;
-    } */
     
     public function &getListaOggetti() {
         $oggetti = array();
@@ -161,8 +127,7 @@ class ObjectFactory{
         }
     }
     
-    
-   public function &caricaOggettiDaStmt(mysqli_stmt $stmt){
+    public function &caricaOggettiDaStmt(mysqli_stmt $stmt){
         $oggetti = array();
          if (!$stmt->execute()) {
             error_log("[caricaOggettoDaStmt] impossibile" .
@@ -192,7 +157,6 @@ class ObjectFactory{
         return $oggetti;
     }
 
-    
     public function creaOggettoDaArray($row){
         $oggetto = new Object(
         $row['id'],
@@ -203,16 +167,7 @@ class ObjectFactory{
         $row['quantita']);
         return $oggetto;
      }
-     
-    /* $oggetto->setID($row['id']);
-        $oggetto->setNameObj($row['nome']);
-        $oggetto->setPrice($row['prezzo']);
-        $oggetto->setDescription($row['descrizione']);
-        $oggetto->setImage($row['immagine']);
-        $oggetto->setAmount($row['quantita']);
-        return $oggetto;
-    } */
-    
+
     /*modificare un oggetto
     public function salva(Object $oggetto){
          $query = "UPDATE oggetti SET

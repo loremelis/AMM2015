@@ -1,4 +1,4 @@
-<form id="inserzione" action="../index.php?page=seller&cmd=aggiungi_oggetto">
+<form id="inserzione" action="../index.php?page=seller&cmd=aggiungiOggetto">
             <h2> Inserire l'elemento da aggiungere al catalogo</h2>
             <label for="nome_ogg">Nome oggetto</label>
             <input type="text" name="nome_ogg" id="nome_ogg"/><br>

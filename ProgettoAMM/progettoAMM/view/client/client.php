@@ -1,4 +1,5 @@
- <div id="carrello"><a href="../index.php?page=client&subpage=carrello">Carrello</a></div>
+ <!-- Aggiungere codice ajax per modificare il carrello con un numero che indichi quanti oggetti contiene -->
+<div id="carrello"><a href="../index.php?page=client&subpage=carrello">Carrello</a></div>
  
 <?php if (count($oggetti) > 0) { ?>
     <table id="tab_client">

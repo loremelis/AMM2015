@@ -58,22 +58,13 @@ class sellerController extends BaseController {
                         $this->logout($vd);
                         break;
                     
-                    case 'aggiungi_oggetto':
-                    
-                        $msg=array();
-                        $nuovo = new Object();
-                        $nuovo->setID(-1);
-                        $this->aggiungiOggetto($nuovo, $request, $msg);
-                        $this->creaFeedbackUtente($msg, $vd, "Appello creato");
-                        if (count($msg) == 0) {
-                            $vd->setSottoVista('venditore');
-                            if (ObjectFactory::instance()->nuovo($nuovo) != 1) {
-                                $msg[] = '<li> Impossibile creare l\'appello </li>';
-                            }
-                        }
-                        $oggetti = ObjectFactory::instance()->getListaOggetti();
-                        $this->showHomeVenditore($vd);   
-                        break;                    
+                    case 'aggiungiOggetto':
+                        $msg = array();
+                        $oggetto = new Object();
+                        $this->aggiungiOggetto($oggetto, $request, $msg);
+                        $oggetto = ObjectFactory::instance()->nuovo($oggetto);
+                        $this->creaFeedbackUtente($msg, $vd, "Oggetto aggiunto al database");
+                        break;                   
             }
             } else {
                 
