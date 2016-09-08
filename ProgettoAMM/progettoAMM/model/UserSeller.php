@@ -1,5 +1,6 @@
 <?php
 
+include_once 'User.php';
 
 class UserSeller extends User {
 
@@ -15,5 +16,6 @@ class UserSeller extends User {
         return $this->ID;
     }
 	
-    }
+}
+
 ?>
