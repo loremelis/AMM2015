@@ -99,12 +99,13 @@ INSERT INTO `venditore` (`username`, `password`, `id`) VALUES
 
 
 CREATE TABLE IF NOT EXISTS `carrello` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `titolo` varchar(128) DEFAULT NULL,
   `quantità` int(11) DEFAULT NULL,
    `prezzo` int(11) DEFAULT NULL,
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id_ogg` bigint(20) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 
 

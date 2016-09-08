@@ -84,8 +84,8 @@ class CarrelloFactory{
      }
      
      public function nuovo(Carrello $carrello){
-        $query = "INSERT INTO carrello (titolo, prezzo, quantita, id)
-                  values (?, ?, ?, ?)";
+        $query = "INSERT INTO carrello (titolo, prezzo, quantita,id_ogg)
+                  values (?, ?, ?,?)";
         return $this->modificaDB($carrello, $query);
     }
     
@@ -111,10 +111,10 @@ class CarrelloFactory{
             return 0;
         }
         if (!$stmt->bind_param('siii',
-                $carrello->getID(),
                 $carrello->getTitolo(),
                 $carrello->getPrice(),
-                $carrello->getAmount())) {
+                $carrello->getAmount(),
+                $carrello->getIdObj())) {
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();

@@ -8,6 +8,7 @@ class Carrello {
     private $titolo;
     private $price;
     private $amount;
+    private $id_ogg;
     
     
     public function __construct($ID,$titolo,$price,$amount){
@@ -58,6 +59,13 @@ class Carrello {
             return false;
         }
         $this->amount=$intVal;
+     }
+     
+     public function getIdObj(){
+         return $this->titolo;
+     }
+     public function setIdObj($id_ogg){
+         $this->id_ogg=$id_ogg;
      }
 
     
