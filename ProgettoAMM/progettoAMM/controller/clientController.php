@@ -79,16 +79,16 @@ class clientController extends BaseController {
                         break;
                     
                     
-                      case 'aggiungi_carrello':
+                      case 'aggiungiCarrello':
                         // recuperiamo l'indice 
                         $msg = array();
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         if (isset($a)) {
-                            $isOk = $a->aggiungi($oggetto); //non so
-                            $oggetti = CarrelloFactory::instance()->nuovo();
-                            if (!$isOk || $count != 1) {
+                            //$isOk = $a->aggiungi($oggetto); //non so
+                            $count = CarrelloFactory::instance()->nuovo($a);
+                            /*if (!$isOk || $count != 1) {
                                 $msg[] = "<li> Impossibile cancellare l'oggetto </li>";
-                            }
+                            }*/
                         } else {
                             $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";
                         }
