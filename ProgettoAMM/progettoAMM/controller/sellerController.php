@@ -1,5 +1,6 @@
 <?php
 include_once 'BaseController.php';
+include_once 'model/ObjectFactory.php';
 
 //Gestisce il Venditore
 class sellerController extends BaseController {
