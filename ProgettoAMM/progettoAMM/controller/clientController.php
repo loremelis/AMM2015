@@ -117,7 +117,7 @@ class clientController extends BaseController {
                     default: $this->showHomeCLiente($vd);
                 }
             } else {
-                // VALUTARE
+                
                 $user = UserFactory::instance()->cercaUtentePerId($_SESSION[BaseController::user], $_SESSION[BaseController::role]);
                 $this->showHomeUtente($vd);
             }
@@ -128,9 +128,10 @@ class clientController extends BaseController {
 
     private function getOggettoPerIndice(&$oggetti, &$request, &$msg) {
         if (isset($request['oggetto'])) {
+            print("c1");
             // verifichiamo che sia un intero
             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
-            if (isset($intVal)) { //&& $intVal > -1 && $intVal < count($oggetti)) {
+            if (isset($intVal) && $intVal > -1 && $intVal < count($oggetti)) {
                 return $oggetti[$intVal];
             } else {
                 $msg[] = "<li> L'oggetto specificato non esiste </li>";
