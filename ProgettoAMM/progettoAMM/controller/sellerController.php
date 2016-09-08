@@ -68,7 +68,7 @@ class sellerController extends BaseController {
                         $this->aggiungiOggetto($nuovo, $request, $msg);
                         $this->creaFeedbackUtente($msg, $vd, "Appello creato");
                         if (count($msg) == 0) {
-                            if (AppelloFactory::instance()->nuovo($nuovo) != 1) {
+                            if (ObjectFactory::instance()->nuovo($nuovo) != 1) {
                                 $msg[] = '<li> Impossibile creare l\'appello </li>';
                             }
                         }
