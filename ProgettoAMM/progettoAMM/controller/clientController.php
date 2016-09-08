@@ -89,13 +89,17 @@ class clientController extends BaseController {
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
                          
                         if (isset($a)) {
-                            var_dump($a->getID());
+                          //  var_dump($a->getNameObj());
                             $carrello = new Carrello(
                                     $a->getID(),
-                                    $a->getNameObj,
-                                    $a->getPrice,
-                                    '+1'); //Questo uno da rivedere perchè deve aggiungersi
+                                    $a->getNameObj(),
+                                    $a->getPrice(),
+                                    '1'); //Questo uno da rivedere perchè deve aggiungersi
                             $c = CarrelloFactory::instance()->nuovo($carrello);
+                            if(isset($c)){
+                                //clase che mi decrementa il magazzino 
+                                //Con update
+                            }
                             /* if (!$isOk || $count != 1) {
                               $msg[] = "<li> Impossibile aggiungere l'oggetto </li>";
                             }*/
