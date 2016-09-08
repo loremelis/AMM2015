@@ -84,6 +84,7 @@ class clientController extends BaseController {
                     case 'aggiungiCarrello':
                         // recuperiamo l'indice 
                         $msg = array();
+                        $oggetti = ObjectFactory::instance()->getListaOggetti();
                         var_dump($oggetti);
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         
