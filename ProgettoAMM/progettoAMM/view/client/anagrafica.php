@@ -1,14 +1,10 @@
-<form id="anagrafica" method="post" action="cliente/anagrafica<?= $vd->scriviToken('?')?>" >
+<form id="anagrafica" method="post" action="../index.php?page=client&cmd=anagrafica">
             <h2> Inserire i dati del cliente</h2>
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome" value="<?= $user->getNome() ?>"><br>
             
             <label for="cognome">Cognome</label>
-            <input type="text" name="cognome" id="cognome" value="<?= $user->getCognome() ?>"/><br>
-            
-            <label for="data">Data di Nascita</label>
-            <input type="date" name="data" id="data" value="<?= $user->getData() ?>" /><br>
-            
+            <input type="text" name="cognome" id="cognome" value="<?= $user->getCognome() ?>"/><br>  
             
             <label for="via">Via o Piazza</label>
             <input type="text" name="via" id="via" value="<?= $user->getVia() ?>"/><br>
