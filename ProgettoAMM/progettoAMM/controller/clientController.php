@@ -84,8 +84,9 @@ class clientController extends BaseController {
                     case 'aggiungiCarrello':
                         // recuperiamo l'indice 
                         $msg = array();
+                        var_dump($oggetti);
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
-                        var_dump($a);
+                        
                         if (isset($a)) {
                             $carrello = new Carrello(
                                     $a->getID(),
