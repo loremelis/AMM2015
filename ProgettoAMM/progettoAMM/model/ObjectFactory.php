@@ -202,7 +202,7 @@ class ObjectFactory{
                 '',
                 '".$oggetto['quantita_ogg']."'
                  )";
-        return $this->modificaDB($oggetto, $query);
+        return $this->modificaDB((object) $oggetto, $query);
     }
     
     public function cancella(Object $oggetto){
