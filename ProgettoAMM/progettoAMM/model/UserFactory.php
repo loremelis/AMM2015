@@ -1,5 +1,6 @@
 <?php
 
+include_once 'User.php';
 
 class UserSeller extends User {
 
