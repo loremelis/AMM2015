@@ -1,7 +1,6 @@
 <?php
 
-/* Qua ci sara il php per gestire gli oggetti in vendita -->
- in questa cartella ci andranno anche */
+/* Qua ci sara il php per gestire gli oggetti in vendita */
 
 
 
