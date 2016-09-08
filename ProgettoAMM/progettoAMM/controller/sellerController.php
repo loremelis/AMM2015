@@ -139,7 +139,7 @@ class sellerController extends BaseController {
 
     
     
-    private function getOggettoPerIndice(&$oggetti, &$request, &$msg) {
+    private function getOggettoPerIndice($oggetto) {
         if (isset($request['oggetto'])) {
             // verifichiamo che sia un intero
             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
