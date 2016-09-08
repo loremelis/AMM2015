@@ -76,24 +76,21 @@ class CarrelloFactory{
     public static function creaCarrelloDaArray($row) {
    
         $carrello = new Carrello(
-        $row['id'],
         $row['titolo'],
         $row['quantita'],        
         $row['prezzo'],
-        $row['id_ogg']
-        );
+        $row['id']);
         return $carrello;
      }
      
      public function nuovo(Carrello $carrello){
-        $query = "INSERT INTO carrello (id, titolo, prezzo, quantita,id_ogg)
-                  values (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO carrello (titolo, prezzo, quantita,id_ogg)
+                  values (?, ?, ?,?)";
         return $this->modificaDB($carrello, $query);
     }
     
     public function cancella(Carrello $carrello){
-        $query = "delete from carrello 
-                 where id = ? and titolo = ? prezzo = ? and quantita = ? and id_ogg = ?";
+        $query = "delete from carrello where id = ?";
         return $this->modificaDB($carrello, $query);
     }
     
@@ -113,17 +110,11 @@ class CarrelloFactory{
             $mysqli->close();
             return 0;
         }
-<<<<<<< HEAD
-		var_dump($carrello);
         if (!$stmt->bind_param('siii',
-=======
-        if (!$stmt->execute()){ /*bind_param('isiii',
-                $carrello->getID(),
->>>>>>> f75cc966c1ac1679f594aeb92fb8b3011006179c
                 $carrello->getTitolo(),
                 $carrello->getPrice(),
                 $carrello->getAmount(),
-                $carrello->getIdObj()))*/ 
+                $carrello->getIdObj())) {
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
