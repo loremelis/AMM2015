@@ -64,7 +64,7 @@ class sellerController extends BaseController {
                         //var_dump($request);
                         //die();
                         //$msg[] = 'msg';
-                        //$oggetto = new Object();
+                       $oggetto = new Object($ID,$name_obj,$price,$description,$image,$amount);
                        $msg= $this->aggiungiOggetto($request);
                         $oggetto = ObjectFactory::instance()->nuovo($request);
                         $this->creaFeedbackUtente($msg, $vd, "Oggetto aggiunto al database");
