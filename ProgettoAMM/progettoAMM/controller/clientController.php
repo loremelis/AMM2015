@@ -91,7 +91,7 @@ class clientController extends BaseController {
                          
                         if (isset($a)) {
                           //  var_dump($a->getNameObj());
-                            $car = new Carrello(
+                            $carrello = new Carrello(
                                     $carrello->getID(),
                                     $a->getNameObj(),
                                     $a->getPrice(),
@@ -112,6 +112,7 @@ class clientController extends BaseController {
 
                     case 'cancella':
                         // recuperiamo l'indice 
+                        
                         $msg = array();
                         $a = $this->getCarrelloPerIndice($carrelli, $request, $msg);
                         if (isset($a)) {
