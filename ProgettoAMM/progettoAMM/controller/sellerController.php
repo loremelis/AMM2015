@@ -67,6 +67,7 @@ class sellerController extends BaseController {
                         $nuovo->setId(-1);
                         $this->aggiungiOggetto($nuovo, $request, $msg);
                         $this->creaFeedbackUtente($msg, $vd, "Oggetto creato");
+						var_dump($oggetti);
                         if (count($msg) == 0) {
                             if (ObjectFactory::instance()->nuovo($nuovo) != 1) {
                                 $msg[] = '<li> Impossibile creare l\'oggetto </li>';
