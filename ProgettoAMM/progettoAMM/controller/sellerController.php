@@ -80,7 +80,7 @@ class sellerController extends BaseController {
                         if (isset($request['oggetto'])) {
                             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if (isset($intVal)) {
-                                $ogg = ObjectFactory::instance()->getOggettoPerIndice($intVal);
+                                $ogg = $this->getOggettoPerIndice($intVal);
                                 if ($ogg != null) {
                                     if (ObjectFactory::instance()->cancella($ogg) != 1) {
                                         $msg[] = '<li> Impossibile cancellare l\'oggetto </li>';
