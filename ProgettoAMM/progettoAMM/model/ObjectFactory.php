@@ -193,7 +193,7 @@ class ObjectFactory{
     
     //aggiungere un nuovo oggetto
    public function nuovo($oggetto){
-       //var_dump($oggetto);
+       var_dump($oggetto);
         $query = "INSERT INTO oggetti ( nome, prezzo, descrizione, immagine, quantita)
                   values ( 
                 '".$oggetto['nome_ogg']."',
