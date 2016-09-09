@@ -153,15 +153,16 @@ class CarrelloFactory{
     }
     
     //Funzione che calcola il totale del prezzo
-    /*public function calcolaTotale($carrelli){
+    public function calcolaTotale($carrelli){
         
         foreach($carrelli as $carrello){
+            $a = 0;
             $a = $carrello->getPrice();
             $tot += $a;
         }
         return $tot;
         
-    }*/
+    }
     
     /* public function &caricaCarrelloDaStmt(mysqli_stmt $stmt){
         $carrello = array();
