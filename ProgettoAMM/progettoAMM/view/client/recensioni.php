@@ -1,4 +1,12 @@
-<h2><?= $oggetto->getNameObj() ?></h2> 
+
+
+
+<div id="info">
+
+<h1><?= $oggetto->getNameObj() ?></h1> 
                     
 <h4> <?=  $oggetto->getDescription() ?> </h4>
+
+
+</div>
 
