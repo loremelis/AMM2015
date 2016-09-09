@@ -50,7 +50,11 @@ class ObjectFactory{
 
                     return null;
                 }
-                return self::caricaOggettoDaStmt($stmt);  
+                $oggetto = self::caricaOggettoDaStmt($stmt); 
+                if(isset($oggetto)){
+                    $mysqli->close();
+                    return $oggetto;
+                }
     }
     
     public function &getListaOggetti() {
