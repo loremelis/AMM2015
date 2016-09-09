@@ -50,8 +50,10 @@ class ObjectFactory{
 
                     return null;
                 }
+                print('o1');
                 $oggetto = self::caricaOggettoDaStmt($stmt); 
                 if(isset($oggetto)){
+                    print('02');
                     $mysqli->close();
                     return $oggetto;
                 }
@@ -135,6 +137,7 @@ class ObjectFactory{
             return null;
         }
         $stmt->close();
+        print('03');
         return self::creaOggettoDaArray($row);
     }
     
@@ -170,12 +173,12 @@ class ObjectFactory{
 
     public function creaOggettoDaArray($row){
         $oggetto = new Object(
-        $row['id'],
-        $row['nome'],
-        $row['prezzo'],
-        $row['descrizione'],
-        $row['immagine'],
-        $row['quantita']);
+        $row['oggetti_id'],
+        $row['oggetti_nome'],
+        $row['oggetti_prezzo'],
+        $row['oggetti_descrizione'],
+        $row['oggetti_immagine'],
+        $row['oggetti_quantita']);
         return $oggetto;
      }
 
