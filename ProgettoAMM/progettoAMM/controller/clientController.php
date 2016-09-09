@@ -94,6 +94,7 @@ class clientController extends BaseController {
                         $msg = array();
                         $oggetti = ObjectFactory::instance()->getListaOggetti();
                         if (isset($request['oggetto'])) {
+                            print('c1');
                             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if (isset($intVal)) {
                                 return $intVal;
