@@ -239,7 +239,7 @@ class ObjectFactory{
     //aggiungere un nuovo oggetto
     public function nuovo(Object $oggetto){
        $query = "INSERT INTO oggetti (id,nome, prezzo, descrizione, immagine, quantita)
-                  values ('$ID','$oggetto->getID3()',?,?,?,?)" ;
+                  values (?,?,?,?,?,?)" ;
             
         return $this->modificaDB($oggetto, $query);
     }
