@@ -267,6 +267,7 @@ class ObjectFactory{
             $mysqli->close();
             return 0;
         }
+        
         if (!$stmt->bind_param('isissi',
                 $oggetto->getID3(),
                 $oggetto->getNameObj(),

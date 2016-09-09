@@ -115,12 +115,15 @@ class CarrelloFactory{
 		$getID4=$carrello->getID4();
 		$getTitolo=$carrello->getTitolo();
 		$getPrice2=$carrello->getPrice2();
+		$getAmount2=$carrello->getAmount2();
+		$getIdObj=$carrello->getIdObj();
         if (!$stmt->bind_param('isiii',
                		$getID4,
                		$getTitolo,
                		$getPrice2,
-                        $carrello->getAmount2(),
-                        $carrello->getIdObj())) {
+                	$getAmount2,
+                	$getIdObj)){
+                
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
