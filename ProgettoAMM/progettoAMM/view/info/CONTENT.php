@@ -13,15 +13,16 @@
                 locandine al carrello</p>
                 
                     <h3>PROGETTO:</h3>
-                <p>Ho due tipi diversi 
-                <br> 
+                    <p>Utilizzo di HTML e CSS<br>
+                       Utilizzo di PHP e MySQL<br>
+                       Utilizzo del pattern MVC<br>
+                       Due ruoli (Cliente e Venditore)<br>
+
                 </p>
             </div>
            
         
-             <div id="login_info">
-                 Login <!-- aggiungere parte dinamica che cambia a seconda del Login Client o Venditore -->
-                  - Sito creato da Lorenzo Melis </div>
+             
 
 
 
