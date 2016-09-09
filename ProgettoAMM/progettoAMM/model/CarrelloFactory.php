@@ -122,8 +122,8 @@ class CarrelloFactory{
                		$getTitolo,
                		$getPrice2,
                 	$getAmount2,
-                	$getIdObj)){
-                
+                        $getIdObj)){
+
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
