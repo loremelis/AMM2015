@@ -97,6 +97,7 @@ class clientController extends BaseController {
                             print('c1');
                             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if (isset($intVal)) {
+                                print('c2');
                                 return $intVal;
                             }
                         }
