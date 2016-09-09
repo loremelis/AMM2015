@@ -41,7 +41,7 @@ class clientController extends BaseController {
 
                     case 'carrello':
                         $carrelli = CarrelloFactory::instance()->getCarrelli();
-                        $tot = CarrelloFactory::instance()->calcolaTotale($carrelli);
+                        //$tot = CarrelloFactory::instance()->calcolaTotale($carrelli);
                         $vd->setSottoVista('carrello');
                         break;
 
