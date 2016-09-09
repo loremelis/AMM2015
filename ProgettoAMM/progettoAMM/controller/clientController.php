@@ -188,8 +188,8 @@ class clientController extends BaseController {
                 $msg[] = '<li>La via specificata non &egrave; corretta</li>';
             }
         }
-        if (isset($request['civico'])) {
-            if (!$user->setNumCivico($request['civico'])) {
+        if (isset($request['numero'])) {
+            if (!$user->setNumCivico($request['numero'])) {
                 $msg[] = '<li>Il formato del numero civico non &egrave; corretto</li>';
             }
         }

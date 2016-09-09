@@ -23,8 +23,7 @@
             
             <input type="submit" value="Salva" id="salva"/>
             
-            <!-- valutare se mettere nuova password -->
-            <!-- valutare i diversi tipi di input -->
+           
             
             
         </form>

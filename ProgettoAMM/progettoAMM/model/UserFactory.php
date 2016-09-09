@@ -283,7 +283,6 @@ class UserFactory {
     //Rende persistenti le modifiche all'anagrafica di un cliente sul db
     private function salvaCliente(UserClient $c, mysqli_stmt $stmt) {
         $query = " UPDATE clienti SET 
-                    password = ?,
                     nome = ?,
                     cognome = ?,
                     email = ?,
@@ -298,7 +297,7 @@ class UserFactory {
                     " inizializzare il prepared statement");
             return 0;
         }
-        $pass= $c->getPassword(); 
+        
         $name = $c->getNome();
         $cog = $c->getCognome();
         $ema = $c->getEmail(); 
@@ -307,7 +306,7 @@ class UserFactory {
         $cap = $c->getCap();
         $via = $c->getVia();
         $ID2 = $c->getID2();
-        if (!$stmt->bind_param('ssssisssi', $pass,$name,$cog,$ema,$num,$cit,$cap,$via,$ID2)) {   
+        if (!$stmt->bind_param('sssisssi',$name,$cog,$ema,$num,$cit,$cap,$via,$ID2)) {   
             error_log("[salvaCliente] impossibile" .
                     " effettuare il binding in input");
             return 0;
