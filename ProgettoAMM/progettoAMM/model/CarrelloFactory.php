@@ -65,7 +65,7 @@ class CarrelloFactory{
         }
         $row = array();
         $bind = $stmt->bind_result(
-                $row['carrello-id'],
+                $row['carrello_id'],
                 $row['carrello_titolo'],
                 $row['carrello_quantita'],
                 $row['carrello_prezzo'],

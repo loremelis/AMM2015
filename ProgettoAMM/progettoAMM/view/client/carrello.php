@@ -14,7 +14,7 @@
                 ?>
                     <tr <?= $c % 2 == 0 ? 'class="alt-row"' : '' ?>>
                         <td><?= $carrello->getTitolo() ?></td>
-                        <td><?= $carrello->getAmount() ?></td>
+                        <td><?= $carrello->getAmount2() ?></td>
                         <td><a href="../index.php?page=client&cmd=cancella&carrello=<?=$c ?> ">Cancella</a></td>
                         
                     </tr>
