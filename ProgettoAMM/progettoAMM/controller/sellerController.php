@@ -46,6 +46,8 @@ class sellerController extends BaseController {
                         break;
                     
                     case 'recensioni':
+                        $oggetti = ObjectFactory::instance()->getOggetti();
+                        $oggetto = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         $vd->setSottoVista('recensioni');
                         break;
                     
