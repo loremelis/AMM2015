@@ -84,8 +84,8 @@ class CarrelloFactory{
      }
      
      public function nuovo(Carrello $carrello){
-        $query = "INSERT INTO carrello (titolo, prezzo, quantita,id_ogg)
-                  values (?, ?, ?,?)";
+        $query = "INSERT INTO carrello (id,titolo, prezzo, quantita,id_ogg)
+                  values (?,?, ?, ?,?)";
         return $this->modificaDB($carrello, $query);
     }
     
@@ -111,7 +111,7 @@ class CarrelloFactory{
             return 0;
         }
 		//var_dump($carrello);
-        if (!$stmt->bind_param('siii',
+        if (!$stmt->bind_param('isiii',
                 $carrello->getID4(),
                 $carrello->getTitolo(),
                 $carrello->getPrice(),
