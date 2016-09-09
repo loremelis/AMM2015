@@ -97,18 +97,14 @@ class clientController extends BaseController {
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         
                         if (isset($a)) {
-                            $carrello = new Carrello(
-                                    20,
-                                    $a->getNameObj(),
-                                    $a->getPrice(),
-                                    1,
-                                    $a->getID3()); 
-                            var_dump($a);
-                            $c = CarrelloFactory::instance()->nuovo2($carrello);
-                            if(isset($c)){
+                            $c = $this->creaCarrelloDaOggetto($a);
+                            if (isset($c)){
+                                $car = CarrelloFactory::instance()->nuovo2($c);
+                            }
+                            // if(isset($c)){}
                                 //clase che mi decrementa il magazzino 
                                 //Con update
-                            }
+                            
                             
                         } else {
                             $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";
@@ -220,6 +216,16 @@ class clientController extends BaseController {
             }
         }
     }
+    
+    public function creaCarrelloDaOggetto(Object $a){
+                                $carrello = new Carrello(
+                                    20,
+                                    $a->getNameObj(),
+                                    $a->getPrice(),
+                                    1,
+                                    $a->getID3()); 
+                                return $carrello;
+                            }
 
     
 
