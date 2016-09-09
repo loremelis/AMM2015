@@ -97,7 +97,7 @@ class CarrelloFactory{
      }
      
      public function nuovo2(Carrello $carrello){
-        $query = "INSERT INTO carrello (id,titolo, prezzo, quantita, id_ogg) values (?,?, ?, ?,?)";
+        $query = "INSERT INTO carrello (id,titolo, prezzo, quantita, id_ogg) VALUES (?,?,?,?,?)";
         return $this->modificaDB($carrello, $query);
     }
     
@@ -125,14 +125,18 @@ class CarrelloFactory{
             return 0;
         }
         
-        var_dump($carrello);
+        $ID4 = $carrello->getID4();
+        $titolo = $carrello->getTitolo();
+        $Price2 = $carrello->getPrice2();
+        $quantita = $carrello->getAmount2();
+        $IdObj	= $carrello->getIdObj();
 	
         if (!$stmt->bind_param('isiii',
-               		$carrello->getID4(),
-               		$carrello->getTitolo(),
-                        $carrello->getPrice2(),
-               		$carrello->getAmount2(),
-                	$carrello->getIdObj())){
+               		$ID4,
+                        $titolo,
+                        $Price2,
+                        $quantita,
+                        $IdObj)){
             print('m3');
 
             error_log("[modificaDB] impossibile" .
