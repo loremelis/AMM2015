@@ -144,7 +144,7 @@ class sellerController extends BaseController {
         if (isset($request['oggetto'])) {
             // verifichiamo che sia un intero
             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
-            if (isset($intVal) && $intVal > -1 && $intVal < count($oggetti)) {
+            if (isset($intVal)) {
                 return $oggetti[$intVal];
             } else {
                 $msg[] = "<li> L'oggetto specificato non esiste </li>";
