@@ -79,6 +79,7 @@ class sellerController extends BaseController {
                             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if (isset($intVal)) {
                                 $ogg = $this->getOggettoPerIndice($intVal);
+                                var_dump($ogg);
                                 if ($ogg != null) {
                                     if (ObjectFactory::instance()->cancella($ogg) != 1) {
                                         $msg[] = '<li> Impossibile cancellare l\'oggetto </li>';
@@ -87,7 +88,7 @@ class sellerController extends BaseController {
                                 $this->creaFeedbackUtente($msg, $vd, "Oggetto eliminato");
                             }
                         }
-                        $oggetti = ObjectFactory::instance()->getListaOggetti();
+                        $oggetti = ObjectFactory::instance()->getOggetti();
                         $this->showHomeVenditore($vd);
                         break;
                                           
