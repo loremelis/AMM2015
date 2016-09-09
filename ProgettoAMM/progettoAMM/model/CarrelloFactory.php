@@ -97,8 +97,7 @@ class CarrelloFactory{
      }
      
      public function nuovo2(Carrello $carrello){
-        $query = "INSERT INTO carrello (id,titolo, prezzo, quantita, id_ogg)
-                  values (?,?, ?, ?,?)";
+        $query = "INSERT INTO carrello (id,titolo, prezzo, quantita, id_ogg) values (?,?, ?, ?,?)";
         return $this->modificaDB($carrello, $query);
     }
     
@@ -125,6 +124,7 @@ class CarrelloFactory{
             $mysqli->close();
             return 0;
         }
+        
         var_dump($carrello);
 	
         if (!$stmt->bind_param('isiii',

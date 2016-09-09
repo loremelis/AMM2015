@@ -215,8 +215,7 @@ class ObjectFactory{
 
     //aggiungere un nuovo oggetto
     public function nuovo(Object $oggetto){
-       $query = "INSERT INTO oggetti (id,nome, prezzo, descrizione, immagine, quantita)
-                  values (?,?,?,?,?,?)" ;
+       $query = "INSERT INTO oggetti (id,nome, prezzo, descrizione, immagine, quantita) VALUES (?,?,?,?,?,?)" ;
             
         return $this->modificaDB($oggetto, $query);
     }
@@ -224,6 +223,7 @@ class ObjectFactory{
     //Cancellare una locandina
     public function cancella(Object $oggetto){
         $query = "delete from oggetti  where id = ? and nome = ? and prezzo = ? and descrizione = ? and immagine= ? and quantita = ?";
+        
         return $this->modificaDB($oggetto, $query);
     }
     
