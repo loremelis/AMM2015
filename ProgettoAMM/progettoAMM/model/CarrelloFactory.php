@@ -200,9 +200,22 @@ class CarrelloFactory{
             $mysqli->close();
             return $oggetti;
         }
-        $result = $mysqli->query($query);
-        if ($mysqli->errno > 0) {
-            error_log("[getListaCarrello] impossibile eseguire la query");
+		//var_dump($carrello);
+		
+		$getID4=$carrello->getID4();
+		$getTitolo=$carrello->getTitolo();
+		$getPrice2=$carrello->getPrice2();
+		$getAmount2=$carrello->getAmount2();
+		$getIdObj=$carrello->getIdObj();
+        if (!$stmt->bind_param('isiii',
+               		$getID4,
+               		$getTitolo,
+               		$getPrice2,
+                	$getAmount2,
+                	$getIdObj
+                )) {
+            error_log("[modificaDB] impossibile" .
+                    " effettuare il binding in input");
             $mysqli->close();
             return $oggetti;
         }
