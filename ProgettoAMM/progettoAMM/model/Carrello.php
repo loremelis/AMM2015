@@ -51,7 +51,7 @@ class Carrello {
      }
 
      
-     public function getAmount(){
+     public function getAmount2(){
         return $this->amount;
      }
      public function setAmount($amount) {

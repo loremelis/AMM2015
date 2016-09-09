@@ -114,8 +114,8 @@ class CarrelloFactory{
         if (!$stmt->bind_param('isiii',
                 $carrello->getID4(),
                 $carrello->getTitolo(),
-                $carrello->getPrice(),
-                $carrello->getAmount(),
+                $carrello->getPrice2(),
+                $carrello->getAmount2(),
                 $carrello->getIdObj())) {
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
