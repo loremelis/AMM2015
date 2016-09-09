@@ -92,7 +92,6 @@ class clientController extends BaseController {
                     case 'aggiungiCarrello':
                         // recuperiamo l'indice 
                         $msg = array();
-                        $oggetti = ObjectFactory::instance()->getListaOggetti();
                         if (isset($request['oggetto'])) {
                             print('c1');
                             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
