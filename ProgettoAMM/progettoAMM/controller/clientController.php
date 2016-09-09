@@ -121,9 +121,10 @@ class clientController extends BaseController {
                         // recuperiamo l'indice 
                         
                         $msg = array();
+                        $carrelli = CarrelloFactory::instance()->getCarrelli();
                         $a = $this->getCarrelloPerIndice($carrelli, $request, $msg);
                         if (isset($a)) {
-                            $c = CarrelloFactory::instance()->cancella($a);
+                            $c = CarrelloFactory::instance()->cancella2($a);
                             //Funzione che aumenta la quantita di prodotti nella tabella clienti in base a quanto era nel carrello
                         } else {
                             $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";

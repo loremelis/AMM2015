@@ -101,7 +101,7 @@ class CarrelloFactory{
         return $this->modificaDB($carrello, $query);
     }
     
-    public function cancella(Carrello $carrello){
+    public function cancella2(Carrello $carrello){
         $query = "delete from carrello where id = ? and titolo = ? and  prezzo = ? and quantita = ? and id_ogg= ?";
         return $this->modificaDB($carrello, $query);
     }

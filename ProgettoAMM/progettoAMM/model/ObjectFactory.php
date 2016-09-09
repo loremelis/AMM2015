@@ -243,14 +243,19 @@ class ObjectFactory{
             $mysqli->close();
             return 0;
         }
-        
+        $ID3= $oggetto->getID3();
+        $nome = $oggetto->getNameObj();
+        $prezzo = $oggetto->getPrice();
+        $descrizione = $oggetto->getDescription();
+        $image = $oggetto->getImage();
+        $amount= $oggetto->getAmount();
         if (!$stmt->bind_param('isissi',
-                $oggetto->getID3(),
-                $oggetto->getNameObj(),
-                $oggetto->getPrice(),
-                $oggetto->getDescription(),
-                $oggetto->getImage(),
-                $oggetto->getAmount())) {
+                $ID3,
+                $nome,
+                $prezzo,
+                $descrizione,
+                $image,
+                $amount)) {
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
