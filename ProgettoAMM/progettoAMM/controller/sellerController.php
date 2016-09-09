@@ -75,6 +75,7 @@ class sellerController extends BaseController {
                         break;
                         
                     case 'cancellaOggetto':
+                        $oggetti = ObjectFactory::instance()->getOggetti();   
                         if (isset($request['oggetto'])) {
                             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if (isset($intVal)) {
