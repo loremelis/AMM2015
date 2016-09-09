@@ -93,7 +93,7 @@ class clientController extends BaseController {
                         // recuperiamo l'indice 
                         $msg = array();
                         $oggetti = ObjectFactory::instance()->getOggetti();
-                        $a = $this->getOggettoPerIndice($intVal);
+                        $a = $this->getOggettoPerIndice($intVal, $request, $msg);
                         var_dump($a);
                         if (isset($a)) {
                             $carrello = new Carrello(
