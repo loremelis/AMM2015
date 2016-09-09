@@ -94,7 +94,6 @@ class clientController extends BaseController {
                         // recuperiamo l'indice 
                         $msg = array();
                         $oggetti = ObjectFactory::instance()->getListaOggetti();
-                       
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         var_dump($a);
                         
