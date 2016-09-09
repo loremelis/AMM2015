@@ -123,13 +123,12 @@ class CarrelloFactory{
             $mysqli->close();
             return 0;
         }
-		var_dump($carrello);
-		
-		$getID4=$carrello->getID4();
-		$getTitolo=$carrello->getTitolo();
-		$getPrice2=$carrello->getPrice2();
-		$getAmount2=$carrello->getAmount2();
-		$getIdObj=$carrello->getIdObj();
+        var_dump($carrello);
+	$getID4=$carrello->getID4(); 
+        $getTitolo=$carrello->getTitolo();
+	$getPrice2=$carrello->getPrice2();
+	$getAmount2=$carrello->getAmount2();
+	$getIdObj=$carrello->getIdObj();
         if (!$stmt->bind_param('isiii',
                		$getID4,
                		$getTitolo,
