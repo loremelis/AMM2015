@@ -26,26 +26,26 @@ class CarrelloFactory{
     
 
     public function &getCarrelli() {
-       $carrelli = array();
+        $carrelli = array();
         
-        $query = "select *  from carrello";
+        $query = "select *  from carrello ";
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
-            error_log("[getAppelliPerDocente] impossibile inizializzare il database");
+            error_log("[getCarrelli] impossibile inizializzare il database");
             $mysqli->close();
-            return $appelli;
+            return $carrelli;
         }
         
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
         if (!$stmt) {
-            error_log("[getAppelliPerDocente] impossibile" .
+            error_log("[getCarrelli] impossibile" .
                     " inizializzare il prepared statement");
             $mysqli->close();
             return null;
         }
         if (!$stmt->execute()) {
-            error_log("[getAppelliPerDocente] impossibile" .
+            error_log("[getCarrelli] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
             return null;
@@ -57,7 +57,7 @@ class CarrelloFactory{
     }
     
     public function &caricaCarrelliDaStmt(mysqli_stmt $stmt){
-        $oggetti = array();
+        $carrelli = array();
          if (!$stmt->execute()) {
             error_log("[caricaOggettoDaStmt] impossibile" .
                     " eseguire lo statement");
