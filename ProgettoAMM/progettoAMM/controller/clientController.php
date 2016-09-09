@@ -45,7 +45,7 @@ class clientController extends BaseController {
                         break;
 
                     case 'client':
-                        $oggetti = ObjectFactory::instance()->getListaOggetti();
+                        $oggetti = ObjectFactory::instance()->getOggetti();
                         $vd->setSottoVista('client');
                         break;
 
@@ -58,7 +58,7 @@ class clientController extends BaseController {
                         break;
                     
                     case 'recensioni':
-                        $oggetti = ObjectFactory::instance()->getListaOggetti();
+                        $oggetti = ObjectFactory::instance()->getOggetti();
                         $oggetto = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         $vd->setSottoVista('recensioni');
                         break;
@@ -92,15 +92,16 @@ class clientController extends BaseController {
                     case 'aggiungiCarrello':
                         // recuperiamo l'indice 
                         $msg = array();
+                        $oggetti = ObjectFactory::instance()->getOggetti();
                         if (isset($request['oggetto'])) {
-                            print('c1');
                             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if (isset($intVal)) {
                                 print('c2');
                                 return $intVal;
                             }
                         }
-                        $a = ObjectFactory::instance()->cercaOggettoPerId($intVal);
+                        var_dump($oggetti);
+                        $a = $this->getOggettoPerIndice($intVal);
                         var_dump($a);
                         if (isset($a)) {
                             $carrello = new Carrello(

@@ -80,6 +80,37 @@ class ObjectFactory{
         return $oggetti;
     }
     
+    public function &getOggetti() {
+       $oggetti = array();
+        
+        $query = "select *  from oggetti";
+        $mysqli = Db::getInstance()->connectDb();
+        if (!isset($mysqli)) {
+            error_log("[getAppelliPerDocente] impossibile inizializzare il database");
+            $mysqli->close();
+            return $appelli;
+        }
+        
+        $stmt = $mysqli->stmt_init();
+        $stmt->prepare($query);
+        if (!$stmt) {
+            error_log("[getAppelliPerDocente] impossibile" .
+                    " inizializzare il prepared statement");
+            $mysqli->close();
+            return null;
+        }
+        if (!$stmt->execute()) {
+            error_log("[getAppelliPerDocente] impossibile" .
+                    " effettuare il binding in input");
+            $mysqli->close();
+            return null;
+        }
+        $oggetti =  self::caricaOggettiDaStmt($stmt);
+        
+        $mysqli->close();
+        return $oggetti;
+    }
+    
     public function caricaOggetto(Object $oggetto){
         
         $query = "select * from oggetti where id = ?";
@@ -137,7 +168,7 @@ class ObjectFactory{
             return null;
         }
         $stmt->close();
-        print('03');
+        
         return self::creaOggettoDaArray($row);
     }
     

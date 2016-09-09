@@ -142,6 +142,7 @@ class UserFactory {
         $stmt->close();
         return self::creaVenditoreDaArray($row);
     }
+    
 
     // Restituisce la lista dei Clienti
     public function &getListaCLienti() {
