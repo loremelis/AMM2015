@@ -11,11 +11,12 @@ class Carrello {
     private $id_ogg;
     
     
-    public function __construct($ID,$titolo,$price,$amount){
+    public function __construct($ID,$titolo,$price,$amount,$id_ogg){
         $this->ID = $ID;
         $this->titolo = $titolo;
         $this->price = $price;
         $this->amount = $amount;
+        $this->id_ogg = $id_ogg;
         
     }
     
@@ -38,7 +39,7 @@ class Carrello {
          $this->titolo=$titolo;
      }
      
-     public function getPrice(){
+     public function getPrice2(){
         return $this->price;
      }
      public function setPrice($price) {
