@@ -155,7 +155,7 @@ class CarrelloFactory{
     //Funzione che calcola il totale del prezzo
     public function calcolaTotale($carrelli){
         
-        foreach($carrello as $carrelli){
+        foreach($carrelli as $carrello){
             $a = $carrello->getPrice();
             $tot += $a;
         }
