@@ -7,7 +7,8 @@
         <h1>Accesso all'applicazione del progetto</h1>
         <p>
             La home page del sito la trovate qu&agrave: 
-            <a href="spano.sc.unica.it/index.php?page=home">Home Page</a>
+            <a href="http://spano.sc.unica.it/amm2015/melisLorenzo/ProgettoAMM/progettoAMM/index.php?page=home">
+                http://spano.sc.unica.it/amm2015/melisLorenzo/ProgettoAMM/progettoAMM/index.php?page=home</a>
         </p>
 
         <h2> Descrizione dell'applicazione </h2>
