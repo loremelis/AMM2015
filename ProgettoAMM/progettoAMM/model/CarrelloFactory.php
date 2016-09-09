@@ -157,7 +157,7 @@ class CarrelloFactory{
         
         foreach($carrelli as $carrello){
             $a = 0;
-            $a = $carrello->getPrice();
+            $a = $carrello->getPrice2();
             $tot += $a;
         }
         return $tot;
