@@ -64,6 +64,7 @@ class sellerController extends BaseController {
                         $msg = array();
                         $oggetti = ObjectFactory::instance()->getListaOggetti();
                         $nuovo = new Object('-1','','','','','');
+                        var_dump($nuovo);
                         $nuovo = $this->aggiungiOggetto($nuovo, $request, $msg);
                         $this->creaFeedbackUtente($msg, $vd, "Oggetto creato");
                         var_dump($nuovo);
@@ -110,28 +111,28 @@ class sellerController extends BaseController {
         
         if (isset($request['nome_ogg'])) {
             if (!$oggetto->setNameObj($request['nome_ogg'])) {
-                $msg[] = '<li>La via specificata non &egrave; corretta</li>';
+                $msg[] = '<li>Il nome specificato non &egrave; corretta</li>';
             }
         }
         if (isset($request['foto_ogg'])){ 
             if (!$oggetto->setImage($request['foto_ogg'])) {
-                $msg[] = '<li>Il formato del numero civico non &egrave; corretto</li>';
+                $msg[] = '<li>La foto specificata non &egrave; corretta</li>';
             }
         }
         if (isset($request['prezzo_ogg'])) {
             if (!$oggetto->setPrice($request['prezzo_ogg'])) {
-                $msg[] = '<li>La citt&agrave; specificata non &egrave; corretta</li>';
+                $msg[] = '<li>Il prezzo specificato non &egrave; corretto</li>';
             }
         }
         if (isset($request['quantita_ogg'])) {
            if (!$oggetto->setAmount($request['quantita_ogg'])) {
-                $msg[] = '<li>Il CAP specificato non &egrave; corretto</li>';
+                $msg[] = '<li>La quantit&agrave non &egrave; corretta</li>';
             }
         }
        
         if (isset($request['descrizione_ogg'])) {
             if (!$oggetto->setDescription($request['descrizione_ogg'])) {
-                $msg[] = '<li>L\'indirizzo email specificato non &egrave; corretto</li>';
+                $msg[] = '<li>La descrizione specificata non &egrave; corretta</li>';
             }
         }
         return $msg;
