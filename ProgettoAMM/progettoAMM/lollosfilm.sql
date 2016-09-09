@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `oggetti` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(128) DEFAULT NULL,
   `prezzo` int(11) DEFAULT NULL,
-  `descrizione` text DEFAULT NULL,
+  `descrizione` varchar(250) DEFAULT NULL,                                         -- `descrizione` text DEFAULT NULL,
   `immagine` varchar(250) NOT NULL,
   `quantita` int(11) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
@@ -69,7 +69,16 @@ CREATE TABLE IF NOT EXISTS `oggetti` (
 -- Dump dei dati per la tabella `oggetti`
 --
 
+
 INSERT INTO `oggetti` (`id`, `nome`, `prezzo`, `descrizione`, `immagine`, `quantita`) VALUES
+(5, '2001 Odissea nello spazio', 13,'', '2001_piccola.jpg', 2),
+(6, 'Star Wars', 14,'', 'star_piccola.jpg', 3),
+(7, 'The Departed', 15, '','departed.jpg', 0),
+(8, 'Il padrino', 16,'','padrino_piccola.jpg', 5),
+(9, 'Il signore degli anelli', 13,'', 'lotr_piccola.jpg', 0),
+(10, 'Fight Club', 12, '' ,'fightclub.jpg', 0);
+
+/* INSERT INTO `oggetti` (`id`, `nome`, `prezzo`, `descrizione`, `immagine`, `quantita`) VALUES
 (5, '2001 Odissea nello spazio', 13, 
 `Ognuno è libero di speculare a suo gusto sul significato del film. Io ho tentato di rappresentare un'esperienza visiva, che aggiri la comprensione per penetrare con il suo contenuto emotivo direttamente nell'inconscio" (S. Kubrick).
 Sottraendo il film a interpretazioni immediate - aprendolo quindi a infinite interpretazioni - Kubrick ci lascia soli di fronte al monolito, un significante privo di significato (1). Ci fa sperimentare la sete della comprensione, assieme all'impossibilità di oltrepassare i limiti della comprensione. Durante la visione siamo in assenza di gravità, presi dalla vertigine, rapiti dal fascino di immagini, suoni e musiche di un film quasi privo di dialoghi. 
@@ -145,7 +154,7 @@ Ma vi è un altro impostore che non si perde un incontro con i gruppi: Marla Sin
 L’inquietudine di Norton / Narratore si placa e si trasforma attraverso l’incontro con Brad Pitt / Tyler Durden, ovvero tramite un processo di autoscissione.
 Per semplificare le cose d’ora in poi, quando sarà necessario separare i due volti di Tyler Durden, questi saranno per noi Norton e Pitt ; come dire l’essenza del diurno, della veglia e dell’autocontrollo, e l’essenza del notturno e della nemesi onirica di un io frustrato dal quotidiano.
 Il gioco di Fincher è sottile: ci si avvale di ogni strumento per incidere sulla pellicola le inquietudini ispirate dalla brillante penna di Chuck Palahniuk e contestualizzate dall’ intervento in sceneggiatura di Jim Uhls.`, 
-'fightclub.jpg', 0);
+'fightclub.jpg', 0); */
 
 -- --------------------------------------------------------
 
