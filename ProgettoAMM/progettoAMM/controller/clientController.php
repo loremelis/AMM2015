@@ -93,15 +93,6 @@ class clientController extends BaseController {
                         // recuperiamo l'indice 
                         $msg = array();
                         $oggetti = ObjectFactory::instance()->getOggetti();
-                        var_dump($oggetti);
-                        if (isset($request['oggetto'])) {
-                            $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
-                            if (isset($intVal)) {
-                                print('c2');
-                                return $intVal;
-                            }
-                        }
-                        
                         $a = $this->getOggettoPerIndice($intVal);
                         var_dump($a);
                         if (isset($a)) {
