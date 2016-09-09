@@ -56,6 +56,14 @@ class clientController extends BaseController {
                     case 'info':
                         $vd->setSottoVista('info');
                         break;
+                    
+                    case 'recensioni':
+                        $oggetti = ObjectFactory::instance()->getListaOggetti();
+                       
+                        $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
+                        $vd->setSottoVista('recensioni');
+                        break;
+        
                     default:
                         $vd->setSottoVista('home');
                         break;

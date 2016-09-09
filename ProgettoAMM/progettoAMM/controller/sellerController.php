@@ -114,6 +114,7 @@ class sellerController extends BaseController {
         }
         if (isset($request['foto_ogg'])){ 
             if (!$oggetto->setImage($request['foto_ogg'])) {
+                
                 $msg[] = '<li>La foto specificata non &egrave; corretta</li>';
             }
         }
