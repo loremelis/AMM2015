@@ -81,7 +81,7 @@ class UserFactory {
         }
     }
             
-    //Carica un Cliente eseguendo un prepared statement
+    //Carica un Cliente
     private function caricaClienteDaStmt(mysqli_stmt $stmt) {
         
         if (!$stmt->execute()) {
@@ -117,7 +117,7 @@ class UserFactory {
         return self::creaClienteDaArray($row);
     }
     
-    //Carica un Venditore eseguendo un prepared statement
+    //Carica un Venditore
     private function caricaVenditoreDaStmt(mysqli_stmt $stmt) {
         if (!$stmt->execute()) {
             error_log("[caricaVenditoreDaStmt] impossibile" .
@@ -247,7 +247,7 @@ class UserFactory {
         return $cliente;
     }
     
-    //Crea un Venditore
+    //Crea un Venditore da una riga del db
     public function creaVenditoreDaArray($row) {
 
        $venditore = new UserSeller(

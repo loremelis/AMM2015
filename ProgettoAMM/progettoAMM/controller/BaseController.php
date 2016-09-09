@@ -8,15 +8,11 @@ include_once 'model/User.php';
 include_once 'model/UserClient.php';
 include_once 'model/UserSeller.php';   
 
- /* Controller che gestisce gli utenti non autenticati, 
- * fornendo le funzionalita' comuni anche agli altri controller
- */
+ 
 class BaseController {
     const user = 'user';
     const role = 'role';
-    
-    
-    
+
     public function __construct() {
         
     }
@@ -38,8 +34,7 @@ class BaseController {
                
                    $username = $request['user'];
                    $password = $request['password'];
-				 
-				   $this->login($vd, $username, $password);
+		   $this->login($vd, $username, $password);
                      
               		
                     if ($this->loggedIn()) {
@@ -104,7 +99,6 @@ class BaseController {
     }
     
     // Verifica se l'utente sia correttamente autenticato
-     
     protected function loggedIn() {
         return isset($_SESSION) && array_key_exists(self::user, $_SESSION);
     }
@@ -145,7 +139,7 @@ class BaseController {
     // Funziona che decide che pagina mostrare a seconda del l'Utente
     protected function showHomeUtente($vd) {
         $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
-		//var_dump($user);
+		
         switch ($user->getRuolo()) {
             case User::Cliente:
                 $this->showHomeCliente($vd);
@@ -179,7 +173,7 @@ class BaseController {
     
     //Procedura logout
     protected function logout($vd) {
-        // reset array $_SESSION
+        
         $_SESSION = array();
         // termino la validita' del cookie di sessione
         if (session_id() != '' || isset($_COOKIE[session_name()])) {
@@ -197,8 +191,7 @@ class BaseController {
     //Messaggio di FeedBack
     protected function creaFeedbackUtente(&$msg, $vd, $okMsg) {
         if (count($msg) > 0) {
-            // ci sono messaggi di errore nell'array,
-            // qualcosa e' andato storto...
+            
             $error = "Si sono verificati i seguenti errori \n<ul>\n";
             foreach ($msg as $m) {
                 $error = $error . $m . "\n";
@@ -206,16 +199,12 @@ class BaseController {
             // imposto il messaggio di errore
             $vd->setMessaggioErrore($error);
         } else {
-            // non ci sono messaggi di errore, la procedura e' andata
-            // quindi a buon fine, mostro un messaggio di conferma
+            
             $vd->setMessaggioConferma($okMsg);
         }
     }
 
-    
-         
-        
-            
+      
     //visualizzazione Home
     protected function showHomePage($vd) {       
         // mostro la pagina di login

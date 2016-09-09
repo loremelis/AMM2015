@@ -124,13 +124,11 @@ class CarrelloFactory{
             $mysqli->close();
             return 0;
         }
-        
         $ID4 = $carrello->getID4();
         $titolo = $carrello->getTitolo();
         $Price2 = $carrello->getPrice2();
         $quantita = $carrello->getAmount2();
         $IdObj	= $carrello->getIdObj();
-	
         if (!$stmt->bind_param('isiii',
                		$ID4,
                         $titolo,

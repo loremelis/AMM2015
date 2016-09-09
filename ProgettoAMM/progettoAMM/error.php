@@ -16,7 +16,7 @@ include_once 'Settings.php';
             ?>
         </p>
         <?php if (isset($login)) { ?>
-        <p>Puoi autenticarti alla pagina di <a href="login">login</a></p>   //da verificae se porta a quella pagina
+        <p>Puoi autenticarti alla pagina di <a href="login">login</a></p>   
         <?php } ?>
     </body>
 </html>

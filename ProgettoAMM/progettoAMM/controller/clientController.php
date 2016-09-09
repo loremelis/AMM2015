@@ -119,6 +119,7 @@ class clientController extends BaseController {
                         $msg = array();
                         $carrelli = CarrelloFactory::instance()->getCarrelli();
                         $a = $this->getCarrelloPerIndice($carrelli, $request, $msg);
+                        var_dump($a);
                         if (isset($a)) {
                             $c = CarrelloFactory::instance()->cancella2($a);
                             //Funzione che aumenta la quantita di prodotti nella tabella clienti in base a quanto era nel carrello
