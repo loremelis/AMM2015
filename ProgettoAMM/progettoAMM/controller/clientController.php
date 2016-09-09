@@ -88,7 +88,7 @@ class clientController extends BaseController {
                         $oggetti = ObjectFactory::instance()->getListaOggetti();
                        
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
-                         
+                        var_dump($a);
                         if (isset($a)) {
                           
                             $carrello = new Carrello(
