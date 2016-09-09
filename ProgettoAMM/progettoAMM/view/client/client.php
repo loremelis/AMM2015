@@ -26,7 +26,7 @@
                         <td><a href="../index.php?page=client&subpage=recensioni&oggetto=<?=$c?> ">Leggi..</a></td>
                         <td><a href="../img/<?=$oggetto->getImage() ?>">Immagine</a></td>
                         <td><?= $oggetto->getAmount() ?></td>
-                        <td><a href="../index.php?page=client&cmd=aggiungiCarrello&oggetto=<?=$oggetto->getID3() ?> ">Aggiungi</a></td>
+                        <td><a href="../index.php?page=client&cmd=aggiungiCarrello&oggetto=<?=$c ?> ">Aggiungi</a></td>
                         
                     </tr>
                     <?php
