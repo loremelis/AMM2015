@@ -92,7 +92,7 @@ class clientController extends BaseController {
                         if (isset($a)) {
                           
                             $carrello = new Carrello(
-                                    $carrello->setID(),
+                                    '-1',
                                     $a->getNameObj(),
                                     $a->getPrice(),
                                     '1',
