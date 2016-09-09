@@ -95,7 +95,7 @@ class clientController extends BaseController {
                         $msg = array();
                         $oggetti = ObjectFactory::instance()->getOggetti();
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
-                        var_dump($a);
+                        
                         if (isset($a)) {
                             $carrello = new Carrello(
                                     20,
@@ -104,7 +104,7 @@ class clientController extends BaseController {
                                     1,
                                     $a->getID3()); 
                                     
-                            $c = CarrelloFactory::instance()->nuovo($carrello);
+                            $c = CarrelloFactory::instance()->nuovo2($carrello);
                             if(isset($c)){
                                 //clase che mi decrementa il magazzino 
                                 //Con update

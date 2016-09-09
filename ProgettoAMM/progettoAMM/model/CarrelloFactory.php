@@ -96,7 +96,7 @@ class CarrelloFactory{
         return $carrello;
      }
      
-     public function nuovo(Carrello $carrello){
+     public function nuovo2(Carrello $carrello){
         $query = "INSERT INTO carrello (id,titolo, prezzo, quantita, id_ogg)
                   values (?,?, ?, ?,?)";
         return $this->modificaDB($carrello, $query);
