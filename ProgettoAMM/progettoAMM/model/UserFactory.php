@@ -91,9 +91,16 @@ class UserFactory {
         
         $row = array();
         $bind = $stmt->bind_result(
-                $row['clienti_username'], $row['clienti_password'],$row['clienti_nome'], $row['clienti_cognome'],
-                $row['clienti_email'],$row['clienti_numCivico'],$row['clienti_citta'],  
-                $row['clienti_id'], $row['clienti_cap'],$row['clienti_via']);
+                $row['clienti_username'], 
+                $row['clienti_password'],
+                $row['clienti_nome'], 
+                $row['clienti_cognome'],
+                $row['clienti_email'],
+                $row['clienti_numCivico'],
+                $row['clienti_citta'],  
+                $row['clienti_id'], 
+                $row['clienti_cap'],
+                $row['clienti_via']);
         
         
         

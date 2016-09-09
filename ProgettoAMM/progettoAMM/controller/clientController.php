@@ -59,7 +59,6 @@ class clientController extends BaseController {
                     
                     case 'recensioni':
                         $oggetti = ObjectFactory::instance()->getListaOggetti();
-                       
                         $oggetto = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         $vd->setSottoVista('recensioni');
                         break;
@@ -94,9 +93,14 @@ class clientController extends BaseController {
                         // recuperiamo l'indice 
                         $msg = array();
                         $oggetti = ObjectFactory::instance()->getListaOggetti();
-                        $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
+                        if (isset($request['oggetto'])) {
+                            $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+                            if (isset($intVal)) {
+                                return $intVal;
+                            }
+                        }
+                        $a = ObjectFactory::instance()->cercaOggettoPerId($intVal);
                         var_dump($a);
-                        
                         if (isset($a)) {
                             $carrello = new Carrello(
                                     '-1',

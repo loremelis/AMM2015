@@ -24,54 +24,33 @@ class ObjectFactory{
         return self::$singleton;
     }
     
-    //VALUTARE SE MI SERVA
-    public function cercaOggettoPerId($oggettoId){
-        $oggetti = array();
-        $query= "SELECT * FROM oggetti WHERE id=\"$oggettoId\";";
+    
+    public function cercaOggettoPerId($id){
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
-            error_log("[cercaOggettoPerId] impossibile inizializzare il database");
+            error_log("[cercaUtentePerId] impossibile inizializzare il database");
             $mysqli->close();
-            return $oggetti;
-        }
-        
-        $stmt = $mysqli->stmt_init();
-        $stmt->prepare($query);
-        if (!$stmt) {
-            error_log("[cercaOggettoPerId] impossibile" .
-                    " inizializzare il prepared statement");
-            $mysqli->close();
-            return $oggetti;
-        }
-         
-        $stmt = $mysqli->stmt_init();
-        $stmt->prepare($query);
-        if (!$stmt) {
-            error_log("[cercaOggettoPerId] impossibile" .
-                    " inizializzare il prepared statement");
-            $mysqli->close();
-            return $oggetti;
-        }
-        
-         
-        if (!$stmt->execute()){ //bind_param('i', $oggettoId)) {
-            error_log("[cercaOggettoPerId] impossibile" .
-                    " effettuare il binding in input");
-            $mysqli->close();
-            return $oggetti;
-        }
-        
-        $oggetti =  self::caricaOggettiDaStmt($stmt);
-        foreach($oggetti as $oggetto){
-            self::caricaOggetto($oggetto);
-        }
-        if(count($oggetti > 0)){
-            $mysqli->close();
-            return $oggetti[0];
-        }else{
-            $mysqli->close();
+
             return null;
         }
+        $query= "SELECT * FROM oggetti WHERE id =\"$id\";";
+                $stmt = $mysqli->stmt_init();
+                $stmt->prepare($query);
+                if (!$stmt) {
+                    error_log("[cercaUtentePerId] impossibile" .
+                            " inizializzare il prepared statement");
+                    $mysqli->close();
+
+                    return null;
+                }
+                if (!$stmt->execute()) {      
+                    error_log("[cercaUtentePerId] impossibile" .
+                            " effettuare il binding in input");
+                    $mysqli->close();
+
+                    return null;
+                }
+                return self::caricaOggettoDaStmt($stmt);  
     }
     
     public function &getListaOggetti() {
@@ -125,6 +104,34 @@ class ObjectFactory{
             $mysqli->close();
             return null;
         }
+    }
+    
+    private function caricaOggettoDaStmt(mysqli_stmt $stmt) {
+        if (!$stmt->execute()) {
+            error_log("[caricaVenditoreDaStmt] impossibile" .
+                    " eseguire lo statement");
+            return null;
+        }
+        $row = array();
+        $bind = $stmt->bind_result(
+                $row['oggetti_id'],
+                $row['oggetti_nome'],
+                $row['oggetti_prezzo'],
+                $row['oggetti_descrizione'],
+                $row['oggetti_immagine'],
+                $row['oggetti_quantita']); 
+        	
+				
+        if (!$bind) {
+            error_log("[caricaOggettoDaStmt] impossibile" .
+                    " effettuare il binding in output");
+            return null;
+        }
+        if (!$stmt->fetch()){
+            return null;
+        }
+        $stmt->close();
+        return self::creaOggettoDaArray($row);
     }
     
     public function &caricaOggettiDaStmt(mysqli_stmt $stmt){
