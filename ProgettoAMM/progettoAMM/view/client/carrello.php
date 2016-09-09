@@ -1,7 +1,7 @@
  <div id="contenuto_carrelllo"> 
-     <h2>Prezzo totale: <?php /*$carrelli = CarrelloFactory::instance()->getCarrelli();
+     <h2>Prezzo totale: <?php $carrelli = CarrelloFactory::instance()->getCarrelli();
                               $tot = CarrelloFactory::instance()->calcolaTotale($carrelli); 
-                              echo $tot; */?> </h2>
+                              echo $tot; ?> </h2>
         
      <a href="../index.php?page=client&cmd=compra">Compra</a>
         
