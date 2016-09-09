@@ -124,11 +124,11 @@ class clientController extends BaseController {
                                         $msg[] = '<li> Impossibile cancellare l\'oggetto </li>';
                                     }
                                 }
-                                $this->creaFeedbackUtente($msg, $vd, "Oggettoo eliminato");
+                                $this->creaFeedbackUtente($msg, $vd, "Oggetto eliminato");
                             }
                         }
                         $carrelli = CarrelloFactory::instance()->getCarrelli();
-                        $this->showHomeUtente($vd);
+                        $this->showHomeCliente($vd);
                         break;
                         
                     // case 'compra':

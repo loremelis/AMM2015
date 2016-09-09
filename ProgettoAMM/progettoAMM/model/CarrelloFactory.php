@@ -96,7 +96,7 @@ class CarrelloFactory{
         return $carrello;
      }
      
-     public function nuovo2(Carrello $carrello){
+    public function nuovo2(Carrello $carrello){
         $query = "INSERT INTO carrello (id,titolo, quantita, prezzo, id_ogg) VALUES (?,?,?,?,?)";
         return $this->modificaDB($carrello, $query);
     }
@@ -111,7 +111,7 @@ class CarrelloFactory{
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
             error_log("[salva] impossibile inizializzare il database");
-            return null;
+            return 0;
         }
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
@@ -119,7 +119,7 @@ class CarrelloFactory{
             error_log("[modificaDB] impossibile" .
                     " inizializzare il prepared statement");
             $mysqli->close();
-            return null;
+            return 0;
         }
         $ID4 = $carrello->getID4();
         $titolo = $carrello->getTitolo();
@@ -127,11 +127,11 @@ class CarrelloFactory{
         $Price2 = $carrello->getPrice2();
         $IdObj	= $carrello->getIdObj();
         if (!$stmt->bind_param('isiii',
-               		$ID4,
-                        $titolo,
-                        $quantita,
-                        $Price2,
-                        $IdObj)){
+                $ID4,
+                $titolo,
+                $quantita,
+                $Price2,
+                $IdObj)){
 
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");

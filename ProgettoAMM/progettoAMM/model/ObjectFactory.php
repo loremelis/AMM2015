@@ -86,7 +86,7 @@ class ObjectFactory{
         $query = "select *  from oggetti";
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
-            error_log("[getAppelliPerDocente] impossibile inizializzare il database");
+            error_log("[getOggetti] impossibile inizializzare il database");
             $mysqli->close();
             return $appelli;
         }
@@ -94,13 +94,13 @@ class ObjectFactory{
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
         if (!$stmt) {
-            error_log("[getAppelliPerDocente] impossibile" .
+            error_log("[getOggetti] impossibile" .
                     " inizializzare il prepared statement");
             $mysqli->close();
             return null;
         }
         if (!$stmt->execute()) {
-            error_log("[getAppelliPerDocente] impossibile" .
+            error_log("[getOggetti] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
             return null;
