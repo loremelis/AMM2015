@@ -132,7 +132,7 @@ class clientController extends BaseController {
                         $this->showHomeCliente($vd);
                         break;
                         
-                    case 'compra':
+                    // case 'compra':
                         
 
                     default: $this->showHomeCLiente($vd);
