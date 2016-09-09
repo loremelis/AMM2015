@@ -130,12 +130,12 @@ class CarrelloFactory{
 		$getPrice2=$carrello->getPrice2();
 		$getAmount2=$carrello->getAmount2();
 		$getIdObj=$carrello->getIdObj();
-        if (!$stmt->bind_param('isiii',
+        if (!$stmt->execute()){/*bind_param('isiii',
                		$getID4,
                		$getTitolo,
                		$getPrice2,
                 	$getAmount2,
-                        $getIdObj)){
+                        $getIdObj)){*/
 
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
