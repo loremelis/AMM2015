@@ -298,9 +298,16 @@ class UserFactory {
                     " inizializzare il prepared statement");
             return 0;
         }
-        if (!$stmt->bind_param('ssssisssi', $c->getPassword(), $c->getNome(), 
-                $c->getCognome(), $c->getEmail(), $c->getNumCivico(), 
-                $c->getCitta(),$c->getCap(), $c->getVia(), $c->getID2())) {   
+        $pass= $c->getPassword(); 
+        $name = $c->getNome();
+        $cog = $c->getCognome();
+        $ema = $c->getEmail(); 
+        $num = $c->getNumCivico();
+        $cit = $c->getCitta();
+        $cap = $c->getCap();
+        $via = $c->getVia();
+        $ID2 = $c->getID2();
+        if (!$stmt->bind_param('ssssisssi', $pass,$name,$cog,$ema,$num,$cit,$cap,$via,$ID2)) {   
             error_log("[salvaCliente] impossibile" .
                     " effettuare il binding in input");
             return 0;
