@@ -111,10 +111,14 @@ class CarrelloFactory{
             return 0;
         }
 		//var_dump($carrello);
+		
+		$getID4=$carrello->getID4();
+		$getTitolo=$carrello->getTitolo();
+		$getPrice2=$carrello->getPrice2();
         if (!$stmt->bind_param('isiii',
-                $carrello->getID4(),
-                $carrello->getTitolo(),
-                $carrello->getPrice2(),
+               		$getID4,
+               		$getTitolo,
+               		$getPrice2,
                 $carrello->getAmount2(),
                 $carrello->getIdObj())) {
             error_log("[modificaDB] impossibile" .
