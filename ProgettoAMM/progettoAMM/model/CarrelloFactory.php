@@ -112,6 +112,7 @@ class CarrelloFactory{
         }
 		//var_dump($carrello);
         if (!$stmt->bind_param('siii',
+                $carrello->getID4(),
                 $carrello->getTitolo(),
                 $carrello->getPrice(),
                 $carrello->getAmount(),

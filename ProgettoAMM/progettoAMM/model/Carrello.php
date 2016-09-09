@@ -19,17 +19,17 @@ class Carrello {
         
     }
     
-     public function getID(){
+     public function getID4(){
         return $this->ID;
      }
-     public function setID($id) {
+     /*public function setID($id) {
         $intVal = filter_var($id, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
         if (!isset($intVal)) {
             return false;
         }
         $this->ID = $intVal;
         return true;
-    }
+    } */
      
      public function getTitolo(){
          return $this->titolo;

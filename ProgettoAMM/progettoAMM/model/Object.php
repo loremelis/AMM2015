@@ -24,17 +24,17 @@ class Object {
         
     }
     
-     public function getID(){
+     public function getID3(){
         return $this->ID;
      }
-     public function setID($id) {
+     /*public function setID($id) {
         $intVal = filter_var($id, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
         if (!isset($intVal)) {
             return false;
         }
         $this->ID = $intVal;
         
-    }
+    } */
      
      public function getNameObj(){
          return $this->name_obj;

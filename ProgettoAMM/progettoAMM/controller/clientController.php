@@ -96,7 +96,7 @@ class clientController extends BaseController {
                                     $a->getNameObj(),
                                     $a->getPrice(),
                                     '1',
-                                    $a->getID()); 
+                                    $a->getID3()); 
                                     var_dump($carrello);
                             $c = CarrelloFactory::instance()->nuovo($carrello);
                             if(isset($c)){

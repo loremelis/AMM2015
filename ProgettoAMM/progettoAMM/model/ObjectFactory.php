@@ -112,7 +112,7 @@ class ObjectFactory{
             $mysqli->close();
             return null;
         }
-        if (!$stmt->bind_param('i', $oggetto->getId())) {
+        if (!$stmt->bind_param('i', $oggetto->getID3())) {
             error_log("[caricaOggetto] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
@@ -223,7 +223,7 @@ class ObjectFactory{
             return 0;
         }
         if (!$stmt->bind_param('isissi',
-                $oggetto->getID(),
+                $oggetto->getID3(),
                 $oggetto->getNameObj(),
                 $oggetto->getPrice(),
                 $oggetto->getDescription(),
