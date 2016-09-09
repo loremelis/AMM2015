@@ -89,8 +89,8 @@ class clientController extends BaseController {
                        
                         $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         var_dump($a);
+                        
                         if (isset($a)) {
-                          
                             $carrello = new Carrello(
                                     '-1',
                                     $a->getNameObj(),

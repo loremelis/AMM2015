@@ -33,7 +33,7 @@ class Object {
             return false;
         }
         $this->ID = $intVal;
-        return true;
+        
     }
      
      public function getNameObj(){

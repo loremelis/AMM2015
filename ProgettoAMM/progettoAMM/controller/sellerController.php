@@ -63,8 +63,8 @@ class sellerController extends BaseController {
                     case 'aggiungiOggetto':
                         $msg = array();
                         $oggetti = ObjectFactory::instance()->getListaOggetti();
-                        $nuovo = new Object();
-                        //$nuovo->setId(-1);
+                        $nuovo = new Object('','','','','','');
+                        $nuovo->setId(-1);
                         $this->aggiungiOggetto($nuovo, $request, $msg);
                         $this->creaFeedbackUtente($msg, $vd, "Oggetto creato");
 			var_dump($nuovo);
