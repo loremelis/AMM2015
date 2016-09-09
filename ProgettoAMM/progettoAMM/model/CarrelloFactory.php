@@ -110,19 +110,16 @@ class CarrelloFactory{
     private function modificaDB(Carrello $carrello, $query){
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
-            print('m1');
             error_log("[salva] impossibile inizializzare il database");
-            return 0;
+            return null;
         }
         $stmt = $mysqli->stmt_init();
-       
         $stmt->prepare($query);
         if (!$stmt) {
-            print('m2');
             error_log("[modificaDB] impossibile" .
                     " inizializzare il prepared statement");
             $mysqli->close();
-            return 0;
+            return null;
         }
         $ID4 = $carrello->getID4();
         $titolo = $carrello->getTitolo();
@@ -135,7 +132,6 @@ class CarrelloFactory{
                         $quantita,
                         $Price2,
                         $IdObj)){
-            print('m3');
 
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");

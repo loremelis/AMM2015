@@ -114,19 +114,21 @@ class clientController extends BaseController {
 
                     case 'cancella':
                         // recuperiamo l'indice 
-                        
-                        $msg = array();
                         $carrelli = CarrelloFactory::instance()->getCarrelli();
-                        $a = $this->getCarrelloPerIndice($carrelli, $request, $msg);
-                        var_dump($a);
-                        if (isset($a)) {
-                            $c = CarrelloFactory::instance()->cancella2($a);
-                            //Funzione che aumenta la quantita di prodotti nella tabella clienti in base a quanto era nel carrello
-                        } else {
-                            $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";
+                        if (isset($request['oggetto'])) {
+                            $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+                            if (isset($intVal)) {
+                                $mod = $carrelli[$intVal];
+                                if ($mod != null) {
+                                    if (CarrelloFactory::instance()->cancella2($mod) != 1) {
+                                        $msg[] = '<li> Impossibile cancellare l\'oggetto </li>';
+                                    }
+                                }
+                                $this->creaFeedbackUtente($msg, $vd, "Oggettoo eliminato");
+                            }
                         }
-                        $this->creaFeedbackUtente($msg, $vd, "Hai cancellato correttamente l'oggetto");
-                        $this->showHomeCliente($vd);
+                        $carrelli = CarrelloFactory::instance()->getCarrelli();
+                        $this->showHomeUtente($vd);
                         break;
                         
                     // case 'compra':
@@ -147,19 +149,13 @@ class clientController extends BaseController {
     
     //Carica l'oggetto del database con l'indice passato
     private function getOggettoPerIndice(&$oggetti, &$request, &$msg) {
-        if (isset($request['oggetto'])) {
-            // verifichiamo che sia un intero
-            $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
             if (isset($intVal) && $intVal > -1 && $intVal < count($oggetti)) {
                 return $oggetti[$intVal];
             } else {
                 $msg[] = "<li> L'oggetto specificato non esiste </li>";
                 return null;
             }
-        } else {
-            $msg[] = '<li> Oggetto non specificato<li>';
-            return null;
-        }
+       
     }
     
     //Carica l'oggetto del carrello con l'indice passato
