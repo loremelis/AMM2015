@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `carrello` (
   `titolo` varchar(128) DEFAULT NULL,
   `quantità` int(11) DEFAULT NULL,
    `prezzo` int(11) DEFAULT NULL,
-  `id_ogg` varchar(255) DEFAULT NULL,
+  `id_ogg` int(11) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 

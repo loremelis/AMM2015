@@ -33,7 +33,7 @@ class sellerController extends BaseController {
                         break;
                     
                     case 'cliente': 
-                        $oggetti = ObjectFactory::instance()->getListaOggetti();
+                        $oggetti = ObjectFactory::instance()->getOggetti();
                         $vd->setSottoVista('cliente');
                         break;
                     
@@ -62,7 +62,6 @@ class sellerController extends BaseController {
                     
                     case 'aggiungiOggetto':
                         $msg = array();
-                        $oggetti = ObjectFactory::instance()->getListaOggetti();
                         $nuovo = new Object('-1','','','','','');
                         $this->aggiungiOggetto($nuovo, $request, $msg);
                         $this->creaFeedbackUtente($msg, $vd, "Oggetto creato");
@@ -71,7 +70,7 @@ class sellerController extends BaseController {
                                 $msg[] = '<li> Impossibile creare l\'oggetto </li>';
                             }
                         }
-                        $oggetti = ObjectFactory::instance()->getListaOggetti();
+                        $oggetti = ObjectFactory::instance()->getOggetti();
                         $this->showHomeVenditore($vd);
                         break;
                         

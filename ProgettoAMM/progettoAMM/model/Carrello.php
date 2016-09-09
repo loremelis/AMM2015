@@ -66,9 +66,12 @@ class Carrello {
          return $this->titolo;
      }
      public function setIdObj($id_ogg){
-         $this->id_ogg=$id_ogg;
+        $intVal = filter_var($id_ogg, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+        if (!isset($intVal)) {
+            return false;
+        }
+        $this->id_ogg=$intVal;
      }
-
     
     
     
