@@ -40,7 +40,8 @@ class clientController extends BaseController {
                         break;
 
                     case 'carrello':
-                        $carrelli = CarrelloFactory::instance()->getListaCarrello();
+                        $carrelli = CarrelloFactory::instance()->getCarrelli();
+                        $tot = ObjectFactory::instance()->calcolaTotale();
                         $vd->setSottoVista('carrello');
                         break;
 
@@ -102,7 +103,7 @@ class clientController extends BaseController {
                                     $a->getPrice(),
                                     1,
                                     $a->getID3()); 
-                                    var_dump($carrello);
+                                    
                             $c = CarrelloFactory::instance()->nuovo($carrello);
                             if(isset($c)){
                                 //clase che mi decrementa il magazzino 
@@ -130,6 +131,9 @@ class clientController extends BaseController {
                         $this->creaFeedbackUtente($msg, $vd, "Hai cancellato correttamente l'oggetto");
                         $this->showHomeCliente($vd);
                         break;
+                        
+                    case 'compra':
+                        
 
                     default: $this->showHomeCLiente($vd);
                 }
@@ -142,7 +146,9 @@ class clientController extends BaseController {
         // includo la vista
         require 'view/master.php';
     }
-
+      
+    
+    //Carica l'oggetto del database con l'indice passato
     private function getOggettoPerIndice(&$oggetti, &$request, &$msg) {
         if (isset($request['oggetto'])) {
             // verifichiamo che sia un intero
@@ -159,6 +165,7 @@ class clientController extends BaseController {
         }
     }
     
+    //Carica l'oggetto del carrello con l'indice passato
     private function getCarrelloPerIndice(&$carrelli, &$request, &$msg) {
         if (isset($request['carrello'])) {
             // verifichiamo che sia un intero

@@ -213,29 +213,6 @@ class ObjectFactory{
         return $oggetto;
      }
 
-    /*modificare un oggetto
-    public function salva(Object $oggetto){
-         $query = "UPDATE oggetti SET
-                    nome = ?,
-                    prezzo = ?,
-                    descrizione = ?,
-                    immagine = ?,
-                    quantita = ?.
-                    where oggetti.id = ?";
-        return $this->modificaDB($oggetto, $query);
-    }
-     * */
-   
-   /* public function aggiungiOggetto(Carrello $c, Oggetto $o){
-        $query = "insert into oggetti (oggetti_id) values (?)";
-        return $this->queryIscrizione($s, $a, $query);
-    }
-    
-    public function cancellaIscrizione(Studente $s, Appello $a){
-        $query = "delete from appelli_studenti where studente_id = ? and appello_id = ?";
-        return $this->queryIscrizione($s, $a, $query);
-    } */
-    
     //aggiungere un nuovo oggetto
     public function nuovo(Object $oggetto){
        $query = "INSERT INTO oggetti (id,nome, prezzo, descrizione, immagine, quantita)
@@ -246,8 +223,7 @@ class ObjectFactory{
     
     //Cancellare una locandina
     public function cancella(Object $oggetto){
-        $query = "delete from oggetti 
-            where id = ? and nome = ? and prezzo = ? and descrizione = ? and immagine= ? and quantita = ?";
+        $query = "delete from oggetti  where id = ? and nome = ? and prezzo = ? and descrizione = ? and immagine= ? and quantita = ?";
         return $this->modificaDB($oggetto, $query);
     }
     

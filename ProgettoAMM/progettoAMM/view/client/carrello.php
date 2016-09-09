@@ -1,6 +1,9 @@
  <div id="contenuto_carrelllo"> 
-            <h2>Prezzo totale: <!--codice per calcolare il totale--> </h2>
-            <!-- Tasto per procedere all'aquisto -->
+     <h2>Prezzo totale: <?php $carrelli = CarrelloFactory::instance()->getCarrelli();
+                              $tot = ObjectFactory::instance()->calcolaTotale(); 
+                              echo $tot;?> </h2>
+        
+     <a href="../index.php?page=client&cmd=compra">Compra</a>
         
             <table id="table_carrello">
                 <caption>Contentuto del tuo carrello</caption>
