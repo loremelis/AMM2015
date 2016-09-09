@@ -7,7 +7,7 @@
         <h1>Accesso all'applicazione del progetto</h1>
         <p>
             La home page del sito la trovate qu&agrave: 
-            <a href="https:spano.sc.unica.it/index.php?page=home">Home Page</a>
+            <a href="spano.sc.unica.it/index.php?page=home">Home Page</a>
         </p>
 
         <h2> Descrizione dell'applicazione </h2>
