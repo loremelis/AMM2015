@@ -97,12 +97,12 @@ class CarrelloFactory{
      }
      
      public function nuovo2(Carrello $carrello){
-        $query = "INSERT INTO carrello (id,titolo, prezzo, quantita, id_ogg) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO carrello (id,titolo, quantita, prezzo, id_ogg) VALUES (?,?,?,?,?)";
         return $this->modificaDB($carrello, $query);
     }
     
     public function cancella2(Carrello $carrello){
-        $query = "delete from carrello where id = ? and titolo = ? and  prezzo = ? and quantita = ? and id_ogg= ?";
+        $query = "delete from carrello where id = ? and titolo = ? and quantita = ? and prezzo = ? and id_ogg= ?";
         return $this->modificaDB($carrello, $query);
     }
     
@@ -132,8 +132,8 @@ class CarrelloFactory{
         if (!$stmt->bind_param('isiii',
                		$ID4,
                         $titolo,
-                        $Price2,
                         $quantita,
+                        $Price2,
                         $IdObj)){
             print('m3');
 
@@ -154,7 +154,7 @@ class CarrelloFactory{
     
     //Funzione che calcola il totale del prezzo
     public function calcolaTotale($carrelli){
-        
+        $tot = 0;
         foreach($carrelli as $carrello){
             $a = 0;
             $a = $carrello->getPrice2();
@@ -163,74 +163,4 @@ class CarrelloFactory{
         return $tot;
         
     }
-    
-    /* public function &caricaCarrelloDaStmt(mysqli_stmt $stmt){
-        $carrello = array();
-        if (!$stmt->execute()) {
-            error_log("[caricaCarrelloDaStmt] impossibile" .
-                    " eseguire lo statement");
-            return null;
-        }
-        $row = array();
-        $bind = $stmt->bind_result(
-                $row['carrello_nome'],
-                $row['carrello_quantita'],
-                $row['carrello_prezzo'],
-                $row['carrello_id']);
-                
-        if (!$bind) {
-            error_log("[caricaOggettoDaStmt] impossibile" .
-                    " effettuare il binding in output");
-            return null;
-        }
-        while ($stmt->fetch()) {
-            $carrello[] = self::creaCarrelloDaArray($row);
-        }
-        
-        $stmt->close();
-        
-        return $carrello;
-    } */
-    
-        /* public function &getListaCarrello() {
-        $carrello = array();
-        $query = "select * from carrello ";
-        $mysqli = Db::getInstance()->connectDb();
-        if (!isset($mysqli)) {
-            error_log("[getListaCarrello] impossibile inizializzare il database");
-            $mysqli->close();
-            return $oggetti;
-        }
-		//var_dump($carrello);
-		
-		$getID4=$carrello->getID4();
-		$getTitolo=$carrello->getTitolo();
-		$getPrice2=$carrello->getPrice2();
-		$getAmount2=$carrello->getAmount2();
-		$getIdObj=$carrello->getIdObj();
-        if (!$stmt->bind_param('isiii',
-               		$getID4,
-               		$getTitolo,
-               		$getPrice2,
-                	$getAmount2,
-                	$getIdObj
-                )) {
-            error_log("[modificaDB] impossibile" .
-                    " effettuare il binding in input");
-            $mysqli->close();
-            return $oggetti;
-        }
-        while ($row = $result->fetch_array()) {
-            $carrello[] = self::creaCarrelloDaArray($row);
-        }
-        return $carrello;
-    } */
- }
-
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+}
