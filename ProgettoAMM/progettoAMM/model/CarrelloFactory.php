@@ -119,8 +119,8 @@ class CarrelloFactory{
                		$getID4,
                		$getTitolo,
                		$getPrice2,
-                $carrello->getAmount2(),
-                $carrello->getIdObj())) {
+                        $carrello->getAmount2(),
+                        $carrello->getIdObj())) {
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();

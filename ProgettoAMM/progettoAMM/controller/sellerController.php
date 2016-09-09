@@ -45,6 +45,10 @@ class sellerController extends BaseController {
                         $vd->setSottoVista('info');
                         break;
                     
+                    case 'recensioni':
+                        $vd->setSottoVista('recensioni');
+                        break;
+                    
                     default:
                         $vd->setSottoVista('home');
                         break; 

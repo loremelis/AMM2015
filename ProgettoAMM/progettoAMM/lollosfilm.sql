@@ -46,9 +46,7 @@ CREATE TABLE IF NOT EXISTS `clienti` (
 --
 
 INSERT INTO `clienti` (`username`, `password`, `nome`, `cognome`, `email`, `numCivico`, `citta`, `id`, `cap`, `via`) VALUES
-('cliente', 'password', 'Lorenzo', 'Melis', 'lorenzo.melis9@gmail.com', 3, 'Cagliari', 3, '09126', 'aquilona'),
-('riccardo', 'riccardo', 'riccardo', 'tocco', 'riccardo.tocco@live.it', 31, 'ussana', 4, '09020', 'rsanzio');
-
+('cliente', 'password', 'Lorenzo', 'Melis', 'lorenzo.melis9@gmail.com', 3, 'Cagliari', 3, '09126', 'aquilona');
 -- --------------------------------------------------------
 
 --
@@ -60,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `oggetti` (
   `nome` varchar(128) DEFAULT NULL,
   `prezzo` int(11) DEFAULT NULL,
   `descrizione` varchar(250) DEFAULT NULL,                                         -- `descrizione` text DEFAULT NULL,
-  `immagine` varchar(250) NOT NULL,
+  `immagine` varchar(250) DEFAULT NULL,
   `quantita` int(11) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;

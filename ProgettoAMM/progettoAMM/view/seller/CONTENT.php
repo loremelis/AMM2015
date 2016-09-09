@@ -12,6 +12,9 @@ switch ($vd->getSottoVista()) {
     case 'info':
         include_once 'info.php';
         break;
+    case 'recensioni':
+        include_once 'recensioni.php';
+        break;
     default:
         include_once 'home.php';
 }
