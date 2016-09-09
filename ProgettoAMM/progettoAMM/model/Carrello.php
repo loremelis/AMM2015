@@ -6,8 +6,8 @@ class Carrello {
     
     private $ID;
     private $titolo;
-    private $price;
     private $amount;
+    private $price;
     private $id_ogg;
     
     
