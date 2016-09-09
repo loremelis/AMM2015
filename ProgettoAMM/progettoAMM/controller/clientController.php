@@ -60,7 +60,7 @@ class clientController extends BaseController {
                     case 'recensioni':
                         $oggetti = ObjectFactory::instance()->getListaOggetti();
                        
-                        $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
+                        $oggetto = $this->getOggettoPerIndice($oggetti, $request, $msg);
                         $vd->setSottoVista('recensioni');
                         break;
         
