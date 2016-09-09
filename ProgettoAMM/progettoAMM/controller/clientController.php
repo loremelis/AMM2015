@@ -97,7 +97,7 @@ class clientController extends BaseController {
                                     $a->getPrice(),
                                     '1',
                                     $a->getID()); 
-                                    var_dump($carrello->getID());
+                                    var_dump($carrello);
                             $c = CarrelloFactory::instance()->nuovo($carrello);
                             if(isset($c)){
                                 //clase che mi decrementa il magazzino 
