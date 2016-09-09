@@ -111,6 +111,7 @@ class CarrelloFactory{
     private function modificaDB(Carrello $carrello, $query){
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
+            print('m1');
             error_log("[salva] impossibile inizializzare il database");
             return 0;
         }
@@ -118,23 +119,21 @@ class CarrelloFactory{
        
         $stmt->prepare($query);
         if (!$stmt) {
+            print('m2');
             error_log("[modificaDB] impossibile" .
                     " inizializzare il prepared statement");
             $mysqli->close();
             return 0;
         }
         var_dump($carrello);
-	$getID4=$carrello->getID4(); 
-        $getTitolo=$carrello->getTitolo();
-	$getPrice2=$carrello->getPrice2();
-	$getAmount2=$carrello->getAmount2();
-	$getIdObj=$carrello->getIdObj();
+	
         if (!$stmt->bind_param('isiii',
-               		$getID4,
-               		$getTitolo,
-               		$getPrice2,
-                	$getAmount2,
-                        $getIdObj)){
+               		$carrello->getID4(),
+               		$carrello->getTitolo(),
+                        $carrello->getPrice2(),
+               		$carrello->getAmount2(),
+                	$carrello->getIdObj())){
+            print('m3');
 
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
