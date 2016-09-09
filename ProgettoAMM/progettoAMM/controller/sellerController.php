@@ -79,7 +79,7 @@ class sellerController extends BaseController {
                         if (isset($request['oggetto'])) {
                             $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if (isset($intVal)) {
-                                $ogg = $this->getOggettoPerIndice($intVal);
+                                $ogg = $oggetti[$intVal];
                                 var_dump($ogg);
                                 if ($ogg != null) {
                                     if (ObjectFactory::instance()->cancella($ogg) != 1) {
