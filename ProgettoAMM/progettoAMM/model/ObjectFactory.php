@@ -166,7 +166,7 @@ class ObjectFactory{
     }
     
     public function salva2(Object $oggetto){
-        $query = "UPDATE oggetto SET quantita WHERE id = ? ";
+        $query = "UPDATE oggetto SET quantita WHERE id = '$oggetto->getID3()' ";
         return $this->modificaDB2($oggetto, $query);
     }
     
