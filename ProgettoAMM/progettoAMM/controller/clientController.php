@@ -99,6 +99,7 @@ class clientController extends BaseController {
                                 $ogg = $oggetti[$intVal];
                                 if ($ogg != null) {
                                     $car = $this->creaCarrelloDaOggetto($ogg);
+                                    var_dump($car);
                                     if (CarrelloFactory::instance()->nuovo2($car) != 1) {
                                         $msg[] = '<li> Impossibile aggiungere l\'oggetto </li>';
                                     }
@@ -215,17 +216,17 @@ class clientController extends BaseController {
     public function creaCarrelloDaOggetto(Object $a){
         $carrello = new Carrello('-1','','','','');
         
-        if (isset($a->getNameObj())) {
+        if (!null == $a->getNameObj()) {
             $carrello->setTitolo($a->getNameObj());
         }
-        if (isset($a->getAmount())) {
+        if (!null == $a->getAmount()) {
             $carrello->setAmount(1);
         }
-        if (isset($a->getPrice())) {
+        if (!null == $a->getPrice()) {
             $carrello->setPrice($a->getPrice());
         }
         
-        if (isset($a->getID3())) {
+        if (!null == $a->getID3()) {
             $carrello->setIdObj($a->getID3());
         }
         
