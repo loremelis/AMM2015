@@ -166,7 +166,9 @@ class ObjectFactory{
     }
     
     public function salva2(Object $oggetto){
-        $query = "UPDATE oggetti SET quantita = \"$oggetto->getAmount()\" WHERE id = \"$oggetto->getID3()\"";
+        $qua = $oggetto->getAmount();
+        $int = $oggetto->getID3();
+        $query = "UPDATE oggetti SET quantita = \"$qua\" WHERE id = \"$int\"";
         return $this->modificaDB2($oggetto, $query);
     }
     
