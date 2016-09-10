@@ -213,12 +213,27 @@ class clientController extends BaseController {
     }
     
     public function creaCarrelloDaOggetto(Object $a){
-        $carrello = new Carrello(
-                20,
-                $a->getNameObj(),
-                $a->getPrice(),
+        $carrello = new Carrello('-1','','','','');
+        
+        if (isset($a->getNameObj())) {
+            $carrello->setTitolo($a->getNameObj());
+        }
+        if (isset($a->getAmount())) {
+            $carrello->setAmount(1);
+        }
+        if (isset($a->getPrice())) {
+            $carrello->setPrice($a->getPrice());
+        }
+        
+        if (isset($a->getID3())) {
+            $carrello->setIdObj($a->getID3());
+        }
+        
+                /*$a->getNameObj(),
                 1,
-                $a->getID3());
+                $a->getPrice(),
+                
+                $a->getID3()); */
         return $carrello;
         
     }
