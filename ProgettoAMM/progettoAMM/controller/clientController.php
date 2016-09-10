@@ -119,6 +119,7 @@ class clientController extends BaseController {
                             $intVal = filter_var($request['carrello'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if (isset($intVal)) {
                                 $mod = $carrelli[$intVal];
+                                var_dump($mod);
                                 if ($mod != null) {
                                     if (CarrelloFactory::instance()->cancella2($mod) != 1) {
                                         $msg[] = '<li> Impossibile cancellare l\'oggetto </li>';

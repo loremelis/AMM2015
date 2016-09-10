@@ -88,39 +88,7 @@ class Object {
    
      }
      
-    
-    /* public function aggiungi(Object $oggetto) {
-        $this->carrello[] = $oggetto;
-        return true;
-    }
-    
-    
-    public function cancella(Object $oggetto) {
-        $pos = $this->posizione($oggetto);
-        if ($pos > -1) {
-            array_splice($this->carrello, $pos, 1);
-            return true;
-        }
-        return false;
-    } */
- 
 
-    /**
-     * Calcola la posizione di uno studente all'interno della lista
-     * @param Studente $studente lo studente da ricercare
-     * @return int la posizione dello studente nella lista, -1 se non e' stato 
-     * inserito
-     */
-    /*private function posizione(Oggetto $oggetto) {
-        for ($i = 0; $i < count($this->carrello); $i++) {
-            if ($this->carrello[$i]->equals($oggetto)) {
-                return $i;
-            }
-        }
-        return -1;
-    }
-
-     */
 }
 
 ?>
