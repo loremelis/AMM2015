@@ -142,6 +142,7 @@ class clientController extends BaseController {
                                         $tit = $car->getTitolo();
                                         if ($nome == $tit){
                                             $ogg->setAmount(+1);
+                                            CarrelloFactory::instance()->salva2($ogg);
                                         }
                                     }
                                 }
