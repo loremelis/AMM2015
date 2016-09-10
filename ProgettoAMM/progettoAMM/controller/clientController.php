@@ -93,22 +93,20 @@ class clientController extends BaseController {
                         // recuperiamo l'indice 
                         $msg = array();
                         $oggetti = ObjectFactory::instance()->getOggetti();
-                        $a = $this->getOggettoPerIndice($oggetti, $request, $msg);
-                        
-                        if (isset($a)) {
-                            $c = $this->creaCarrelloDaOggetto($a);
-                            if (isset($c)){
-                                $car = CarrelloFactory::instance()->nuovo2($c);
+                        if (isset($request['oggetto'])) {
+                            $intVal = filter_var($request['oggetto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+                            if (isset($intVal)) {
+                                $ogg = $oggetti[$intVal];
+                                if ($ogg != null) {
+                                    $car = $this->creaCarrelloDaOggetto($ogg);
+                                    if (CarrelloFactory::instance()->nuovo2($ogg) != 1) {
+                                        $msg[] = '<li> Impossibile aggiungere l\'oggetto </li>';
+                                    }
+                                }
+                                $this->creaFeedbackUtente($msg, $vd, "Oggetto aggiunto");
                             }
-                            // if(isset($c)){}
-                                //clase che mi decrementa il magazzino 
-                                //Con update
-                            
-                            
-                        } else {
-                            $msg[] = "<li> Impossibile, Verifica la quantità del prodotto </li>";
                         }
-                        $this->creaFeedbackUtente($msg, $vd, "Hai aggiunto l'oggetto al carrello");
+                        $carrelli = CarrelloFactory::instance()->getCarrelli();
                         $this->showHomeCliente($vd);
                         break;
 
@@ -215,14 +213,15 @@ class clientController extends BaseController {
     }
     
     public function creaCarrelloDaOggetto(Object $a){
-                                $carrello = new Carrello(
-                                    20,
-                                    $a->getNameObj(),
-                                    $a->getPrice(),
-                                    1,
-                                    $a->getID3()); 
-                                return $carrello;
-                            }
+        $carrello = new Carrello(
+                20,
+                $a->getNameObj(),
+                $a->getPrice(),
+                1,
+                $a->getID3());
+        return $carrello;
+        
+    }
 
     
 
