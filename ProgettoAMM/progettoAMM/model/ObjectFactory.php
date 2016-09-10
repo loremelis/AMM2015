@@ -169,7 +169,7 @@ class ObjectFactory{
         $qua = $oggetto->getAmount();
         $int = $oggetto->getID3();
         $query = "UPDATE oggetti SET quantita = \"$qua\" WHERE id = \"$int\"";
-        return $this->modificaDB($oggetto, $query);
+        return $this->modificaDB2($qua,$int, $query);
     }
     
     //Funzione che modifica il Db
@@ -216,7 +216,7 @@ class ObjectFactory{
         return $stmt->affected_rows;
     }
     
-    private function modificaDB2(Object $oggetto, $query){
+    private function modificaDB2($amount,$id, $query){
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
             error_log("[salva] impossibile inizializzare il database");
@@ -232,8 +232,7 @@ class ObjectFactory{
             return 0;
         }
         
-        $amount= $oggetto->getAmount();
-        $id = $oggetto->getID3();
+        
         if (!$stmt->bind_param('ii', $amount,$id)) {
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
