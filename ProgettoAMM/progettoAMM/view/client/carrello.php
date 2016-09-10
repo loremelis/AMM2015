@@ -2,9 +2,8 @@
      <h2>Prezzo totale: <?php $carrelli = CarrelloFactory::instance()->getCarrelli();
                    
                               $tot = CarrelloFactory::instance()->calcolaTotale($carrelli); 
-                              print ($tot) ; ?> </h2>
-        
-     <h2><a href="../index.php?page=client&cmd=compra">Compra</a></h2>
+                              print ($tot) ; ?> euro </h2>
+      
         
             <table id="table_carrello">
                 <caption>Contentuto del tuo carrello</caption>

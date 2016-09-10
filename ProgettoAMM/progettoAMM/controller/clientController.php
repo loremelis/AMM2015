@@ -118,10 +118,20 @@ class clientController extends BaseController {
                             $intVal = filter_var($request['carrello'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
                             if (isset($intVal)) {
                                 $mod = $carrelli[$intVal];
-                                var_dump($mod);
                                 if ($mod != null) {
                                     if (CarrelloFactory::instance()->cancella2($mod) != 1) {
                                         $msg[] = '<li> Impossibile cancellare l\'oggetto </li>';
+                                    }
+                                }
+                                $carrelli = CarrelloFactory::instance()->getOggetti();
+                                $oggetti = ObjectFactory::instance()->getOggetti();
+                                foreach($oggetti as $ogg){
+                                    foreach($carrelli as $car){
+                                        $nome = $ogg->getNameObj();
+                                        $tit = $car->getTitolo();
+                                        if ($nome == $tit){
+                                            $oggetto->setAmount(-1);
+                                        }
                                     }
                                 }
                                 $this->creaFeedbackUtente($msg, $vd, "Oggetto eliminato");
