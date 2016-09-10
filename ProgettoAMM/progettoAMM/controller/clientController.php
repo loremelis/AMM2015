@@ -110,7 +110,7 @@ class clientController extends BaseController {
                                         $nome = $ogg->getNameObj();
                                         $tit = $car->getTitolo();
                                         if ($nome == $tit){
-                                            $oggetto->setAmount(-1);
+                                            $ogg->setAmount(-1);
                                         }
                                     }
                                 }
@@ -140,7 +140,7 @@ class clientController extends BaseController {
                                         $nome = $ogg->getNameObj();
                                         $tit = $car->getTitolo();
                                         if ($nome == $tit){
-                                            $oggetto->setAmount(+1);
+                                            $ogg->setAmount(+1);
                                         }
                                     }
                                 }
