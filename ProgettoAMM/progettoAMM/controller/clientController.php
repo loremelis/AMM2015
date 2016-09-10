@@ -137,6 +137,7 @@ class clientController extends BaseController {
                                 $oggetti = ObjectFactory::instance()->getOggetti();
                                 foreach($oggetti as $ogg){
                                     foreach($carrelli as $car){
+                                        print('c2');
                                         $nome = $ogg->getNameObj();
                                         $tit = $car->getTitolo();
                                         if ($nome == $tit){
@@ -144,6 +145,7 @@ class clientController extends BaseController {
                                         }
                                     }
                                 }
+                                $oggetti = ObjectFactory::instance()->getOggetti();
                                 $this->creaFeedbackUtente($msg, $vd, "Oggetto eliminato");
                             }
                         }
