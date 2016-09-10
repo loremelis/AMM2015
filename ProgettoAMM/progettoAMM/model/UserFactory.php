@@ -181,7 +181,7 @@ class UserFactory {
         }
         switch ($role) {
             case User::Cliente:
-                $query= "SELECT * FROM clienti WHERE id =\"$id\";";
+                $query= "SELECT * FROM clienti WHERE id =\"$id\"";
                 $stmt = $mysqli->stmt_init();
                 $stmt->prepare($query);
                 if (!$stmt) {
