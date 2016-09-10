@@ -59,7 +59,7 @@ class CarrelloFactory{
     public function &caricaCarrelliDaStmt(mysqli_stmt $stmt){
         $carrelli = array();
          if (!$stmt->execute()) {
-            error_log("[caricaOggettoDaStmt] impossibile" .
+            error_log("[caricaCarrelliDaStmt] impossibile" .
                     " eseguire lo statement");
             return null;
         }
@@ -72,7 +72,7 @@ class CarrelloFactory{
                 $row['carrello_id_ogg']);
                 
         if (!$bind) {
-            error_log("[caricaOggettoDaStmt] impossibile" .
+            error_log("[caricaCarrelliDaStmt] impossibile" .
                     " effettuare il binding in output");
             return null;
         }

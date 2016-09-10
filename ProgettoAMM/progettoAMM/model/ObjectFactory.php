@@ -59,7 +59,7 @@ class ObjectFactory{
                 }
     }
     
-    public function &getListaOggetti() {
+    /* public function &getListaOggetti() {
         $oggetti = array();
         $query = "select * from oggetti ";
         $mysqli = Db::getInstance()->connectDb();
@@ -78,7 +78,7 @@ class ObjectFactory{
             $oggetti[] = self::creaOggettoDaArray($row);
         }
         return $oggetti;
-    }
+    } */
     
     public function &getOggetti() {
        $oggetti = array();
@@ -111,7 +111,7 @@ class ObjectFactory{
         return $oggetti;
     }
     
-    public function caricaOggetto(Object $oggetto){
+   /* public function caricaOggetto(Object $oggetto){
         
         $query = "select * from oggetti where id = ?";
         $mysqli = Db::getInstance()->connectDb();
@@ -141,9 +141,9 @@ class ObjectFactory{
             $mysqli->close();
             return null;
         }
-    }
+    } */
     
-    private function caricaOggettoDaStmt(mysqli_stmt $stmt) {
+    /*private function caricaOggettoDaStmt(mysqli_stmt $stmt) {
         if (!$stmt->execute()) {
             error_log("[caricaVenditoreDaStmt] impossibile" .
                     " eseguire lo statement");
@@ -170,7 +170,7 @@ class ObjectFactory{
         $stmt->close();
         
         return self::creaOggettoDaArray($row);
-    }
+    } */
     
     public function &caricaOggettiDaStmt(mysqli_stmt $stmt){
         $oggetti = array();
@@ -269,40 +269,5 @@ class ObjectFactory{
         return $stmt->affected_rows;
     }
     
-    
-    public function creaOggettoDaCodice($codice) {
-        
-        
-        $query = "select * where oggetto.id = ?";
-        $mysqli = Db::getInstance()->connectDb();
-        if (!isset($mysqli)) {
-            error_log("[creaOggettoDaCodice] impossibile inizializzare il database");
-            $mysqli->close();
-            return $oggetti;
-        }
-        
-        $stmt = $mysqli->stmt_init();
-        $stmt->prepare($query);
-        if (!$stmt) {
-            error_log("[creaOggettiDaCodice] impossibile" .
-                    " inizializzare il prepared statement");
-            $mysqli->close();
-            return null;
-        }
-        if (!$stmt->bind_param('s', $codice)) {
-            error_log("[creaOggettiDaCodice] impossibile" .
-                    " effettuare il binding in input");
-            $mysqli->close();
-            return null;
-        }
-        $oggetti = self::caricaOggettiDaStmt($stmt);
-        if(count($oggetti) > 0){
-            $mysqli->close();
-            return $oggetti[0];
-        }else{
-            $mysqli->close();
-            return null;
-        }
-    }
   }
 ?>
