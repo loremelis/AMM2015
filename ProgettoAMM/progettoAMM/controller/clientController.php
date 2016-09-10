@@ -103,7 +103,7 @@ class clientController extends BaseController {
                                         $msg[] = '<li> Impossibile aggiungere l\'oggetto </li>';
                                     }
                                 }
-                                $this->diminuisciDB($intVal);
+                                //$this->diminuisciDB($intVal);
                                 $this->creaFeedbackUtente($msg, $vd, "Oggetto aggiunto");
                             }
                         }
@@ -123,7 +123,7 @@ class clientController extends BaseController {
                                         $msg[] = '<li> Impossibile cancellare l\'oggetto </li>';
                                     }
                                 }
-                                $this->aumentaDB($intVal);
+                                //$this->aumentaDB($intVal);
                                 $this->creaFeedbackUtente($msg, $vd, "Oggetto eliminato");
                             }
                         }

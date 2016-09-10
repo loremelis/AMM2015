@@ -216,7 +216,7 @@ class ObjectFactory{
         return $stmt->affected_rows;
     }
     
-    private function modificaDB2($amount,$id, $query){
+    /* private function modificaDB2($amount,$id, $query){
         $mysqli = Db::getInstance()->connectDb();
         if (!isset($mysqli)) {
             error_log("[salva] impossibile inizializzare il database");
@@ -247,7 +247,7 @@ class ObjectFactory{
         }
         $mysqli->close();
         return $stmt->affected_rows;
-    }
+    } */
     
   }
 ?>
