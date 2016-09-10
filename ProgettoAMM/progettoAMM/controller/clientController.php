@@ -114,6 +114,7 @@ class clientController extends BaseController {
                                         }
                                     }
                                 }
+                                $this->diminuisciDB();
                                 $this->creaFeedbackUtente($msg, $vd, "Oggetto aggiunto");
                             }
                         }
@@ -133,20 +134,7 @@ class clientController extends BaseController {
                                         $msg[] = '<li> Impossibile cancellare l\'oggetto </li>';
                                     }
                                 }
-                                $carrelli = CarrelloFactory::instance()->getCarrelli();
-                                $oggetti = ObjectFactory::instance()->getOggetti();
-                                foreach($oggetti as $ogg){
-                                    foreach($carrelli as $car){
-                                        print('c2');
-                                        $nome = $ogg->getNameObj();
-                                        $tit = $car->getTitolo();
-                                        if ($nome == $tit){
-                                            $ogg->setAmount(+1);
-                                            CarrelloFactory::instance()->salva2($ogg);
-                                        }
-                                    }
-                                }
-                                $oggetti = ObjectFactory::instance()->getOggetti();
+                                $this->aumentaDB();
                                 $this->creaFeedbackUtente($msg, $vd, "Oggetto eliminato");
                             }
                         }
@@ -252,18 +240,48 @@ class clientController extends BaseController {
         if (!null == $a->getID3()) {
             $carrello->setIdObj($a->getID3());
         }
-        
-                /*$a->getNameObj(),
-                1,
-                $a->getPrice(),
-                
-                $a->getID3()); */
         return $carrello;
         
     }
 
-    
-
+    public function aumentaDB() {
+        $oggetti = ObjectFactory::instance()->getOggetti();
+        foreach($oggetti as $ogg){
+            $carrelli = CarrelloFactory::instance()->getCarrelli();
+            foreach($carrelli as $car){
+                print('c2');
+                $nome = $ogg->getNameObj();
+                $tit = $car->getTitolo();
+                if ($nome == $tit){
+                    $ogg->setAmount(+1);
+                    CarrelloFactory::instance()->salva2($ogg);
+                    
+                }
+                
+            }
+        }
+    }
+        
+    public function diminuisciDB() {
+    $oggetti = ObjectFactory::instance()->getOggetti();
+    foreach($oggetti as $ogg){
+        $carrelli = CarrelloFactory::instance()->getCarrelli();
+        foreach($carrelli as $car){
+            print('c2');
+            $nome = $ogg->getNameObj();   
+            $tit = $car->getTitolo();
+            if ($nome == $tit){
+                $ogg->setAmount(-1);
+                CarrelloFactory::instance()->salva2($ogg);
+                    
+            }
+                
+        }
+    }
+    }
+        
 }
+
+
 ?>
 
