@@ -103,17 +103,6 @@ class clientController extends BaseController {
                                         $msg[] = '<li> Impossibile aggiungere l\'oggetto </li>';
                                     }
                                 }
-                                $carrelli = CarrelloFactory::instance()->getCarrelli();
-                                $oggetti = ObjectFactory::instance()->getOggetti();
-                                foreach($oggetti as $ogg){
-                                    foreach($carrelli as $car){
-                                        $nome = $ogg->getNameObj();
-                                        $tit = $car->getTitolo();
-                                        if ($nome == $tit){
-                                            $ogg->setAmount(-1);
-                                        }
-                                    }
-                                }
                                 $this->diminuisciDB();
                                 $this->creaFeedbackUtente($msg, $vd, "Oggetto aggiunto");
                             }
@@ -254,7 +243,7 @@ class clientController extends BaseController {
                 $tit = $car->getTitolo();
                 if ($nome == $tit){
                     $ogg->setAmount(+1);
-                    CarrelloFactory::instance()->salva2($ogg);
+                    ObjectFactory::instance()->salva2($ogg);
                     
                 }
                 
@@ -272,7 +261,7 @@ class clientController extends BaseController {
             $tit = $car->getTitolo();
             if ($nome == $tit){
                 $ogg->setAmount(-1);
-                CarrelloFactory::instance()->salva2($ogg);
+                ObjectFactory::instance()->salva2($ogg);
                     
             }
                 

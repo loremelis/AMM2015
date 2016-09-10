@@ -101,11 +101,6 @@ class CarrelloFactory{
         return $this->modificaDB($carrello, $query);
     }
     
-    public function salva2(Carrello $carrello){
-        $query = "UPDATE carrello SET carrello_quantita WHERE carrello_id = ? ";
-        return $this->modificaDB($carrello, $query);
-    }
-    
     public function cancella2(Carrello $carrello){
         $query = "delete from carrello where id = ? and titolo = ? and quantita = ? and prezzo = ? and id_ogg= ?";
         return $this->modificaDB($carrello, $query);

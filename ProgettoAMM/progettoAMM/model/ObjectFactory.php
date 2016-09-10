@@ -225,6 +225,11 @@ class ObjectFactory{
         return $this->modificaDB($oggetto, $query);
     }
     
+    public function salva2(Object $oggetto){
+        $query = "UPDATE oggetto SET quantita WHERE carrello_id = ? ";
+        return $this->modificaDB($oggetto, $query);
+    }
+    
     //Funzione che modifica il Db
     private function modificaDB(Object $oggetto, $query){
         $mysqli = Db::getInstance()->connectDb();
