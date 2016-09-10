@@ -250,6 +250,7 @@ class clientController extends BaseController {
         
     public function diminuisciDB($intVal) {
     $oggetti = ObjectFactory::instance()->getOggetti();
+    $carrelli = CarrelloFactory::instance()->getCarrelli();
     $car = $carrelli[$intVal];
     foreach($oggetti as $ogg){
             print('c2');
