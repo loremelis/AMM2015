@@ -233,7 +233,8 @@ class ObjectFactory{
         }
         
         $amount= $oggetto->getAmount();
-        if (!$stmt->bind_param('i', $amount)) {
+        $id = $oggetto->getID3();
+        if (!$stmt->bind_param('ii', $amount,$id)) {
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
