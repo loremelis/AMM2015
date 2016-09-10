@@ -99,9 +99,19 @@ class clientController extends BaseController {
                                 $ogg = $oggetti[$intVal];
                                 if ($ogg != null) {
                                     $car = $this->creaCarrelloDaOggetto($ogg);
-                                    var_dump($car);
                                     if (CarrelloFactory::instance()->nuovo2($car) != 1) {
                                         $msg[] = '<li> Impossibile aggiungere l\'oggetto </li>';
+                                    }
+                                }
+                                $carrelli = CarrelloFactory::instance()->getCarrelli();
+                                $oggetti = ObjectFactory::instance()->getOggetti();
+                                foreach($oggetti as $ogg){
+                                    foreach($carrelli as $car){
+                                        $nome = $ogg->getNameObj();
+                                        $tit = $car->getTitolo();
+                                        if ($nome == $tit){
+                                            $oggetto->setAmount(-1);
+                                        }
                                     }
                                 }
                                 $this->creaFeedbackUtente($msg, $vd, "Oggetto aggiunto");
@@ -123,14 +133,14 @@ class clientController extends BaseController {
                                         $msg[] = '<li> Impossibile cancellare l\'oggetto </li>';
                                     }
                                 }
-                                $carrelli = CarrelloFactory::instance()->getOggetti();
+                                $carrelli = CarrelloFactory::instance()->getCarrelli();
                                 $oggetti = ObjectFactory::instance()->getOggetti();
                                 foreach($oggetti as $ogg){
                                     foreach($carrelli as $car){
                                         $nome = $ogg->getNameObj();
                                         $tit = $car->getTitolo();
                                         if ($nome == $tit){
-                                            $oggetto->setAmount(-1);
+                                            $oggetto->setAmount(+1);
                                         }
                                     }
                                 }
