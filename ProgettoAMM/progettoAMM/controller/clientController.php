@@ -99,6 +99,7 @@ class clientController extends BaseController {
                                 $ogg = $oggetti[$intVal];
                                 if ($ogg != null) {
                                     $car = $this->creaCarrelloDaOggetto($ogg);
+                                    var_dump($car);
                                     if (CarrelloFactory::instance()->nuovo2($car) != 1) {
                                         $msg[] = '<li> Impossibile aggiungere l\'oggetto </li>';
                                     }
