@@ -103,7 +103,7 @@ class clientController extends BaseController {
                                         $msg[] = '<li> Impossibile aggiungere l\'oggetto </li>';
                                     }
                                 }
-                                $this->diminuisciDB();
+                                $this->diminuisciDB($intVal);
                                 $this->creaFeedbackUtente($msg, $vd, "Oggetto aggiunto");
                             }
                         }
@@ -123,7 +123,7 @@ class clientController extends BaseController {
                                         $msg[] = '<li> Impossibile cancellare l\'oggetto </li>';
                                     }
                                 }
-                                $this->aumentaDB();
+                                $this->aumentaDB($intVal);
                                 $this->creaFeedbackUtente($msg, $vd, "Oggetto eliminato");
                             }
                         }
@@ -235,27 +235,23 @@ class clientController extends BaseController {
 
     public function aumentaDB() {
         $oggetti = ObjectFactory::instance()->getOggetti();
+        $car = $carrelli[$intVal];
         foreach($oggetti as $ogg){
-            $carrelli = CarrelloFactory::instance()->getCarrelli();
-            foreach($carrelli as $car){
-                print('c2');
-                $nome = $ogg->getNameObj();
-                $tit = $car->getTitolo();
-                if ($nome == $tit){
-                    $ogg->setAmount(+1);
-                    ObjectFactory::instance()->salva2($ogg);
+            print('c2');
+            $nome = $ogg->getNameObj();   
+            $tit = $car->getTitolo();
+            if ($nome == $tit){
+                $ogg->setAmount(+1);
+                ObjectFactory::instance()->salva2($ogg);
                     
-                }
-                
             }
         }
     }
         
-    public function diminuisciDB() {
+    public function diminuisciDB($intVal) {
     $oggetti = ObjectFactory::instance()->getOggetti();
+    $car = $carrelli[$intVal];
     foreach($oggetti as $ogg){
-        $carrelli = CarrelloFactory::instance()->getCarrelli();
-        foreach($carrelli as $car){
             print('c2');
             $nome = $ogg->getNameObj();   
             $tit = $car->getTitolo();
@@ -265,8 +261,8 @@ class clientController extends BaseController {
                     
             }
                 
-        }
     }
+    
     }
         
 }
