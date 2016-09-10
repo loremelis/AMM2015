@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `carrello` (
   `id` bigint(20) unsigned NOT NULL,
   `titolo` varchar(128) DEFAULT NULL,
-  `quantità` int(11) DEFAULT NULL,
+  `quantita` int(11) DEFAULT NULL,
   `prezzo` int(11) DEFAULT NULL,
   `id_ogg` int(11) DEFAULT NULL
 ) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `carrello` (
 -- Dump dei dati per la tabella `carrello`
 --
 
-INSERT INTO `carrello` (`id`, `titolo`, `quantità`, `prezzo`, `id_ogg`) VALUES
+INSERT INTO `carrello` (`id`, `titolo`, `quantita`, `prezzo`, `id_ogg`) VALUES
 (30, 'Ciao', 3, 12, 4);
 
 -- --------------------------------------------------------
