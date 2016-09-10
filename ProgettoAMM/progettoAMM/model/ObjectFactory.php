@@ -169,7 +169,7 @@ class ObjectFactory{
         $qua = $oggetto->getAmount();
         $int = $oggetto->getID3();
         $query = "UPDATE oggetti SET quantita = \"$qua\" WHERE id = \"$int\"";
-        return $this->modificaDB2($oggetto, $query);
+        return $this->modificaDB($oggetto, $query);
     }
     
     //Funzione che modifica il Db
