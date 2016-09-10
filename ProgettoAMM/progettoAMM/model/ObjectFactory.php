@@ -110,67 +110,7 @@ class ObjectFactory{
         $mysqli->close();
         return $oggetti;
     }
-    
-   /* public function caricaOggetto(Object $oggetto){
-        
-        $query = "select * from oggetti where id = ?";
-        $mysqli = Db::getInstance()->connectDb();
-        if (!isset($mysqli)) {
-            error_log("[cercaOggettoPerId] impossibile inizializzare il database");
-            $mysqli->close();
-            return null;
-        }
-        $stmt = $mysqli->stmt_init();
-        $stmt->prepare($query);
-        if (!$stmt) {
-            error_log("[caricaOggetto] impossibile" .
-                    " inizializzare il prepared statement");
-            $mysqli->close();
-            return null;
-        }
-        if (!$stmt->bind_param('i', $oggetto->getID3())) {
-            error_log("[caricaOggetto] impossibile" .
-                    " effettuare il binding in input");
-            $mysqli->close();
-            return null;
-        }
-        
-        if (!$stmt->execute()) {
-            error_log("[caricaOggetto] impossibile" .
-                    " eseguire lo statement");
-            $mysqli->close();
-            return null;
-        }
-    } */
-    
-    /*private function caricaOggettoDaStmt(mysqli_stmt $stmt) {
-        if (!$stmt->execute()) {
-            error_log("[caricaVenditoreDaStmt] impossibile" .
-                    " eseguire lo statement");
-            return null;
-        }
-        $row = array();
-        $bind = $stmt->bind_result(
-                $row['oggetti_id'],
-                $row['oggetti_nome'],
-                $row['oggetti_prezzo'],
-                $row['oggetti_descrizione'],
-                $row['oggetti_immagine'],
-                $row['oggetti_quantita']); 
-        	
-				
-        if (!$bind) {
-            error_log("[caricaOggettoDaStmt] impossibile" .
-                    " effettuare il binding in output");
-            return null;
-        }
-        if (!$stmt->fetch()){
-            return null;
-        }
-        $stmt->close();
-        
-        return self::creaOggettoDaArray($row);
-    } */
+
     
     public function &caricaOggettiDaStmt(mysqli_stmt $stmt){
         $oggetti = array();
@@ -227,7 +167,7 @@ class ObjectFactory{
     
     public function salva2(Object $oggetto){
         $query = "UPDATE oggetto SET quantita WHERE carrello_id = ? ";
-        return $this->modificaDB($oggetto, $query);
+        return $this->modificaDB2($oggetto, $query);
     }
     
     //Funzione che modifica il Db
@@ -259,6 +199,39 @@ class ObjectFactory{
                 $descrizione,
                 $image,
                 $amount)) {
+            error_log("[modificaDB] impossibile" .
+                    " effettuare il binding in input");
+            $mysqli->close();
+            return 0;
+        }
+        if (!$stmt->execute()) {
+            error_log("[modificaDB] impossibile" .
+                    " eseguire lo statement");
+            $mysqli->close();
+            return 0;
+        }
+        $mysqli->close();
+        return $stmt->affected_rows;
+    }
+    
+    private function modificaDB2(Object $oggetto, $query){
+        $mysqli = Db::getInstance()->connectDb();
+        if (!isset($mysqli)) {
+            error_log("[salva] impossibile inizializzare il database");
+            return 0;
+        }
+        $stmt = $mysqli->stmt_init();
+       
+        $stmt->prepare($query);
+        if (!$stmt) {
+            error_log("[modificaDB] impossibile" .
+                    " inizializzare il prepared statement");
+            $mysqli->close();
+            return 0;
+        }
+        
+        $amount= $oggetto->getAmount();
+        if (!$stmt->bind_param('i', $amount)) {
             error_log("[modificaDB] impossibile" .
                     " effettuare il binding in input");
             $mysqli->close();
